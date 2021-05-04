@@ -1,0 +1,39 @@
+unit UsersManage;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TTeacher = record
+    firstname : string;
+    lastname : string;
+    ownclass : string;
+    classes: array[1..1000] of string;
+  end;
+    TPupil = record
+    firstname : string;
+    lastname : string;
+    studyclass : string;
+  end;
+  TForm3 = class(TForm)
+    UsersList: TListBox;
+    UserAddBtn: TButton;
+    ShowTeachers: TRadioButton;
+    ShowPupils: TRadioButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+end.
