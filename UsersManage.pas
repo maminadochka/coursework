@@ -48,11 +48,15 @@ type
     procedure FormCreate(Sender: TObject);
     procedure TeachersListClick(Sender: TObject);
     procedure PupilsListClick(Sender: TObject);
+    procedure ListLabelClick(Sender: TObject);
+    function GetLabelId(name: string): integer;
     procedure renderTeachersList;
   private
     { Private declarations }
   public
     teachersList: array [1..100] of TTeacher;
+    offset: integer;
+    teachers_num: integer;
     { Public declarations }
   end;
 
@@ -73,16 +77,37 @@ procedure TForm3.renderTeachersList();
 var
   teacher: TTeacher;
   itemLabel: TLabel;
+  i: Integer;
 begin
-  teacher.firstname := 'Sveta';
-  teacher.lastname := 'Boltak';
-  teacher.ownclass := '051005';
-  teachersList[1] := teacher;
-  itemLabel.Create(TeachersListScrollBox);
+//  teacher.firstname := 'Sveta';
+//  teacher.lastname := 'Boltak';
+//  teacher.ownclass := '051005';
+//  teachersList[1] := teacher;
+for i := 1 to 10 do
+begin
+  teacher := teachersList[i];
+  itemLabel := TLabel.Create(TeachersListScrollBox);
   itemLabel.Parent := TeachersListScrollBox;
-  itemLabel.Caption := teacher.firstname + teacher.lastname;
-  itemLabel.Top := 10;
+  itemLabel.Caption := teacher.firstname + ' '+ teacher.lastname;
+  itemLabel.Top := 10+offset;
   itemLabel.Left := 10;
+  itemLabel.Name := 'item'+inttostr(i);
+  itemLabel.OnClick := ListLabelClick;
+  offset := offset+25;
+end;
+end;
+
+// returns ordinal tlabel num
+function TForm3.GetLabelId(name: string): integer;
+var
+  i: integer;
+  ans: string;
+begin
+  for i := 5 to Length(name) do
+    begin
+      ans := ans+name[i];
+    end;
+    Result := strtoint(ans);
 end;
 
 procedure TForm3.AddTeacherRadioBtnClick(Sender: TObject);
@@ -96,6 +121,8 @@ var i: integer;
     j: integer;
     classlet: string ;
 begin
+offset := 0;
+teachers_num := 1;
 classlet:= '¿¡¬√';
    for i := 1 to 11 do
     for j := 1 to 4 do
@@ -127,6 +154,17 @@ begin
 //ShowMessage(inttostr((PupilsList.ItemIndex)));
 end;
 
+//list  item on click
+procedure TForm3.ListLabelClick(Sender: TObject);
+var
+  teacher: TTeacher;
+  label_id: integer;
+begin
+  ShowMessage('clicked label: '+(Sender as TComponent).Name);
+  label_id := GetLabelId((Sender as TComponent).Name);
+  teacher := teachersList[label_id];
+  LastNameTeacherEdit.Text := teacher.lastname;
+end;
 procedure TForm3.UserAddBtnClick(Sender: TObject);
 var
     Pupil: TPupil;
@@ -146,6 +184,9 @@ begin
       Teacher.firstname := FirstNameTeacherEdit.Text;
       Teacher.lastname := LastNameTeacherEdit.Text;
       Teacher.ownclass := OwnClassTeacherComboBox.Text;
+      teachersList[teachers_num] := Teacher;
+      teachers_num := teachers_num+1;
+      offset := 0;
       renderTeachersList();
 //      TeachersList.Items.Add(Teacher.lastname + ' ' + Teacher.firstname);
     end;
