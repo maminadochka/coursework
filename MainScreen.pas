@@ -17,6 +17,7 @@ type
     Button2: TButton;
     procedure LoginBtnClick(Sender: TObject);
     function auth(Login, Password: string) : boolean;
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,13 +28,18 @@ var
   Form1: TForm1;
 
 implementation
-                  uses Zavuch;
+                  uses UserScreen;
 {$R *.dfm}
 function TForm1.auth(Login, Password: string) : boolean;
   begin
     if (Login = 'Lu') and (Password = '123') then
        Result:= true;
   end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+Form1.color:=$ecb2ce;
+end;
 
 procedure TForm1.LoginBtnClick(Sender: TObject);
 begin

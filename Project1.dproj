@@ -94,12 +94,14 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Zavuch.pas">
+        <DCCReference Include="UserScreen.pas">
             <Form>Form2</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\UsersManage.pas">
+        <DCCReference Include="UsersManage.pas">
             <Form>Form3</Form>
+        </DCCReference>
+        <DCCReference Include="Journal.pas">
+            <Form>Form4</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

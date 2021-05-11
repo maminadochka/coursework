@@ -4,17 +4,18 @@ object Form1: TForm1
   Caption = 'Form1'
   ClientHeight = 595
   ClientWidth = 873
-  Color = clBtnFace
+  Color = clWindow
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 248
+    Left = 256
     Top = 192
     Width = 371
     Height = 25
@@ -28,17 +29,17 @@ object Form1: TForm1
   end
   object Label2: TLabel
     Left = 352
-    Top = 240
-    Width = 49
-    Height = 17
-    Caption = 'Login'
+    Top = 245
+    Width = 30
+    Height = 13
+    Caption = #1051#1086#1075#1080#1085
   end
   object Label3: TLabel
     Left = 352
-    Top = 304
-    Width = 65
-    Height = 17
-    Caption = 'Password'
+    Top = 308
+    Width = 37
+    Height = 13
+    Caption = #1055#1072#1088#1086#1083#1100
   end
   object LoginInp: TEdit
     Left = 352

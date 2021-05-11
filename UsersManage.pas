@@ -121,6 +121,9 @@ var i: integer;
     j: integer;
     classlet: string ;
 begin
+
+Form3.color:=$f5bddc;
+
 offset := 0;
 teachers_num := 1;
 classlet:= 'ÀÁÂÃ';
