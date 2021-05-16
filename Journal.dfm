@@ -2,8 +2,8 @@ object Form4: TForm4
   Left = 0
   Top = 0
   Caption = 'Form4'
-  ClientHeight = 544
-  ClientWidth = 1076
+  ClientHeight = 918
+  ClientWidth = 1796
   Color = clMoneyGreen
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +11,8 @@ object Form4: TForm4
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesigned
+  WindowState = wsMaximized
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -92,11 +94,14 @@ object Form4: TForm4
   object StringGrid1: TStringGrid
     Left = 8
     Top = 78
-    Width = 768
-    Height = 417
+    Width = 1338
+    Height = 832
     ColCount = 17
+    FixedCols = 2
     RowCount = 30
+    FixedRows = 0
     TabOrder = 6
+    OnDrawCell = StringGrid1DrawCell
     OnSetEditText = StringGrid1SetEditText
     RowHeights = (
       24
@@ -131,12 +136,14 @@ object Form4: TForm4
       24)
   end
   object StringGrid2: TStringGrid
-    Left = 782
+    Left = 1352
     Top = 78
-    Width = 219
-    Height = 417
+    Width = 444
+    Height = 776
     ColCount = 3
+    FixedCols = 0
     RowCount = 17
+    FixedRows = 0
     TabOrder = 7
     RowHeights = (
       24
@@ -156,5 +163,13 @@ object Form4: TForm4
       24
       24
       24)
+  end
+  object Button1: TButton
+    Left = 1352
+    Top = 860
+    Width = 444
+    Height = 50
+    Caption = #1055#1086#1089#1084#1086#1090#1088#1077#1090#1100' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1091
+    TabOrder = 8
   end
 end

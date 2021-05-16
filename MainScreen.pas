@@ -38,7 +38,7 @@ function TForm1.auth(Login, Password: string) : boolean;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-Form1.color:=$ecb2ce;
+  Form1.color:=$ecb2ce;
 end;
 
 procedure TForm1.LoginBtnClick(Sender: TObject);
