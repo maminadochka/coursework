@@ -14,7 +14,6 @@ type
     UserEdit: TButton;
     procedure UsersManageClick(Sender: TObject);
     procedure JournalClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,10 +27,6 @@ implementation
                 uses UsersManage, Journal;
 {$R *.dfm}
 
-procedure TForm2.FormCreate(Sender: TObject);
-begin
- Form2.color:=$f5bddc;
-end;
 
 procedure TForm2.JournalClick(Sender: TObject);
 begin
