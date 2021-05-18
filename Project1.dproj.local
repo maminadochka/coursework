@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.480,K:\Универ\прога\курсовая2сем\code\Unit4.dfm=K:\Универ\прога\курсовая2сем\code\Journal.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.480,K:\Универ\прога\курсовая2сем\code\Unit4.pas=K:\Универ\прога\курсовая2сем\code\Journal.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.324,=K:\Универ\прога\курсовая2сем\code\Unit4.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.968,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\UsersManage.dfm=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit3.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.040,K:\Универ\прога\курсовая2сем\code\Zavuch.pas=K:\Универ\прога\курсовая2сем\code\UserScreen.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.480,K:\Универ\прога\курсовая2сем\code\Unit4.dfm=K:\Универ\прога\курсовая2сем\code\Journal.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.029,K:\Универ\прога\курсовая2сем\code\Statistics.pas=K:\Универ\прога\курсовая2сем\code\Unit5.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.053,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Zavuch.pas=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.630,=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.955,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.pas=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.475,=K:\Универ\прога\курсовая2сем\code\Unit5.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.175,=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.675,=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.020,K:\Универ\прога\курсовая2сем\code\Project1.dproj=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.301,K:\Универ\прога\курсовая2сем\code\MainScreen.pas=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.968,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\UsersManage.pas=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.955,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.dfm=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.040,K:\Универ\прога\курсовая2сем\code\Zavuch.pas=K:\Универ\прога\курсовая2сем\code\UserScreen.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.040,K:\Универ\прога\курсовая2сем\code\Zavuch.dfm=K:\Универ\прога\курсовая2сем\code\UserScreen.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.301,K:\Универ\прога\курсовая2сем\code\MainScreen.dfm=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.029,K:\Универ\прога\курсовая2сем\code\Statistics.dfm=K:\Универ\прога\курсовая2сем\code\Unit5.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.053,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Zavuch.dfm=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
-    <Transaction>2021.05.17 17:05:33.475,=K:\Универ\прога\курсовая2сем\code\Unit5.pas</Transaction>
-    <Transaction>2021.05.17 17:06:24.029,K:\Универ\прога\курсовая2сем\code\Statistics.dfm=K:\Универ\прога\курсовая2сем\code\Unit5.dfm</Transaction>
-    <Transaction>2021.05.17 17:06:24.029,K:\Универ\прога\курсовая2сем\code\Statistics.pas=K:\Универ\прога\курсовая2сем\code\Unit5.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="Journal.pas"/>

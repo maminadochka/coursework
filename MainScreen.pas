@@ -15,9 +15,11 @@ type
     PasswordInp: TEdit;
     LoginBtn: TButton;
     Button2: TButton;
+    Button1: TButton;
     procedure LoginBtnClick(Sender: TObject);
     function auth(Login, Password: string) : boolean;
     procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,13 +30,18 @@ var
   Form1: TForm1;
 
 implementation
-                  uses UserScreen;
+                  uses UserScreen, ParentsScreen;
 {$R *.dfm}
 function TForm1.auth(Login, Password: string) : boolean;
   begin
     if (Login = 'Lu') and (Password = '123') then
        Result:= true;
   end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  Form6.ShowModal;
+end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
@@ -49,5 +56,4 @@ if auth( LoginInp.Text, PasswordInp.Text) then
    end
    else ShowMessage('Проверьте введённые данные');
 end;
-
 end.
