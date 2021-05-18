@@ -56,4 +56,5 @@ if auth( LoginInp.Text, PasswordInp.Text) then
    end
    else ShowMessage('Проверьте введённые данные');
 end;
+
 end.

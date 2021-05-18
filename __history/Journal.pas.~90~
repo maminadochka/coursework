@@ -30,19 +30,18 @@ type
     SubjectsComboBox: TComboBox;
     ClassesJournalLabel: TLabel;
     SubjectsJournalLabel: TLabel;
-    ThirdButton: TButton;
-    ForthButton: TButton;
-    SecondButton: TButton;
-    FirstButton: TButton;
     StringGrid1: TStringGrid;
     StringGrid2: TStringGrid;
     TeacherLabel1: TLabel;
-    Button1: TButton;
+    StatisticButton: TButton;
+    MonthComboBox: TComboBox;
     procedure FormCreate(Sender: TObject);
     procedure StringGrid1SetEditText(Sender: TObject; ACol, ARow: Integer;
               const Value: string);
     procedure StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
+    procedure StatisticButtonClick(Sender: TObject);
+    procedure StringGrid1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,7 +56,7 @@ var
 implementation
 
 {$R *.dfm}
-
+                  uses Statistics;
 
 procedure TForm4.FormCreate(Sender: TObject);
 var i: integer;
@@ -67,9 +66,11 @@ WindowState := wsMaximized;
 errorCol := -1;
 errorRow := -1;
 
-StringGrid1.ColWidths[0] := 30;
-StringGrid2.ColWidths[2] := 140;
-StringGrid1.ColWidths[1] := 200;
+StringGrid1.ColWidths[0] := 50;
+StringGrid1.ColWidths[1] := 300;
+StringGrid2.ColWidths[1] := 400;
+StringGrid2.ColWidths[2] := 400;
+
 StringGrid1.Options:=StringGrid1.Options+[goEditing];
 //StringGrid1.Options:=StringGrid1.Options+[goRowSelect];
 StringGrid2.Options:=StringGrid2.Options+[goEditing];
@@ -80,7 +81,7 @@ StringGrid2.Options:=StringGrid2.Options+[goEditing];
 //    StringGrid1.Cells[i, 0] := inttostr(i);
  end;
  StringGrid1.Cells[0, 0]:='№';
- StringGrid1.Cells[1, 0]:='Фамилии';
+ StringGrid1.Cells[1, 0]:='Ф.И.О.';
  StringGrid2.Cells[0, 0]:='Дата';
  StringGrid2.Cells[1, 0]:='Тема урока';
  StringGrid2.Cells[2, 0]:='Домашнее задание';
@@ -88,10 +89,21 @@ end;
 
 // TODO сделать полку журналов в личном кабинете для каждого учителя, чтобы он просто тыкал и ему открывался журнал
 
+procedure TForm4.StatisticButtonClick(Sender: TObject);
+begin
+   Form5.ShowModal;
+end;
+
+procedure TForm4.StringGrid1Click(Sender: TObject);
+begin
+   ShowMessage(inttostr(StringGrid1.Row));
+   StringGrid1DrawCell(Sender, StringGrid1.Col, StringGrid1.Row);
+end;
+
 procedure TForm4.StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
   Rect: TRect; State: TGridDrawState);
 begin
-    if (Arow=0) And (ACol >= 2) then
+    if (Arow = 0) And (ACol >= 2) then
     begin
        StringGrid1.Canvas.Brush.Color:= $b3b3b3;
        StringGrid1.Canvas.FillRect(Rect);
@@ -126,6 +138,7 @@ begin
         if ((1>date) or (date>10)) then  showmessage('ошибка!');
       end;
      end;
+
      // date validator
      if (ARow = 0) And (Acol >= 2) then
      begin
@@ -133,7 +146,6 @@ begin
         begin
           dayString := SplitString(Value, '.')[0];
           monthString := SplitString(Value, '.')[1];
-//          intFlag := 0;
           val(dayString, day, intFlag1);
           val(monthString, month, intFlag2);
           if (intFlag1 = 1) Or (intFlag2 = 1) then
@@ -153,6 +165,8 @@ begin
           ShowMessage('ошибка ввода даты');
         end;
      end;
+
+
 end;
 
 end.

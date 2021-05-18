@@ -30,7 +30,7 @@ var
   Form1: TForm1;
 
 implementation
-                  uses UserScreen, ParentsScreen;
+                  uses UserScreen;
 {$R *.dfm}
 function TForm1.auth(Login, Password: string) : boolean;
   begin
@@ -40,7 +40,7 @@ function TForm1.auth(Login, Password: string) : boolean;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  Form6.ShowModal;
+  ParentsScreen.ShowModal;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -56,4 +56,5 @@ if auth( LoginInp.Text, PasswordInp.Text) then
    end
    else ShowMessage('Проверьте введённые данные');
 end;
+
 end.

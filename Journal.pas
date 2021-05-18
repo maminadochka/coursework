@@ -30,26 +30,24 @@ type
     SubjectsComboBox: TComboBox;
     ClassesJournalLabel: TLabel;
     SubjectsJournalLabel: TLabel;
-    ThirdButton: TButton;
-    ForthButton: TButton;
-    SecondButton: TButton;
-    FirstButton: TButton;
     StringGrid1: TStringGrid;
     StringGrid2: TStringGrid;
     TeacherLabel1: TLabel;
-    Button1: TButton;
     StatisticButton: TButton;
+    MonthComboBox: TComboBox;
     procedure FormCreate(Sender: TObject);
     procedure StringGrid1SetEditText(Sender: TObject; ACol, ARow: Integer;
               const Value: string);
     procedure StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
     procedure StatisticButtonClick(Sender: TObject);
+    procedure StringGrid1Click(Sender: TObject);
   private
     { Private declarations }
   public
     var
       errorCol, errorRow: integer;
+      selectedCol, selectedRow: integer;
     { Public declarations }
   end;
 
@@ -68,6 +66,8 @@ begin
 WindowState := wsMaximized;
 errorCol := -1;
 errorRow := -1;
+selectedRow := -1;
+selectedCol := -1;
 
 StringGrid1.ColWidths[0] := 50;
 StringGrid1.ColWidths[1] := 300;
@@ -97,6 +97,12 @@ begin
    Form5.ShowModal;
 end;
 
+procedure TForm4.StringGrid1Click(Sender: TObject);
+begin
+  selectedRow := StringGrid1.Row;
+   ShowMessage(inttostr(StringGrid1.Row));
+end;
+
 procedure TForm4.StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
   Rect: TRect; State: TGridDrawState);
 begin
@@ -106,6 +112,14 @@ begin
        StringGrid1.Canvas.FillRect(Rect);
        StringGrid1.Canvas.TextOut(Rect.Left,Rect.Top,StringGrid1.Cells[Acol,Arow]);
     end;
+    if (ARow = selectedRow) then
+    begin
+      StringGrid1.Canvas.Brush.Color:= clYellow;
+      // TODO think about how to highlight all string
+      StringGrid1.Canvas.FillRect(Rect);
+      StringGrid1.Canvas.TextOut(Rect.Left,Rect.Top,StringGrid1.Cells[ARow,ACol]);
+    end;
+
 end;
 
 procedure TForm4.StringGrid1SetEditText(Sender: TObject; ACol, ARow: Integer;

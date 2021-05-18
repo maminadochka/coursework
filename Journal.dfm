@@ -53,43 +53,11 @@ object Form4: TForm4
   end
   object SubjectsComboBox: TComboBox
     Left = 96
-    Top = 51
+    Top = 54
     Width = 145
     Height = 21
     TabOrder = 1
     Text = 'SubjectsComboBox'
-  end
-  object ThirdButton: TButton
-    Left = 491
-    Top = 47
-    Width = 75
-    Height = 25
-    Caption = '3 '#1095#1077#1090#1074#1077#1088#1090#1100
-    TabOrder = 2
-  end
-  object ForthButton: TButton
-    Left = 572
-    Top = 47
-    Width = 75
-    Height = 25
-    Caption = '4 '#1095#1077#1090#1074#1077#1088#1090#1100
-    TabOrder = 3
-  end
-  object SecondButton: TButton
-    Left = 410
-    Top = 47
-    Width = 75
-    Height = 25
-    Caption = '2 '#1095#1077#1090#1074#1077#1088#1090#1100
-    TabOrder = 4
-  end
-  object FirstButton: TButton
-    Left = 329
-    Top = 47
-    Width = 75
-    Height = 25
-    Caption = '1 '#1095#1077#1090#1074#1077#1088#1090#1100
-    TabOrder = 5
   end
   object StringGrid1: TStringGrid
     Left = 24
@@ -100,7 +68,8 @@ object Form4: TForm4
     FixedCols = 2
     RowCount = 30
     FixedRows = 0
-    TabOrder = 6
+    TabOrder = 2
+    OnClick = StringGrid1Click
     OnDrawCell = StringGrid1DrawCell
     OnSetEditText = StringGrid1SetEditText
     RowHeights = (
@@ -144,7 +113,7 @@ object Form4: TForm4
     FixedCols = 0
     RowCount = 17
     FixedRows = 0
-    TabOrder = 7
+    TabOrder = 3
     RowHeights = (
       24
       24
@@ -164,21 +133,21 @@ object Form4: TForm4
       24
       24)
   end
-  object Button1: TButton
-    Left = 1352
-    Top = 860
-    Width = 444
-    Height = 50
-    Caption = #1055#1086#1089#1084#1086#1090#1088#1077#1090#1100' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1091
-    TabOrder = 8
-  end
   object StatisticButton: TButton
     Left = 1119
     Top = 751
     Width = 394
     Height = 42
     Caption = #1055#1086#1089#1084#1086#1090#1088#1077#1090#1100' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1091
-    TabOrder = 9
+    TabOrder = 4
     OnClick = StatisticButtonClick
+  end
+  object MonthComboBox: TComboBox
+    Left = 360
+    Top = 16
+    Width = 145
+    Height = 21
+    TabOrder = 5
+    Text = 'MonthComboBox'
   end
 end
