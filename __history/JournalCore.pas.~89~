@@ -1,0 +1,154 @@
+unit JournalCore;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, PupilsCore;
+
+
+type
+  TClassType = record
+    name: string;
+    pupils: array of TPupil;
+    classruc_name: string;
+  end;
+
+  TClassList = array of TClassType;
+
+ TMark = record
+    // each mark is binded with date and pupil for current subject
+    // i need a method to get marks from the list and to draw it on journal
+    // i need to save dates
+    value: string;
+    date: string;
+    pupil_id: string;
+  end;
+  // plan
+  // 1. when adding date, to write it into array
+  TSubject = record
+    name: string;
+    marks: array of TMark;
+    // dates - when the lesson was
+    dates: array of string;
+    teacher_name: string;
+  end;
+
+  TSubjectsList = array of TSubject;
+
+  TJournal = record
+    _class: TClassType;
+    subjects: TSubjectsList;
+  end;
+  TForm7 = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function createNewClass(amount: integer; className: string; classRucName: string): TClassType;
+function createSubjects(): TSubjectsList;
+function addDateToSubject(subject: TSubject; date: string): TSubject;
+function addPupilMarkToSubject(Subject: TSubject; mark: TMark): TSubject;
+
+var
+  Form7: TForm7;
+
+implementation
+
+
+{$R *.dfm}
+
+function createNewClass(amount: integer; className: string; classRucName: string): TClassType;
+var
+  _class: TClassType;
+  i: integer;
+begin
+  SetLength(_class.pupils, amount);
+  for i := 0 to amount-1 do
+    begin
+      _class.pupils[i] := createPupil('name'+inttostr(i), 'Ананасов');
+    end;
+    _class.name := className;
+    _class.classruc_name := classRucName;
+    Result := _class;
+end;
+
+function createSubjects(): TSubjectsList;
+var
+  i: integer;
+  subj: TSubject;
+  subjects_list: TSubjectsList;
+  names: array [1..3] of string;
+begin
+  names[1] := 'math';
+  names[2] := 'logica';
+  names[3] := 'oaip';
+
+  SetLength(subjects_list, 3);
+  for i := 1 to 3 do
+  begin
+    subj.name := names[i];
+    subj.teacher_name := 'Boltak Sveta';
+    subjects_list[i-1] := subj;
+  end;
+  Result := subjects_list;
+end;
+
+function addPupilMarkToSubject(subject: TSubject; mark: TMark): TSubject;
+var
+  i: integer;
+  MarkexistFlag: boolean;
+begin
+  MarkexistFlag := false;
+  // allows only unique marks
+  for i := 0 to Length(Subject.marks)-1 do
+    begin
+      if (subject.marks[i].pupil_id = mark.pupil_id) And(subject.marks[i].date = mark.date) then
+      begin
+        subject.marks[i].value := mark.value;
+        MarkExistFlag := true;
+        break;
+      end;
+    end;
+    if MarkExistFlag = false then
+    begin
+      ShowMessage('mark not exist');
+      SetLength(subject.marks, Length(subject.marks)+1);
+      subject.marks[High(subject.marks)] := mark;
+    end;
+    Result := subject;
+end;
+
+function addDateToSubject(subject: TSubject; date: string): TSubject;
+var
+  i: integer;
+  cnt: integer;
+begin
+  // allows add only unique dates
+  cnt := 0;
+//  ShowMessage(inttostr(Length(subject.dates)));
+  for i := 0 to Length(subject.dates)-1 do
+    begin
+      if subject.dates[i] = date then
+      begin
+        cnt := cnt+1;
+        break;
+      end;
+    end;
+    if cnt = 0 then
+    begin
+//      ShowMessage('date added!');
+      SetLength(subject.dates, Length(subject.dates)+1);
+      subject.dates[High(subject.dates)] := date;
+    end;
+    Result := subject;
+    // else may be error
+end;
+
+
+
+//function createSubjectDates();
+
+end.
