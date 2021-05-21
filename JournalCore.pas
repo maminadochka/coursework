@@ -1,3 +1,4 @@
+// created with love by Roman&Ksenia
 unit JournalCore;
 
 interface
