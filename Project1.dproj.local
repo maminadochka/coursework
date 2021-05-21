@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<BorlandProject/>
+=======
 <BorlandProject>
 	<Transactions>
     <Transaction>1899.12.30 00:00:00.000.040,K:\Универ\прога\курсовая2сем\code\Zavuch.dfm=K:\Универ\прога\курсовая2сем\code\UserScreen.dfm</Transaction>
@@ -50,3 +53,4 @@
     <File Path="PupilsCore.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>
+>>>>>>> faaa32cf402558dd2547ee69a25c3e70b4aa594f
