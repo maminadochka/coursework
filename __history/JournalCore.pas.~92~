@@ -50,6 +50,7 @@ type
 function createNewClass(amount: integer; className: string; classRucName: string): TClassType;
 function createSubjects(): TSubjectsList;
 function addDateToSubject(subject: TSubject; date: string): TSubject;
+function addPupilMarkToSubject(Subject: TSubject; mark: TMark): TSubject;
 
 var
   Form7: TForm7;
@@ -95,7 +96,7 @@ begin
   Result := subjects_list;
 end;
 
-function addPupilMarkToSubject(Subject: TSubject; mark: TMark);
+function addPupilMarkToSubject(subject: TSubject; mark: TMark): TSubject;
 var
   i: integer;
   MarkexistFlag: boolean;
@@ -104,14 +105,21 @@ begin
   // allows only unique marks
   for i := 0 to Length(Subject.marks)-1 do
     begin
-      if (Subject.marks[i].pupil_id = mark.pupil_id) And(Subject.marks[i].date = mark.date) then
+      if (subject.marks[i].pupil_id = mark.pupil_id) And(subject.marks[i].date = mark.date) then
       begin
-        Subject.marks[i].value := mark.value;
+        subject.marks[i].value := mark.value;
         MarkExistFlag := true;
         break;
       end;
     end;
-    MarkExistFlag := true;
+    if MarkExistFlag = false then
+    begin
+//      ShowMessage('mark not exist');
+      SetLength(subject.marks, Length(subject.marks)+1);
+      subject.marks[High(subject.marks)] := mark;
+    end;
+    Result := subject;
+//    ShowMessage('in method subject marks: '+inttostr(Length(subject.marks)));
 end;
 
 function addDateToSubject(subject: TSubject; date: string): TSubject;
@@ -139,6 +147,8 @@ begin
     Result := subject;
     // else may be error
 end;
+
+
 
 //function createSubjectDates();
 
