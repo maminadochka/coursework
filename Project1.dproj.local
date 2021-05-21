@@ -1,2 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <BorlandProject/>
+=======
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.029,K:\Универ\прога\курсовая2сем\code\Unit5.pas=K:\Универ\прога\курсовая2сем\code\Statistics.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.475,=K:\Универ\прога\курсовая2сем\code\Unit5.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.175,=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.053,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Zavuch.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.324,=K:\Универ\прога\курсовая2сем\code\Unit4.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.968,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit3.dfm=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\UsersManage.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.955,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.968,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit3.pas=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\UsersManage.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.630,=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.301,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.pas=K:\Универ\прога\курсовая2сем\code\MainScreen.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.907,C:\Users\Roman\Documents\GitHub\coursework\ParentsScreen.dfm=C:\Users\Roman\Documents\GitHub\coursework\Unit6.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.191,=C:\Users\Roman\Documents\GitHub\coursework\Unit6.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.955,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.480,K:\Универ\прога\курсовая2сем\code\Journal.dfm=K:\Универ\прога\курсовая2сем\code\Unit4.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.040,K:\Универ\прога\курсовая2сем\code\UserScreen.pas=K:\Универ\прога\курсовая2сем\code\Zavuch.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.029,K:\Универ\прога\курсовая2сем\code\Unit5.dfm=K:\Универ\прога\курсовая2сем\code\Statistics.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.301,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.dfm=K:\Универ\прога\курсовая2сем\code\MainScreen.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.675,=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.040,K:\Универ\прога\курсовая2сем\code\UserScreen.dfm=K:\Универ\прога\курсовая2сем\code\Zavuch.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.480,K:\Универ\прога\курсовая2сем\code\Journal.pas=K:\Универ\прога\курсовая2сем\code\Unit4.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.907,C:\Users\Roman\Documents\GitHub\coursework\ParentsScreen.pas=C:\Users\Roman\Documents\GitHub\coursework\Unit6.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.020,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Project1.dproj=K:\Универ\прога\курсовая2сем\code\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.053,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Zavuch.dfm</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Journal.pas"/>
+    <File Path="Journal.dfm"/>
+    <File Path="MainScreen.pas"/>
+    <File Path="MainScreen.dfm"/>
+    <File Path="UserScreen.pas"/>
+    <File Path="UserScreen.dfm"/>
+    <File Path="UsersManage.pas"/>
+    <File Path="UsersManage.dfm"/>
+    <File Path="Statistics.pas"/>
+    <File Path="Statistics.dfm"/>
+    <File Path="ParentsScreen.pas"/>
+    <File Path="ParentsScreen.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>
+>>>>>>> faaa32cf402558dd2547ee69a25c3e70b4aa594f

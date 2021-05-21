@@ -14,6 +14,7 @@ object Form4: TForm4
   Position = poDesigned
   WindowState = wsMaximized
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object ClassesJournalLabel: TLabel
@@ -30,12 +31,23 @@ object Form4: TForm4
     Height = 13
     Caption = #1055#1088#1077#1076#1084#1077#1090
   end
-  object TeacherLabel1: TLabel
+  object ClassRucLabel: TLabel
     Left = 886
     Top = 19
-    Width = 296
+    Width = 6
     Height = 24
-    Caption = #1041#1086#1083#1090#1072#1082' '#1057#1074#1077#1090#1083#1072#1085#1072' '#1042#1083#1072#1076#1080#1084#1080#1088#1086#1074#1085#1072
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object ClassNameLabel: TLabel
+    Left = 686
+    Top = 19
+    Width = 6
+    Height = 24
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -20
@@ -58,6 +70,7 @@ object Form4: TForm4
     Height = 21
     TabOrder = 1
     Text = 'SubjectsComboBox'
+    OnChange = SubjectsComboBoxChange
   end
   object StringGrid1: TStringGrid
     Left = 24

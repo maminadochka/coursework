@@ -219,40 +219,19 @@ procedure TForm4.drawMarks();
 var
   i, j: integer;
   pupil: TPupil;
-  pupil_fullname: string;
-  pupil_row: integer;
-  date_column: integer;
 begin
-  pupil_row := -1;
-  date_column := -1;
   // TODO write generateFullName method
-  // it is very no-effective algo
-//  for i := 0 to Length(journal._class.pupils)-1 do
-//    begin
-//      for j := 0 to Length(current_subject.marks)-1 do
-//        begin
-//          pupil := LoadPupilById(current_subject.marks[j].pupil_id);
-//          pupil_fullname := pupil.lastname+' '+pupil.firstname;
-//          if pupil_fullname = StringGrid1.Cells[1, i] then
-//          begin
-//            pupil_row := i;
-//            break;
-//          end;
-//        end;
-//    end;
-//  for i := Low to High do
-//
-//  for i := 0 to Length(journal._class.pupils)-1 do
-//    begin
-//      for j := 0 to Length(current_subject.dates)-1 do
-//        begin
-//          pupil := LoadPupilById(current_subject.marks[i].pupil_id);
-//          if (current_subject.marks[i].date = StringGrid1.Cells[i, j]) And ((pupil.firstname +' '+pupil.lastname) = StringGrid1.Cells[1, i]) then
-//          begin
-//            StringGrid1.Cells[i, j] := current_subject.marks[i].value;
-//          end;
-//        end;
-//    end;
+  for i := 0 to Length(journal._class.pupils)-1 do
+    begin
+      for j := 0 to Length(current_subject.dates)-1 do
+        begin
+          pupil := LoadPupilById(current_subject.marks[i].pupil_id);
+          if (current_subject.marks[i].date = '1') And ((pupil.firstname +' '+pupil.lastname) = '2') then
+          begin
+            StringGrid1.Cells[i][j] := current_subject.marks[i].value;
+          end;
+        end;
+    end;
 end;
 
 procedure TForm4.FormShow(Sender: TObject);
