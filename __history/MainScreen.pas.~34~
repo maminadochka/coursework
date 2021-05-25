@@ -53,8 +53,7 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Form1.color:=$ecb2ce;
-  AddUser('ksu', '123', 'Цуцалевич Ксения Александрована');
-  AddUser('boltyara', '4', 'Болтак Светлана Владимировна');
+  AddUser('ksu', '123');
 end;
 
 procedure TForm1.LoginBtnClick(Sender: TObject);

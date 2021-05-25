@@ -1,2 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject/>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.053,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Zavuch.dfm=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.040,K:\Универ\прога\курсовая2сем\code\Zavuch.dfm=K:\Универ\прога\курсовая2сем\code\UserScreen.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.301,K:\Универ\прога\курсовая2сем\code\MainScreen.dfm=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.907,C:\Users\Roman\Documents\GitHub\coursework\Unit6.dfm=C:\Users\Roman\Documents\GitHub\coursework\ParentsScreen.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.963,C:\Users\Roman\Documents\GitHub\coursework\JournalCore.pas=C:\Users\Roman\Documents\GitHub\coursework\Unit7.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.747,C:\Users\Roman\Documents\GitHub\coursework\PupilsCore.pas=C:\Users\Roman\Documents\GitHub\coursework\Unit8.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.307,=C:\Users\Roman\Documents\GitHub\coursework\Unit8.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.675,=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.747,C:\Users\Roman\Documents\GitHub\coursework\PupilsCore.dfm=C:\Users\Roman\Documents\GitHub\coursework\Unit8.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.630,=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.053,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Zavuch.pas=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.480,K:\Универ\прога\курсовая2сем\code\Unit4.dfm=K:\Универ\прога\курсовая2сем\code\Journal.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.029,K:\Универ\прога\курсовая2сем\code\Statistics.pas=K:\Универ\прога\курсовая2сем\code\Unit5.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.324,=K:\Универ\прога\курсовая2сем\code\Unit4.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.480,K:\Универ\прога\курсовая2сем\code\Unit4.pas=K:\Универ\прога\курсовая2сем\code\Journal.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.955,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.pas=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.963,C:\Users\Roman\Documents\GitHub\coursework\JournalCore.dfm=C:\Users\Roman\Documents\GitHub\coursework\Unit7.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.968,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\UsersManage.pas=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.040,K:\Универ\прога\курсовая2сем\code\Zavuch.pas=K:\Универ\прога\курсовая2сем\code\UserScreen.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.029,K:\Универ\прога\курсовая2сем\code\Statistics.dfm=K:\Универ\прога\курсовая2сем\code\Unit5.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.301,K:\Универ\прога\курсовая2сем\code\MainScreen.pas=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.767,=C:\Users\Roman\Documents\GitHub\coursework\Unit7.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.020,K:\Универ\прога\курсовая2сем\code\Project1.dproj=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.175,=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.475,=K:\Универ\прога\курсовая2сем\code\Unit5.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.955,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\MainScreen.dfm=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.968,C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\UsersManage.dfm=C:\Users\ksyut\Documents\Embarcadero\Studio\Projects\Unit3.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.191,=C:\Users\Roman\Documents\GitHub\coursework\Unit6.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.907,C:\Users\Roman\Documents\GitHub\coursework\Unit6.pas=C:\Users\Roman\Documents\GitHub\coursework\ParentsScreen.pas</Transaction>
+    <Transaction>2021.05.25 21:32:17.402,=C:\Users\Roman\Documents\GitHub\coursework\Unit9.pas</Transaction>
+    <Transaction>2021.05.25 21:32:38.527,C:\Users\Roman\Documents\GitHub\coursework\AuthCore.pas=C:\Users\Roman\Documents\GitHub\coursework\Unit9.pas</Transaction>
+    <Transaction>2021.05.25 21:32:38.527,C:\Users\Roman\Documents\GitHub\coursework\AuthCore.dfm=C:\Users\Roman\Documents\GitHub\coursework\Unit9.dfm</Transaction>
+    <Transaction>2021.05.25 22:22:52.223,C:\Users\Roman\Documents\GitHub\coursework\AuthCore.pas=</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Journal.pas"/>
+    <File Path="Journal.dfm"/>
+    <File Path="MainScreen.pas"/>
+    <File Path="MainScreen.dfm"/>
+    <File Path="UserScreen.pas"/>
+    <File Path="UserScreen.dfm"/>
+    <File Path="UsersManage.pas"/>
+    <File Path="UsersManage.dfm"/>
+    <File Path="Statistics.pas"/>
+    <File Path="Statistics.dfm"/>
+    <File Path="ParentsScreen.pas"/>
+    <File Path="ParentsScreen.dfm"/>
+    <File Path="JournalCore.pas"/>
+    <File Path="JournalCore.dfm"/>
+    <File Path="PupilsCore.pas"/>
+    <File Path="PupilsCore.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

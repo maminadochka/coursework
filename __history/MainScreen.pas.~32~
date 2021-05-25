@@ -25,7 +25,6 @@ type
     procedure LoginBtnClick(Sender: TObject);
 //    function auth(Login, Password: string) : boolean;
     function auth(login: string; password: string): boolean;
-    function getUser(login: string): TUser;
     function checkExists(login: string): boolean;
     function AddUser(login: string; password: string; fullname: string): boolean;
     procedure FormCreate(Sender: TObject);
@@ -53,18 +52,14 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Form1.color:=$ecb2ce;
-  AddUser('ksu', '123', 'Цуцалевич Ксения Александрована');
-  AddUser('boltyara', '4', 'Болтак Светлана Владимировна');
+  AddUser('ksu', '123');
 end;
 
 procedure TForm1.LoginBtnClick(Sender: TObject);
-var
-  user: TUser;
 begin
   if auth(LoginInp.Text, PasswordInp.Text) then
   begin
-    user := getUser(LoginInp.Text);
-    Form2.UserName.Caption := user.fullname;
+//    Form2.UserName.Caption :=;
     Form2.ShowModal();
   end
   else
@@ -110,20 +105,6 @@ begin
   user.fullname := fullname;
   SetLength(UsersList, Length(UsersList)+1);
   UsersList[High(UsersList)] := user;
-end;
-
-function TForm1.getUser(login: string): TUser;
-var
-  i: integer;
-begin
-  for i := 0 to Length(UsersList) do
-    begin
-      if UsersList[i].login = login then
-      begin
-        Result := UsersList[i];
-        exit;
-      end;
-    end;
 end;
 
 

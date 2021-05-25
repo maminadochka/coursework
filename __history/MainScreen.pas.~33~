@@ -53,18 +53,14 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Form1.color:=$ecb2ce;
-  AddUser('ksu', '123', 'Цуцалевич Ксения Александрована');
-  AddUser('boltyara', '4', 'Болтак Светлана Владимировна');
+  AddUser('ksu', '123');
 end;
 
 procedure TForm1.LoginBtnClick(Sender: TObject);
-var
-  user: TUser;
 begin
   if auth(LoginInp.Text, PasswordInp.Text) then
   begin
-    user := getUser(LoginInp.Text);
-    Form2.UserName.Caption := user.fullname;
+//    Form2.UserName.Caption :=;
     Form2.ShowModal();
   end
   else
