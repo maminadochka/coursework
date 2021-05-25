@@ -22,6 +22,7 @@ type
 
 var
   Form2: TForm2;
+  user_name: string;
 
 implementation
                 uses UsersManage, Journal;
