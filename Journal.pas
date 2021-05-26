@@ -63,8 +63,8 @@ begin
   // creating new class and subjects
   journal._class := createNewClass(20, '7A', 'Boltak Sveta');
   journal.subjects := createSubjects();
-  ClassRucLabel.Caption := 'Классный руководитель: '+ journal._class.classruc_name;
-  ClassNameLabel.Caption := 'Класс: '+journal._class.name;
+  ClassRucLabel.Caption := 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: '+ journal._class.classruc_name;
+  ClassNameLabel.Caption := 'пїЅпїЅпїЅпїЅпїЅ: '+journal._class.name;
   for i := 0 to Length(journal.subjects) do
     begin
       SubjectsComboBox.Items.Add(journal.subjects[i].name);
@@ -89,17 +89,17 @@ begin
       StringGrid1.Cells[1, i] := journal._class.pupils[i].lastname+' '+journal._class.pupils[i].firstname;
 //      StringGrid1.Cells[i, 0] := inttostr(i);
    end;
-   StringGrid1.Cells[0, 0]:='№';
-   StringGrid1.Cells[1, 0]:='Ф.И.О.';
-   StringGrid2.Cells[0, 0]:='Дата';
-   StringGrid2.Cells[1, 0]:='Тема урока';
-   StringGrid2.Cells[2, 0]:='Домашнее задание';
+   StringGrid1.Cells[0, 0]:='пїЅ';
+   StringGrid1.Cells[1, 0]:='пїЅ.пїЅ.пїЅ.';
+   StringGrid2.Cells[0, 0]:='пїЅпїЅпїЅпїЅ';
+   StringGrid2.Cells[1, 0]:='пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ';
+   StringGrid2.Cells[2, 0]:='пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ';
 
    // drawing pupils list
 
 end;
 
-// TODO сделать полку журналов в личном кабинете для каждого учителя, чтобы он просто тыкал и ему открывался журнал
+// TODO пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 procedure TForm4.StatisticButtonClick(Sender: TObject);
 begin
@@ -154,7 +154,7 @@ begin
         val(Value,date,code);
         if code = 1  then
         begin
-        if value<>'н' then
+        if value<>'пїЅ' then
         begin
           showmessage('error!');
         end;
@@ -182,7 +182,7 @@ begin
         begin
           if not TryStrToDate(Value, dateOut) then
           begin
-            ShowMessage('ошибка! такой даты не существует');
+            ShowMessage('пїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ');
             dateErrFlag := true;
           end
           else
@@ -195,7 +195,7 @@ begin
         end;
         if Length(Value) > 5 then
         begin
-          ShowMessage('ошибка ввода даты');
+          ShowMessage('пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ');
           dateErrFlag := true;
         end;
      end;
@@ -304,8 +304,6 @@ begin
     subject := journal.subjects[i];
     if subject.name = subject_name then
     begin
-//      ShowMessage('subject found! '+ subject.name);
-//      ShowMessage('subject dates: '+inttostr(Length(subject.dates)));
       current_subject.name := subject.name;
       current_subject.dates := copy(subject.dates);
       current_subject.marks := copy(subject.marks);
@@ -329,9 +327,6 @@ begin
         journal.subjects[i].dates := copy(current_subject.dates);
         journal.subjects[i].marks := copy(current_subject.marks);
         break;
-
-//        ShowMessage('old subj dates '+inttostr(Length(current_subject.dates)));
-//        ShowMessage('subj save is ok');
       end;
     end;
 end;
