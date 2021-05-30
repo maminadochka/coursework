@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Menus, UsersCore,
-  Vcl.Grids, newUserScreen;
+  Vcl.Grids, newUserScreen, UsersListsCore;
 
 type
   TForm3 = class(TForm)
@@ -29,7 +29,7 @@ type
   private
     { Private declarations }
   public
-    usersList: UsersCore.TUsersList;
+    usersList: UsersListsCore.TList;
     { Public declarations }
   end;
 
@@ -58,20 +58,20 @@ end;
 procedure TForm3.drawUsersTable(userType: string);
 var
   i: integer;
-  user: UsersCore.TUser;
+  user: UsersListsCore.TUser;
 begin
-  for i := 0 to Length(usersList)-1 do
-  begin 
-    user := usersList[i];
-    if (user.userType = userType) Or (userType = 'all') then
-    begin
-      UsersTable.Cells[0, i+1] := user.userId;
-      UsersTable.Cells[1, i+1] := user.login;
-      UsersTable.Cells[2, i+1] := user.lastname;
-      UsersTable.Cells[3, i+1] := user.firstname;
-      UsersTable.Cells[4, i+1] := user.userType;
-    end;
-  end;
+//  for i := 0 to usersList.elemsCount do
+//  begin
+//    user := usersList[i];
+//    if (user.userType = userType) Or (userType = 'all') then
+//    begin
+//      UsersTable.Cells[0, i+1] := user.userId;
+//      UsersTable.Cells[1, i+1] := user.login;
+//      UsersTable.Cells[2, i+1] := user.lastname;
+//      UsersTable.Cells[3, i+1] := user.firstname;
+//      UsersTable.Cells[4, i+1] := user.userType;
+//    end;
+//  end;
 end;
 
 

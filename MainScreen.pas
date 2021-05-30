@@ -18,7 +18,6 @@ type
     Button1: TButton;
     procedure LoginBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,21 +29,17 @@ var
   AuthUsersList: AuthCore.TUsersList;
 
 implementation
-uses ZavuchScreen, ParentsScreen, UsersManage, teacherScreen, pupilScreen;
+uses ZavuchScreen, ParentsScreen, UsersManage, teacherScreen, pupilScreen,
+  UsersListsCore;
 {$R *.dfm}
 
-
-procedure TForm1.Button1Click(Sender: TObject);
-begin
-  Form6.ShowModal;
-end;
 
 procedure startup();
 // creates new users for testing
 begin
   AuthCore.AddUser(AuthUsersList, 'ksu', '123');
   AuthCore.AddUser(AuthUsersList, 'bt', '4');
-  UsersCore.createUser('ksu', 'Ksenia', 'Tsusalevich', 'zavuch', '11A', '', '');
+//  UsersCore.createUser('1', '2', '3', '4', '5', '7', '8');
 //  UsersCore.createUser('bt', 'Sveta', 'Boltak', 'teacher', '10A', '', '');
 end;
 
@@ -57,35 +52,35 @@ end;
 procedure TForm1.LoginBtnClick(Sender: TObject);
 var
   user: TUser;
-  UsersList: UsersCore.TUsersList;
+  UsersList: UsersListsCore.TList;
 begin
   if auth(AuthUsersList, LoginInp.Text, PasswordInp.Text) then
   begin
     // ShowMessage('auth ok');
-    UsersListsCore.LoadList(usersList);
-    user := UsersCore.getUser(usersList, LoginInp.Text);
-    ShowMessage(user.login);
-    if user.userType = 'zavuch' then
-    begin
-      Form2.usersList := usersList;
-      Form2.userLogin := user.login;
-      Form2.userId := user.userId;
-      Form2.ShowModal();
-    end;
-    if user.userType = 'teacher' then
-    begin
-      Form2.usersList := usersList;
-      Form2.userLogin := user.login;
-      Form2.userId := user.userId;
-      Form13.ShowModal();
-    end;
-    if user.userType = 'pupil' then
-    begin
-      Form2.usersList := usersList;
-      Form2.userLogin := user.login;
-      Form2.userId := user.userId;
-      Form14.ShowModal();
-    end;
+    // UsersListsCore.LoadList(usersList);
+    // user := UsersCore.getUser(LoginInp.Text);
+    // ShowMessage(user.login);
+    // if user.userType = 'zavuch' then
+    // begin
+    //   Form2.usersList := usersList;
+    //   Form2.userLogin := user.login;
+    //   Form2.userId := user.userId;
+      // Form2.ShowModal();
+    // end;
+    // if user.userType = 'teacher' then
+    // begin
+    //   Form2.usersList := usersList;
+    //   Form2.userLogin := user.login;
+    //   Form2.userId := user.userId;
+       Form2.ShowModal();
+    // end;
+    // if user.userType = 'pupil' then
+    // begin
+    //   Form2.usersList := usersList;
+    //   Form2.userLogin := user.login;
+    //   Form2.userId := user.userId;
+    //   Form14.ShowModal();
+    // end;
   end
   else
   begin

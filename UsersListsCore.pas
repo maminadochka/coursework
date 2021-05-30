@@ -8,8 +8,8 @@ uses
 
 type
   TUser = record
-    userId: string[10];
-    login: string[10];
+//    userId: string[50];
+    login: string[50];
     firstname: string[50];
     lastname: string[50];
     userType: string[50];
@@ -17,7 +17,6 @@ type
     classes: string[50];
     studyClass: string[50];
   end;
-  TUsersList = array of TUser;
   PTListElement = ^TListElement;
   TListElement = record
     data: TUser;
@@ -40,7 +39,7 @@ var
   Form21: TForm21;
 
 procedure AddToEnd(var List: TList; var NewElementPointer: PTListElement);
-procedure SaveList(const List: TList);
+procedure SaveList(var List: TList);
 procedure LoadList(var List: TList);
 
 implementation
@@ -61,6 +60,7 @@ begin
   List.tail := nil;
   if FileExists(dirSource) = false then
   begin
+    List.elemsCount := 0;
     exit;
   end;
   New(curr);
@@ -76,29 +76,48 @@ begin
       AddToEnd(List, curr);
       tmp.next := curr;
       curr.prev := tmp;
+      cnt := cnt+1;
     end;
   end;
+  CloseFile(f);
+  Dispose(curr);
+  List.elemsCount := cnt;
 end;
 
-procedure SaveList(const List: TList);
+procedure SaveList(var List: TList);
 var
   f: file of TUser;
   curr: PTListElement;
   dirSource: string;
+  cnt: integer;
 begin
   dirSource := 'UsersList.txt';
   AssignFile(f, dirSource);
   Rewrite(f);
-  curr := List.head;
-  while curr <> nil do
-  begin
+  New(curr);
+    curr^.data.login := 'ksu';
+    curr^.data.firstname := 'ksenia';
+    curr^.data.lastname := 'Tsutsalevich';
+    curr^.data.userType := 'zavuch';
+    curr^.data.ownClass := '';
+    curr^.data.studyClass := '';
+//  curr := List.head;
+//  while curr <> nil do
+//  begin
+//    inc(List.elemsCount);
     Write(f, curr^.data);
-    curr := curr^.next;
-  end;
+//    ShowMessage('save list. list item'+curr^.data.login);
+//    curr := curr^.next;
+//  end;
+  Dispose(curr);
   ShowMessage('List saved!');
+  ShowMessage('list items'+inttostr(List.elemsCount));
+  CloseFile(f);
 end;
 
 procedure AddToEnd(var List: TList; var NewElementPointer: PTListElement);
+var
+  curr: PTListElement;
 begin
   inc(List.elemsCount);
   if List.head = nil then
@@ -107,13 +126,21 @@ begin
     List.tail := NewElementPointer;
     NewElementPointer^.next := nil;
     NewElementPointer^.prev := nil;
+    ShowMessage(inttostr(List.elemsCount));
+    curr := List.head;
+    ShowMessage(NewElementPointer^.data.login);
+    while curr <> nil do
+    begin
+      ShowMessage('add to end. current item: '+curr^.data.login);
+      curr := curr^.next;
+    end;
     exit;
   end;
   NewElementPointer^.next := nil;
   NewElementPointer^.prev := List.tail;
   List.tail^.next := NewElementPointer;
   List.tail := NewElementPointer;
-  ShowMessage(inttostr(List.elemsCount));
+//  ShowMessage(inttostr(List.elemsCount));
 end;
 
 end.
