@@ -4,15 +4,9 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, AuthCore;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, AuthCore, UsersCore;
 
 type
-  TUser = record
-    login: string;
-    password: string;
-    fullname: string;
-  end;
-  TUsersList = array of TUser;
   TForm1 = class(TForm)
     Label1: TLabel;
     Label2: TLabel;
@@ -23,11 +17,6 @@ type
     Button2: TButton;
     Button1: TButton;
     procedure LoginBtnClick(Sender: TObject);
-//    function auth(Login, Password: string) : boolean;
-    function auth(login: string; password: string): boolean;
-    function getUser(login: string): TUser;
-    function checkExists(login: string): boolean;
-    function AddUser(login: string; password: string; fullname: string): boolean;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
   private
@@ -38,10 +27,10 @@ type
 
 var
   Form1: TForm1;
-  usersList: TUsersList;
+  AuthUsersList: AuthCore.TUsersList;
 
 implementation
-uses UserScreen, ParentsScreen, UsersManage;
+uses ZavuchScreen, ParentsScreen, UsersManage, teacherScreen, pupilScreen;
 {$R *.dfm}
 
 
@@ -50,81 +39,57 @@ begin
   Form6.ShowModal;
 end;
 
+procedure startup();
+// creates new users for testing
+begin
+  AuthCore.AddUser(AuthUsersList, 'ksu', '123');
+  AuthCore.AddUser(AuthUsersList, 'bt', '4');
+  UsersCore.createUser('ksu', 'Ksenia', 'Tsusalevich', 'zavuch', '11A', '', '');
+//  UsersCore.createUser('bt', 'Sveta', 'Boltak', 'teacher', '10A', '', '');
+end;
+
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Form1.color:=$ecb2ce;
-  AddUser('ksu', '123', 'Цуцалевич Ксения Александрована');
-  AddUser('boltyara', '4', 'Болтак Светлана Владимировна');
+  startup();
 end;
 
 procedure TForm1.LoginBtnClick(Sender: TObject);
 var
   user: TUser;
+  UsersList: UsersCore.TUsersList;
 begin
-  if auth(LoginInp.Text, PasswordInp.Text) then
+  if auth(AuthUsersList, LoginInp.Text, PasswordInp.Text) then
   begin
-    user := getUser(LoginInp.Text);
-    Form2.UserName.Caption := user.fullname;
-    Form2.ShowModal();
+    // ShowMessage('auth ok');
+    UsersListsCore.LoadList(usersList);
+    user := UsersCore.getUser(usersList, LoginInp.Text);
+    ShowMessage(user.login);
+    if user.userType = 'zavuch' then
+    begin
+      Form2.usersList := usersList;
+      Form2.userLogin := user.login;
+      Form2.userId := user.userId;
+      Form2.ShowModal();
+    end;
+    if user.userType = 'teacher' then
+    begin
+      Form2.usersList := usersList;
+      Form2.userLogin := user.login;
+      Form2.userId := user.userId;
+      Form13.ShowModal();
+    end;
+    if user.userType = 'pupil' then
+    begin
+      Form2.usersList := usersList;
+      Form2.userLogin := user.login;
+      Form2.userId := user.userId;
+      Form14.ShowModal();
+    end;
   end
   else
   begin
     ShowMessage('auth failed!');
   end;
 end;
-
-
-function TForm1.checkExists(login: string): boolean;
-var
-  i: integer;
-begin
-  for i := 0 to Length(UsersList)-1 do
-  begin
-    if UsersList[i].login = login then
-    begin
-      Result := true;
-      break;
-    end;
-  end;
-end;
-
-
-function TForm1.auth(login: string; password: string): boolean;
-begin
-  if not checkExists(login) then
-    begin
-      Result := false;
-      exit;
-    end;
-    Result := true;
-    exit;
-end;
-
-function TForm1.AddUser(login: string; password: string; fullname: string): boolean;
-// TODO encrypt password
-var
-  user: TUser;
-begin
-  user.login := login;
-  user.password := password;
-  user.fullname := fullname;
-  SetLength(UsersList, Length(UsersList)+1);
-  UsersList[High(UsersList)] := user;
-end;
-
-function TForm1.getUser(login: string): TUser;
-var
-  i: integer;
-begin
-  for i := 0 to Length(UsersList) do
-    begin
-      if UsersList[i].login = login then
-      begin
-        Result := UsersList[i];
-        exit;
-      end;
-    end;
-end;
-
-
 end.
