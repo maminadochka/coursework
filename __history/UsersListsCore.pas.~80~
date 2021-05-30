@@ -56,6 +56,7 @@ var
 begin
   dirSource := 'UsersList.txt';
   AssignFile(f, dirSource);
+  Reset(f);
   cnt := 0;
   List.head := nil;
   List.tail := nil;
@@ -64,7 +65,6 @@ begin
     List.elemsCount := 0;
     exit;
   end;
-  Reset(f);
   New(curr);
   if FileSize(f) <> 0 then
   begin
@@ -122,6 +122,14 @@ begin
     List.tail := NewElementPointer;
     NewElementPointer^.next := nil;
     NewElementPointer^.prev := nil;
+    ShowMessage(inttostr(List.elemsCount));
+    curr := List.head;
+    ShowMessage(NewElementPointer^.data.login);
+    while curr <> nil do
+    begin
+//      ShowMessage('add to end. current item: '+curr^.data.login);
+      curr := curr^.next;
+    end;
     exit;
   end;
   NewElementPointer^.next := nil;

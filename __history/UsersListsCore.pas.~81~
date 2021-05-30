@@ -122,6 +122,14 @@ begin
     List.tail := NewElementPointer;
     NewElementPointer^.next := nil;
     NewElementPointer^.prev := nil;
+    ShowMessage(inttostr(List.elemsCount));
+    curr := List.head;
+    ShowMessage(NewElementPointer^.data.login);
+    while curr <> nil do
+    begin
+//      ShowMessage('add to end. current item: '+curr^.data.login);
+      curr := curr^.next;
+    end;
     exit;
   end;
   NewElementPointer^.next := nil;

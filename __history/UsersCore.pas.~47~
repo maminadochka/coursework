@@ -19,6 +19,8 @@ type
 
 var
   Form10: TForm10;
+  // ooop
+  user: TUser;
 
 function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass: string): boolean;
 function getUser(const login: string): TUser;
@@ -35,15 +37,15 @@ var
 begin
   New(curr);
   UsersListsCore.LoadList(UsersList);
-   curr^.data.login := login;
-   curr^.data.firstname := firstname;
-   curr^.data.lastname := lastname;
-   curr^.data.userType := userType;
-   curr^.data.ownClass := ownClass;
-   curr^.data.classes := classes;
-   curr^.data.studyClass := studyClass;
-//   ShowMessage(curr^.data.login+curr^.data.firstname+curr^.data.lastname+curr^.data.userType+curr^.data.ownClass+curr^.data.classes+curr^.data.studyClass);
-   UsersListsCore.AddToEnd(UsersList, curr);
+  // curr^.data.login := login;
+  // curr^.data.firstname := firstname;
+  // curr^.data.lastname := lastname;
+  // curr^.data.userType := userType;
+  // curr^.data.ownClass := ownClass;
+  // curr^.data.classes := classes;
+  // curr^.data.studyClass := studyClass;
+  // ShowMessage(curr^.data.login+curr^.data.firstname+curr^.data.lastname+curr^.data.userType+curr^.data.ownClass+curr^.data.classes+curr^.data.studyClass);
+  // UsersListsCore.AddToEnd(UsersList, curr);
   UsersListsCore.SaveList(UsersList);
   Dispose(curr);
   Result := true;
@@ -56,7 +58,6 @@ var
   usersList: UsersListsCore.TList;
   curr: UsersListsCore.PTListElement;
 begin
-  UsersListsCore.LoadList(usersList);
   New(curr);
   curr := usersList.head;
   while curr <> nil do
@@ -66,7 +67,6 @@ begin
       Result := curr^.data;
       exit;
     end;
-    curr := curr^.next;
   end;
 end;
 

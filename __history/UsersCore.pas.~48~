@@ -19,6 +19,8 @@ type
 
 var
   Form10: TForm10;
+  // ooop
+  user: TUser;
 
 function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass: string): boolean;
 function getUser(const login: string): TUser;
@@ -56,7 +58,6 @@ var
   usersList: UsersListsCore.TList;
   curr: UsersListsCore.PTListElement;
 begin
-  UsersListsCore.LoadList(usersList);
   New(curr);
   curr := usersList.head;
   while curr <> nil do
@@ -66,7 +67,6 @@ begin
       Result := curr^.data;
       exit;
     end;
-    curr := curr^.next;
   end;
 end;
 

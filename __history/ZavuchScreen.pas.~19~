@@ -44,8 +44,6 @@ end;
 procedure TForm2.FormShow(Sender: TObject);
 var
   fullName: string;
-  user: UsersListsCore.TUser;
-
 begin
   user := UsersCore.getUser(userLogin);
   fullName := user.firstName + ' ' + user.lastName;

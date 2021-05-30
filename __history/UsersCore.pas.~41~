@@ -19,9 +19,11 @@ type
 
 var
   Form10: TForm10;
+  // ooop
+  user: TUser;
 
 function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass: string): boolean;
-function getUser(const login: string): TUser;
+function getUser(const login: string): TPayload;
 function getUserById(const userId: string): TUser;
 
 implementation
@@ -35,60 +37,55 @@ var
 begin
   New(curr);
   UsersListsCore.LoadList(UsersList);
-   curr^.data.login := login;
-   curr^.data.firstname := firstname;
-   curr^.data.lastname := lastname;
-   curr^.data.userType := userType;
-   curr^.data.ownClass := ownClass;
-   curr^.data.classes := classes;
-   curr^.data.studyClass := studyClass;
-//   ShowMessage(curr^.data.login+curr^.data.firstname+curr^.data.lastname+curr^.data.userType+curr^.data.ownClass+curr^.data.classes+curr^.data.studyClass);
-   UsersListsCore.AddToEnd(UsersList, curr);
+  // curr^.data.login := login;
+  // curr^.data.firstname := firstname;
+  // curr^.data.lastname := lastname;
+  // curr^.data.userType := userType;
+  // curr^.data.ownClass := ownClass;
+  // curr^.data.classes := classes;
+  // curr^.data.studyClass := studyClass;
+  // ShowMessage(curr^.data.login+curr^.data.firstname+curr^.data.lastname+curr^.data.userType+curr^.data.ownClass+curr^.data.classes+curr^.data.studyClass);
+  // UsersListsCore.AddToEnd(UsersList, curr);
   UsersListsCore.SaveList(UsersList);
   Dispose(curr);
   Result := true;
   exit;
 end;
 
-function getUser(const login: string): TUser;
+function getUser(const login: string): TPayload;
 var
   i: integer;
   usersList: UsersListsCore.TList;
-  curr: UsersListsCore.PTListElement;
+  curr: UsersListsCore.PTPElement;
 begin
-  UsersListsCore.LoadList(usersList);
   New(curr);
   curr := usersList.head;
   while curr <> nil do
   begin
-    if curr^.data.login = login then
+    if curr^.data.name = login then
     begin
       Result := curr^.data;
       exit;
     end;
-    curr := curr^.next;
   end;
 end;
 
 function getUserById(const userId: string): TUser;
-//var
-//  i: integer;
-//  curr: UsersListsCore.PTPElement;
-//  usersList: UsersListsCore.TList;
-//begin
-//  New(curr);
-//  curr := usersList.head;
-//  while curr <> nil do
-//  begin
-//    if curr^.data.login = userId then
-//    begin
-//      Result := curr^.data;
-//      exit;
-//    end;
-//  end;
-//end;
+var
+  i: integer;
+  curr: UsersListsCore.PTListElement;
+  usersList: UsersListsCore.TList;
 begin
-
+  New(curr);
+  curr := usersList.head;
+  while curr <> nil do
+  begin
+    if curr^.data.login = userId then
+    begin
+      Result := curr^.data;
+      exit;
+    end;
+  end;
 end;
 
 // function checkExists()
