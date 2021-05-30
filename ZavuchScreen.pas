@@ -20,7 +20,6 @@ type
   private
     { Private declarations }
   public
-    user: UsersListsCore.TUser;
     userLogin: string;
     userId: string;
     usersList: UsersListsCore.TList;
@@ -45,10 +44,12 @@ end;
 procedure TForm2.FormShow(Sender: TObject);
 var
   fullName: string;
+  user: UsersListsCore.TUser;
+
 begin
-//  user := UsersCore.getUserById(userId);
-//  fullName := user.firstName + ' ' + user.lastName;
-//  UserName.Caption := fullName;
+  user := UsersCore.getUser(userLogin);
+  fullName := user.firstName + ' ' + user.lastName;
+  UserName.Caption := fullName;
 end;
 
 procedure TForm2.JournalClick(Sender: TObject);

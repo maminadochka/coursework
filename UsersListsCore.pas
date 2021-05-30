@@ -55,6 +55,7 @@ var
   dirSource: string;
 begin
   dirSource := 'UsersList.txt';
+  AssignFile(f, dirSource);
   cnt := 0;
   List.head := nil;
   List.tail := nil;
@@ -63,6 +64,7 @@ begin
     List.elemsCount := 0;
     exit;
   end;
+  Reset(f);
   New(curr);
   if FileSize(f) <> 0 then
   begin
@@ -78,10 +80,10 @@ begin
       curr.prev := tmp;
       cnt := cnt+1;
     end;
+    List.elemsCount := cnt;
   end;
   CloseFile(f);
   Dispose(curr);
-  List.elemsCount := cnt;
 end;
 
 procedure SaveList(var List: TList);
@@ -95,23 +97,17 @@ begin
   AssignFile(f, dirSource);
   Rewrite(f);
   New(curr);
-    curr^.data.login := 'ksu';
-    curr^.data.firstname := 'ksenia';
-    curr^.data.lastname := 'Tsutsalevich';
-    curr^.data.userType := 'zavuch';
-    curr^.data.ownClass := '';
-    curr^.data.studyClass := '';
-//  curr := List.head;
-//  while curr <> nil do
-//  begin
+  curr := List.head;
+  while curr <> nil do
+  begin
 //    inc(List.elemsCount);
     Write(f, curr^.data);
 //    ShowMessage('save list. list item'+curr^.data.login);
-//    curr := curr^.next;
-//  end;
+    curr := curr^.next;
+  end;
   Dispose(curr);
-  ShowMessage('List saved!');
-  ShowMessage('list items'+inttostr(List.elemsCount));
+//  ShowMessage('List saved!');
+//  ShowMessage('list items'+inttostr(List.elemsCount));
   CloseFile(f);
 end;
 
@@ -126,14 +122,6 @@ begin
     List.tail := NewElementPointer;
     NewElementPointer^.next := nil;
     NewElementPointer^.prev := nil;
-    ShowMessage(inttostr(List.elemsCount));
-    curr := List.head;
-    ShowMessage(NewElementPointer^.data.login);
-    while curr <> nil do
-    begin
-      ShowMessage('add to end. current item: '+curr^.data.login);
-      curr := curr^.next;
-    end;
     exit;
   end;
   NewElementPointer^.next := nil;

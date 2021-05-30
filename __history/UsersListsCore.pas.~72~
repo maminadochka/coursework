@@ -1,0 +1,166 @@
+unit UsersListsCore;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TUser = record
+//    userId: string[50];
+    login: string[50];
+    firstname: string[50];
+    lastname: string[50];
+    userType: string[50];
+    ownClass: string[50]; // will be integer
+    classes: string[50];
+    studyClass: string[50];
+  end;
+  TPayload = record
+    name: string[10];
+  end;
+  PTPElement = ^TPListElement;
+  TPListElement = record
+    data: TPayload;
+    next: PTPElement;
+    prev: PTPElement;
+  end;
+  TPList = record
+    head: PTPElement;
+    tail: PTPElement;
+    elemsCount: integer;
+  end;
+  PTListElement = ^TListElement;
+  TListElement = record
+    data: TUser;
+    next: PTListElement;
+    prev: PTListElement;
+  end;
+  TList = record
+    head: PTPElement;
+    tail: PTPElement;
+    elemsCount: integer;
+  end;
+  TForm21 = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form21: TForm21;
+
+procedure AddToEnd(var List: TList; var NewElementPointer: PTPElement);
+procedure SaveList(const List: TList);
+procedure LoadList(var List: TList);
+
+implementation
+
+{$R *.dfm}
+
+procedure LoadList(var List: TList);
+var
+  f: file of TPayload;
+  tmp: PTPElement;
+  cnt: integer;
+  curr: PTListElement;
+  curr1: PTPElement;
+  dirSource: string;
+begin
+  dirSource := 'UsersList.txt';
+  AssignFile(f, dirSource);
+  Reset(f);
+  cnt := 0;
+  List.head := nil;
+  List.tail := nil;
+  if FileExists(dirSource) = false then
+  begin
+    List.elemsCount := 0;
+    exit;
+  end;
+  New(curr1);
+//  if FileSize(f) <> 0 then
+  begin
+    Read(f, curr1^.data);
+    AddToEnd(List, curr1);
+    while not EOF(f) do
+    begin
+      tmp := curr1;
+      New(curr1);
+      Read(f, curr1^.data);
+      AddToEnd(List, curr1);
+      tmp.next := curr1;
+      curr1.prev := tmp;
+      cnt := cnt+1;
+    end;
+  end;
+  CloseFile(f);
+  Dispose(curr1);
+  List.elemsCount := cnt;
+end;
+
+procedure SaveList(const List: TList);
+var
+  f: file of TPayload;
+  curr: PTListElement;
+  curr1: PTPElement;
+  dirSource: string;
+  cnt: integer;
+begin
+  dirSource := 'UsersList.txt';
+  AssignFile(f, dirSource);
+  Rewrite(f);
+  New(curr1);
+    curr1.data.name := 'ksusha';
+//    curr^.data.login := 'ksu';
+//    curr^.data.firstname := 'ksenia';
+//    curr^.data.lastname := 'Tsutsalevich';
+//    curr^.data.userType := 'zavuch';
+//    curr^.data.ownClass := 'abc';
+//    curr^.data.studyClass := 'bdj';
+//    curr^.data.classes := 'dnk';
+//  curr := List.head;
+//  while curr <> nil do
+//  begin
+//    inc(List.elemsCount);
+    Write(f, curr1^.data);
+//    ShowMessage('save list. list item'+curr^.data.login);
+//    curr := curr^.next;
+//  end;
+  Dispose(curr1);
+  ShowMessage('List saved!');
+  ShowMessage('list items'+inttostr(List.elemsCount));
+  CloseFile(f);
+end;
+
+procedure AddToEnd(var List: TList; var NewElementPointer: PTPElement);
+var
+  curr: PTPElement;
+begin
+  inc(List.elemsCount);
+  if List.head = nil then
+  begin
+    List.head := NewElementPointer;
+    List.tail := NewElementPointer;
+    NewElementPointer^.next := nil;
+    NewElementPointer^.prev := nil;
+    ShowMessage(inttostr(List.elemsCount));
+    curr := List.head;
+    ShowMessage(NewElementPointer^.data.name);
+    while curr <> nil do
+    begin
+      ShowMessage('add to end. current item: '+curr^.data.name);
+      curr := curr^.next;
+    end;
+    exit;
+  end;
+  NewElementPointer^.next := nil;
+  NewElementPointer^.prev := List.tail;
+  List.tail^.next := NewElementPointer;
+  List.tail := NewElementPointer;
+//  ShowMessage(inttostr(List.elemsCount));
+end;
+
+end.

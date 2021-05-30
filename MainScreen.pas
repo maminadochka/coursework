@@ -39,7 +39,8 @@ procedure startup();
 begin
   AuthCore.AddUser(AuthUsersList, 'ksu', '123');
   AuthCore.AddUser(AuthUsersList, 'bt', '4');
-//  UsersCore.createUser('1', '2', '3', '4', '5', '7', '8');
+ UsersCore.createUser('ksu', 'Ksenia', 'Tsutsalevich', 'zavuch', '7A', '11A', '8A');
+ UsersCore.createUser('bt', 'Boltak', 'Sveta', 'zavuch', '7A', '11A', '8A');
 //  UsersCore.createUser('bt', 'Sveta', 'Boltak', 'teacher', '10A', '', '');
 end;
 
@@ -57,14 +58,14 @@ begin
   if auth(AuthUsersList, LoginInp.Text, PasswordInp.Text) then
   begin
     // ShowMessage('auth ok');
-    // UsersListsCore.LoadList(usersList);
-    // user := UsersCore.getUser(LoginInp.Text);
-    // ShowMessage(user.login);
+//     UsersListsCore.LoadList(usersList);
+     user := UsersCore.getUser(LoginInp.Text);
+//     ShowMessage(user.login);
     // if user.userType = 'zavuch' then
     // begin
-    //   Form2.usersList := usersList;
-    //   Form2.userLogin := user.login;
-    //   Form2.userId := user.userId;
+//       Form2.usersList := usersList;
+       Form2.userLogin := user.login;
+//       Form2.userId := user.userId;
       // Form2.ShowModal();
     // end;
     // if user.userType = 'teacher' then
