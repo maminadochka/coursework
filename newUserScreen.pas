@@ -36,7 +36,7 @@ implementation
 
 procedure TForm20.Button1Click(Sender: TObject);
 begin
-  UsersCore.createUser(usersList, UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, UserTypeComboBox.Text, '','','');
+  UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, UserTypeComboBox.Text, '','','');
   ShowMessage(inttostr(Length(usersList)));
 end;
 

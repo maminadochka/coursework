@@ -1,11 +1,12 @@
-// created with love by Roman&Ksenia
+﻿// created with love by Roman&Ksenia
 unit Journal;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, System.StrUtils, JournalCore, PupilsCore;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, System.StrUtils, JournalCore, PupilsCore, UsersCore,
+  ClassesCore;
 
 type
   TForm4 = class(TForm)
@@ -44,6 +45,10 @@ type
       selectedCol, selectedRow: integer;
       journal: TJournal;
       current_subject: TSubject;
+      managerId: string; // classruc info
+      // userId: string;
+      usersList: UsersCore.TUsersList;
+      classesList: ClassesCore.TClassesList;
     { Public declarations }
   end;
 
@@ -56,50 +61,17 @@ implementation
 uses Statistics;
 
 procedure TForm4.FormCreate(Sender: TObject);
+// TODO load journal and manager info on startup
 var
   i: integer;
 begin
   // TODO i need to load subject that selected in combobox
   // creating new class and subjects
-  journal._class := createNewClass(20, '7A', 'Boltak Sveta');
-  journal.subjects := createSubjects();
-  ClassRucLabel.Caption := '�������� ������������: '+ journal._class.classruc_name;
-  ClassNameLabel.Caption := '�����: '+journal._class.name;
-  for i := 0 to Length(journal.subjects) do
-    begin
-      SubjectsComboBox.Items.Add(journal.subjects[i].name);
-    end;
-  WindowState := wsMaximized;
-  errorCol := -1;
-  errorRow := -1;
-  selectedRow := -1;
-  selectedCol := -1;
-
-  StringGrid1.ColWidths[0] := 50;
-  StringGrid1.ColWidths[1] := 300;
-  StringGrid2.ColWidths[1] := 400;
-  StringGrid2.ColWidths[2] := 400;
-
-  StringGrid1.Options:=StringGrid1.Options+[goEditing];
-//  StringGrid1.Options:=StringGrid1.Options+[goRowSelect];
-  StringGrid2.Options:=StringGrid2.Options+[goEditing];
-   for i := 1 to 15 do
-   begin
-      StringGrid1.Cells[0, i]:=inttostr(i);
-      StringGrid1.Cells[1, i] := journal._class.pupils[i].lastname+' '+journal._class.pupils[i].firstname;
-//      StringGrid1.Cells[i, 0] := inttostr(i);
-   end;
-   StringGrid1.Cells[0, 0]:='�';
-   StringGrid1.Cells[1, 0]:='�.�.�.';
-   StringGrid2.Cells[0, 0]:='����';
-   StringGrid2.Cells[1, 0]:='���� �����';
-   StringGrid2.Cells[2, 0]:='�������� �������';
 
    // drawing pupils list
 
 end;
 
-// TODO ������� ����� �������� � ������ �������� ��� ������� �������, ����� �� ������ ����� � ��� ���������� ������
 
 procedure TForm4.StatisticButtonClick(Sender: TObject);
 begin
@@ -109,7 +81,6 @@ end;
 procedure TForm4.StringGrid1Click(Sender: TObject);
 begin
   selectedRow := StringGrid1.Row;
-//   ShowMessage(inttostr(StringGrid1.Row));
 end;
 
 procedure TForm4.StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -225,41 +196,50 @@ var
 begin
   pupil_row := -1;
   date_column := -1;
-  // TODO write generateFullName method
-  // it is very no-effective algo
-//  for i := 0 to Length(journal._class.pupils)-1 do
-//    begin
-//      for j := 0 to Length(current_subject.marks)-1 do
-//        begin
-//          pupil := LoadPupilById(current_subject.marks[j].pupil_id);
-//          pupil_fullname := pupil.lastname+' '+pupil.firstname;
-//          if pupil_fullname = StringGrid1.Cells[1, i] then
-//          begin
-//            pupil_row := i;
-//            break;
-//          end;
-//        end;
-//    end;
-//  for i := Low to High do
-//
-//  for i := 0 to Length(journal._class.pupils)-1 do
-//    begin
-//      for j := 0 to Length(current_subject.dates)-1 do
-//        begin
-//          pupil := LoadPupilById(current_subject.marks[i].pupil_id);
-//          if (current_subject.marks[i].date = StringGrid1.Cells[i, j]) And ((pupil.firstname +' '+pupil.lastname) = StringGrid1.Cells[1, i]) then
-//          begin
-//            StringGrid1.Cells[i, j] := current_subject.marks[i].value;
-//          end;
-//        end;
-//    end;
 end;
 
 procedure TForm4.FormShow(Sender: TObject);
-
+var
+  i: integer;
+  user: UsersCore.TUser;
 begin
-  drawDates();
-  drawMarks();
+  ShowMessage(inttostr(Length(classesList)));
+  // user := UsersCore.getUserById(usersList, managerId);
+  // journal._class := getClass();
+  // journal._class := createNewClass(20, '7A', user.firstname);
+  // journal.subjects := createSubjects();
+  // ClassRucLabel.Caption := 'classruc: '+ journal._class.classruc_name;
+  // ClassNameLabel.Caption := 'classname: : '+journal._class.name;
+  // for i := 0 to Length(journal.subjects) do
+  //   begin
+  //     SubjectsComboBox.Items.Add(journal.subjects[i].name);
+  //   end;
+  // WindowState := wsMaximized;
+  errorCol := -1;
+  errorRow := -1;
+  selectedRow := -1;
+  selectedCol := -1;
+
+  StringGrid1.ColWidths[0] := 50;
+  StringGrid1.ColWidths[1] := 300;
+  StringGrid2.ColWidths[1] := 100;
+  StringGrid2.ColWidths[2] := 200;
+
+  // StringGrid1.Options:=StringGrid1.Options+[goEditing];
+  // StringGrid2.Options:=StringGrid2.Options+[goEditing];
+  //  for i := 1 to 15 do
+  //  begin
+  //     StringGrid1.Cells[0, i]:=inttostr(i);
+  //     StringGrid1.Cells[1, i] := journal._class.pupils[i].lastname+' '+journal._class.pupils[i].firstname;
+  //  end;
+   StringGrid1.Cells[0, 0]:='number';
+   StringGrid1.Cells[1, 0]:='FIO';
+   StringGrid2.Cells[0, 0]:='date';
+   StringGrid2.Cells[1, 0]:='lesson theme';
+   StringGrid2.Cells[2, 0]:='home task';
+  // ShowMessage(managerId);
+  // drawDates();
+  // drawMarks();
 end;
 
 function TForm4.LoadPupil(firstname, lastname: string): TPupil;

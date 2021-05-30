@@ -28,7 +28,6 @@ type
 var
   Form1: TForm1;
   AuthUsersList: AuthCore.TUsersList;
-  UsersList: UsersCore.TUsersList;
 
 implementation
 uses ZavuchScreen, ParentsScreen, UsersManage, teacherScreen, pupilScreen;
@@ -45,8 +44,8 @@ procedure startup();
 begin
   AuthCore.AddUser(AuthUsersList, 'ksu', '123');
   AuthCore.AddUser(AuthUsersList, 'bt', '4');
-  UsersCore.createUser(UsersList, 'ksu', 'Ksenia', 'Tsusalevich', 'zavuch', '11A', '', '');
-  UsersCore.createUser(UsersList, 'bt', 'Sveta', 'Boltak', 'teacher', '10A', '', '');
+  UsersCore.createUser('ksu', 'Ksenia', 'Tsusalevich', 'zavuch', '11A', '', '');
+//  UsersCore.createUser('bt', 'Sveta', 'Boltak', 'teacher', '10A', '', '');
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -58,22 +57,33 @@ end;
 procedure TForm1.LoginBtnClick(Sender: TObject);
 var
   user: TUser;
+  UsersList: UsersCore.TUsersList;
 begin
   if auth(AuthUsersList, LoginInp.Text, PasswordInp.Text) then
   begin
+    // ShowMessage('auth ok');
+    UsersListsCore.LoadList(usersList);
     user := UsersCore.getUser(usersList, LoginInp.Text);
+    ShowMessage(user.login);
     if user.userType = 'zavuch' then
     begin
       Form2.usersList := usersList;
       Form2.userLogin := user.login;
+      Form2.userId := user.userId;
       Form2.ShowModal();
     end;
     if user.userType = 'teacher' then
     begin
+      Form2.usersList := usersList;
+      Form2.userLogin := user.login;
+      Form2.userId := user.userId;
       Form13.ShowModal();
     end;
     if user.userType = 'pupil' then
     begin
+      Form2.usersList := usersList;
+      Form2.userLogin := user.login;
+      Form2.userId := user.userId;
       Form14.ShowModal();
     end;
   end

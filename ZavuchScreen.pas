@@ -22,6 +22,7 @@ type
   public
     user: UsersCore.TUser;
     userLogin: string;
+    userId: string;
     usersList: UsersCore.TUsersList;
     classesList: ClassesCore.TClassesList;
     { Public declarations }
@@ -45,13 +46,15 @@ procedure TForm2.FormShow(Sender: TObject);
 var
   fullName: string;
 begin
-  user := UsersCore.getUser(usersList, userLogin);
+  user := UsersCore.getUserById(usersList, userId);
   fullName := user.firstName + ' ' + user.lastName;
   UserName.Caption := fullName; 
 end;
 
 procedure TForm2.JournalClick(Sender: TObject);
 begin
+    Form4.usersList := usersList;
+    Form4.managerId := userId;
     Form4.ShowModal;
 end;
 
@@ -60,5 +63,4 @@ begin
     Form3.usersList := usersList;
     Form3.ShowModal;
 end;
-
 end.

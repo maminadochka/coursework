@@ -16,11 +16,16 @@ type
     ShowZavuchesBtn: TButton;
     ShowPupilsBtn: TButton;
     SortBtn: TButton;
+    showAllUsers: TButton;
     procedure FormShow(Sender: TObject);
     procedure NewTeacherBtnClick(Sender: TObject);
     procedure NewUserBtnClick(Sender: TObject);
-    procedure drawUsersTable();
+    procedure drawUsersTable(userType: string);
     procedure cleanUsersTable();
+    procedure ShowTeachersBtnClick(Sender: TObject);
+    procedure ShowZavuchesBtnClick(Sender: TObject);
+    procedure ShowPupilsBtnClick(Sender: TObject);
+    procedure showAllUsersClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,19 +55,22 @@ begin
     end;
 end;
 
-procedure TForm3.drawUsersTable();
+procedure TForm3.drawUsersTable(userType: string);
 var
   i: integer;
   user: UsersCore.TUser;
 begin
   for i := 0 to Length(usersList)-1 do
-  begin
+  begin 
     user := usersList[i];
-    UsersTable.Cells[0, i+1] := user.userId;
-    UsersTable.Cells[1, i+1] := user.login;
-    UsersTable.Cells[2, i+1] := user.lastname;
-    UsersTable.Cells[3, i+1] := user.firstname;
-    UsersTable.Cells[4, i+1] := user.userType;
+    if (user.userType = userType) Or (userType = 'all') then
+    begin
+      UsersTable.Cells[0, i+1] := user.userId;
+      UsersTable.Cells[1, i+1] := user.login;
+      UsersTable.Cells[2, i+1] := user.lastname;
+      UsersTable.Cells[3, i+1] := user.firstname;
+      UsersTable.Cells[4, i+1] := user.userType;
+    end;
   end;
 end;
 
@@ -75,7 +83,7 @@ begin
   usersTable.Cells[3,0] := 'FirstName';
   usersTable.Cells[4,0] := 'userType';
   cleanUsersTable;
-  drawUsersTable;
+  drawUsersTable('all');
 end;
 
 procedure TForm3.NewTeacherBtnClick(Sender: TObject);
@@ -88,7 +96,31 @@ begin
   Form20.usersList := usersList; // it is not correct. list will be not updated
   Form20.ShowModal();
   cleanUsersTable();
-  drawUsersTable();
+  drawUsersTable('all');
+end;
+
+procedure TForm3.showAllUsersClick(Sender: TObject);
+begin
+  cleanUsersTable();
+  drawUsersTable('all');
+end;
+
+procedure TForm3.ShowPupilsBtnClick(Sender: TObject);
+begin
+  cleanUsersTable();
+  drawUsersTable('pupils');
+end;
+
+procedure TForm3.ShowTeachersBtnClick(Sender: TObject);
+begin
+  cleanUsersTable();
+  drawUsersTable('teacher');
+end;
+
+procedure TForm3.ShowZavuchesBtnClick(Sender: TObject);
+begin
+  cleanUsersTable();
+  drawUsersTable('zavuch');
 end;
 
 end.

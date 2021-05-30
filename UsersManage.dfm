@@ -25,12 +25,12 @@ object Form3: TForm3
   object UsersTable: TStringGrid
     Left = 16
     Top = 48
-    Width = 1049
-    Height = 561
+    Width = 329
+    Height = 465
     TabOrder = 0
   end
   object NewUserBtn: TButton
-    Left = 305
+    Left = 105
     Top = 17
     Width = 80
     Height = 25
@@ -39,35 +39,47 @@ object Form3: TForm3
     OnClick = NewUserBtnClick
   end
   object ShowTeachersBtn: TButton
-    Left = 480
-    Top = 16
+    Left = 191
+    Top = 17
     Width = 115
     Height = 25
     Caption = 'ShowTeachersBtn'
     TabOrder = 2
+    OnClick = ShowTeachersBtnClick
   end
   object ShowZavuchesBtn: TButton
-    Left = 592
+    Left = 312
     Top = 17
     Width = 99
     Height = 25
     Caption = 'ShowZavuchesBtn'
     TabOrder = 3
+    OnClick = ShowZavuchesBtnClick
   end
   object ShowPupilsBtn: TButton
-    Left = 697
-    Top = 17
+    Left = 417
+    Top = 16
     Width = 75
     Height = 25
     Caption = 'ShowPupilsBtn'
     TabOrder = 4
+    OnClick = ShowPupilsBtnClick
   end
   object SortBtn: TButton
-    Left = 800
+    Left = 498
     Top = 16
     Width = 75
     Height = 25
     Caption = 'SortBtn'
     TabOrder = 5
+  end
+  object showAllUsers: TButton
+    Left = 579
+    Top = 16
+    Width = 75
+    Height = 25
+    Caption = 'showAllUsers'
+    TabOrder = 6
+    OnClick = showAllUsersClick
   end
 end
