@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, UsersCore;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, UsersCore, UsersListsCore;
 
 type
   TForm20 = class(TForm)
@@ -22,7 +22,7 @@ type
   private
     { Private declarations }
   public
-    usersList: UsersCore.TUsersList;
+    usersList: UsersListsCore.TList;
     { Public declarations }
   end;
 
@@ -36,8 +36,8 @@ implementation
 
 procedure TForm20.Button1Click(Sender: TObject);
 begin
-  UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, UserTypeComboBox.Text, '','','');
-  ShowMessage(inttostr(Length(usersList)));
+//  UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, UserTypeComboBox.Text, '','','');
+//  ShowMessage(inttostr(Length(usersList)));
 end;
 
 end.

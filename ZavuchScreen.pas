@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, UsersCore, ZavuchClassesManage, ClassesCore;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, UsersCore, ZavuchClassesManage, ClassesCore, UsersListsCore;
 
 type
   TForm2 = class(TForm)
@@ -20,10 +20,10 @@ type
   private
     { Private declarations }
   public
-    user: UsersCore.TUser;
+    user: UsersListsCore.TUser;
     userLogin: string;
     userId: string;
-    usersList: UsersCore.TUsersList;
+    usersList: UsersListsCore.TList;
     classesList: ClassesCore.TClassesList;
     { Public declarations }
   end;
@@ -46,21 +46,21 @@ procedure TForm2.FormShow(Sender: TObject);
 var
   fullName: string;
 begin
-  user := UsersCore.getUserById(usersList, userId);
-  fullName := user.firstName + ' ' + user.lastName;
-  UserName.Caption := fullName; 
+//  user := UsersCore.getUserById(userId);
+//  fullName := user.firstName + ' ' + user.lastName;
+//  UserName.Caption := fullName;
 end;
 
 procedure TForm2.JournalClick(Sender: TObject);
 begin
-    Form4.usersList := usersList;
+//    Form4.usersList := usersList;
     Form4.managerId := userId;
     Form4.ShowModal;
 end;
 
 procedure TForm2.UsersManageClick(Sender: TObject);
 begin
-    Form3.usersList := usersList;
+//    Form3.usersList := usersList;
     Form3.ShowModal;
 end;
 end.

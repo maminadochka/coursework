@@ -31,7 +31,7 @@ implementation
 
 function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass: string): boolean;
 var
-  UsersList: UsersListsCore.TUsersList;
+  UsersList: UsersListsCore.TList;
   curr: UsersListsCore.PTListElement;
 begin
 //  Form21.dirSource := 'UsersList';
@@ -40,7 +40,8 @@ begin
   New(curr);
   // file not found error
   UsersListsCore.LoadList(UsersList);
-  curr^.data.userId := GenerateUUID();
+//  curr^.data.userId := GenerateUUID();
+//  ShowMessage('uuid length '+inttostr(Length(curr^.data.userId)));
   curr^.data.login := login;
   curr^.data.firstname := firstname;
   curr^.data.lastname := lastname;
@@ -48,10 +49,10 @@ begin
   curr^.data.ownClass := ownClass;
   curr^.data.classes := classes;
   curr^.data.studyClass := studyClass;
-  UsersListsCore.AddToEnd(UsersList, curr);
+  ShowMessage(curr^.data.login+curr^.data.firstname+curr^.data.lastname+curr^.data.userType+curr^.data.ownClass+curr^.data.classes+curr^.data.studyClass);
+//  UsersListsCore.AddToEnd(UsersList, curr);
   UsersListsCore.SaveList(UsersList);
-//  SetLength(UsersList, Length(UsersList)+1);
-//  UsersList[High(UsersList)] := user;
+  Dispose(curr);
   Result := true;
   exit;
 end;
@@ -59,30 +60,37 @@ end;
 function getUser(const login: string): TUser;
 var
   i: integer;
-  usersList: UsersListsCore.TUsersList;
+  usersList: UsersListsCore.TList;
+  curr: UsersListsCore.PTListElement;
 begin
-  for i := 0 to Length(UsersList)-1 do
+  New(curr);
+  curr := usersList.head;
+  while curr <> nil do
+  begin
+    if curr^.data.login = login then
     begin
-      if UsersList[i].data.login = login then
-      begin
-        Result := UsersList[i];
-        exit;
-      end;
+      Result := curr^.data;
+      exit;
     end;
+  end;
 end;
 
 function getUserById(const userId: string): TUser;
 var
   i: integer;
+  curr: UsersListsCore.PTListElement;
+  usersList: UsersListsCore.TList;
 begin
-  for i := 0 to Length(UsersList)-1 do
+  New(curr);
+  curr := usersList.head;
+  while curr <> nil do
+  begin
+    if curr^.data.login = userId then
     begin
-      if UsersList[i].userId = userId then
-      begin
-        Result := UsersList[i];
-        exit;
-      end;
+      Result := curr^.data;
+      exit;
     end;
+  end;
 end;
 
 // function checkExists()

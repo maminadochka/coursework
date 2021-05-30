@@ -6,7 +6,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, System.StrUtils, JournalCore, PupilsCore, UsersCore,
-  ClassesCore;
+  ClassesCore, UsersListsCore;
 
 type
   TForm4 = class(TForm)
@@ -47,7 +47,7 @@ type
       current_subject: TSubject;
       managerId: string; // classruc info
       // userId: string;
-      usersList: UsersCore.TUsersList;
+      usersList: UsersListsCore.TList;
       classesList: ClassesCore.TClassesList;
     { Public declarations }
   end;
@@ -153,7 +153,7 @@ begin
         begin
           if not TryStrToDate(Value, dateOut) then
           begin
-            ShowMessage('������! ����� ���� �� ����������');
+//            ShowMessage('������! ����� ���� �� ����������');
             dateErrFlag := true;
           end
           else
@@ -166,7 +166,7 @@ begin
         end;
         if Length(Value) > 5 then
         begin
-          ShowMessage('������ ����� ����');
+//          ShowMessage('������ ����� ����');
           dateErrFlag := true;
         end;
      end;
@@ -201,9 +201,9 @@ end;
 procedure TForm4.FormShow(Sender: TObject);
 var
   i: integer;
-  user: UsersCore.TUser;
+  user: UsersListsCore.TUser;
 begin
-  ShowMessage(inttostr(Length(classesList)));
+//  ShowMessage(inttostr(Length(classesList)));
   // user := UsersCore.getUserById(usersList, managerId);
   // journal._class := getClass();
   // journal._class := createNewClass(20, '7A', user.firstname);
