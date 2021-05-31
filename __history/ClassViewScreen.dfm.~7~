@@ -93,13 +93,13 @@ object Form16: TForm16
     TabOrder = 3
     Text = 'Edit1'
   end
-  object MATHteacherComboBox: TComboBox
+  object ComboBox1: TComboBox
     Left = 728
     Top = 189
     Width = 217
     Height = 21
     TabOrder = 4
-    Text = 'MATHteacherComboBox'
+    Text = 'ComboBox1'
   end
   object RUSteacherComboBox: TComboBox
     Left = 728

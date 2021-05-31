@@ -16,8 +16,10 @@ type
     UserLoginEdit: TEdit;
     Label3: TLabel;
     Label4: TLabel;
-    UserTypeComboBox: TComboBox;
+    OwnClassComboBox: TComboBox;
     Label5: TLabel;
+    Label6: TLabel;
+    SubjectComboBox: TComboBox;
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -36,7 +38,7 @@ implementation
 
 procedure TForm20.Button1Click(Sender: TObject);
 begin
-  UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, UserTypeComboBox.Text, '11A','8A','7A');
+  UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, OwnClassComboBox.Text, '11A','8A','7A',SubjectComboBox.Text);
   Form20.Close;
 end;
 
@@ -46,5 +48,8 @@ procedure TForm20.FormShow(Sender: TObject);
 
 begin
   // pass
+  SubjectComboBox.Items.Clear;
+  SubjectComboBox.Items.Add ('Math');
+  SubjectComboBox.Items.Add ('Rus');
 end;
 end.

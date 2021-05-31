@@ -9,7 +9,7 @@ uses
 type
   // classes should be in one file. i can get they and manage. so studyclass will be integer with class uuid
   // user types: pupil, parent, teacher, zavuch
-  
+
   TForm10 = class(TForm)
   private
     { Private declarations }
@@ -20,7 +20,7 @@ type
 var
   Form10: TForm10;
 
-function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass: string): boolean;
+function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass, subject: string): boolean;
 function getUser(const login: string): TUser;
 function getUserById(const userId: string): TUser;
 
@@ -28,11 +28,11 @@ implementation
 
 {$R *.dfm}
 
-function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass: string): boolean;
+function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass, subject: string): boolean;
 var
   UsersList: UsersListsCore.TList;
   curr: UsersListsCore.PTListElement;
-begin
+begin   //remove usertype!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   New(curr);
   UsersListsCore.LoadList(UsersList);
    curr^.data.login := login;
@@ -42,6 +42,7 @@ begin
    curr^.data.ownClass := ownClass;
    curr^.data.classes := classes;
    curr^.data.studyClass := studyClass;
+   curr^.data.subject := subject;
    UsersListsCore.AddToEnd(UsersList, curr);
    UsersListsCore.SaveList(UsersList);
   Dispose(curr);

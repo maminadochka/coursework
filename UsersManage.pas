@@ -13,10 +13,9 @@ type
     Label1: TLabel;
     NewUserBtn: TButton;
     ShowTeachersBtn: TButton;
-    ShowZavuchesBtn: TButton;
     ShowPupilsBtn: TButton;
-    SortBtn: TButton;
-    showAllUsers: TButton;
+    DeleteBut: TButton;
+    SaveBut: TButton;
     procedure FormShow(Sender: TObject);
     procedure NewTeacherBtnClick(Sender: TObject);
     procedure NewUserBtnClick(Sender: TObject);
@@ -71,6 +70,7 @@ begin
      UsersTable.Cells[2, cnt+1] := curr^.data.lastname;
      UsersTable.Cells[3, cnt+1] := curr^.data.firstname;
      UsersTable.Cells[4, cnt+1] := curr^.data.userType;
+     UsersTable.Cells[5, cnt+1] := curr^.data.subject;
      cnt := cnt+1;
     curr := curr^.next;
   end;
@@ -84,6 +84,7 @@ begin
   usersTable.Cells[2,0] := 'LastName';
   usersTable.Cells[3,0] := 'FirstName';
   usersTable.Cells[4,0] := 'userType';
+  usersTable.Cells[5,0] := 'Subject';
   cleanUsersTable;
   drawUsersTable('all');
 end;

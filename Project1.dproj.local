@@ -1,2 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject/>
+<BorlandProject>
+  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="AuthCore.pas"/>
+    <File Path="AuthCore.dfm"/>
+    <File Path="ClassesCore.pas"/>
+    <File Path="ClassesCore.dfm"/>
+    <File Path="ClassViewScreen.pas"/>
+    <File Path="ClassViewScreen.dfm"/>
+    <File Path="Journal.pas"/>
+    <File Path="Journal.dfm"/>
+    <File Path="JournalCore.pas"/>
+    <File Path="JournalCore.dfm"/>
+    <File Path="Libs.pas"/>
+    <File Path="Libs.dfm"/>
+    <File Path="MainScreen.pas"/>
+    <File Path="MainScreen.dfm"/>
+    <File Path="newPupilScreen.pas"/>
+    <File Path="newPupilScreen.dfm"/>
+    <File Path="newUserScreen.pas"/>
+    <File Path="newUserScreen.dfm"/>
+    <File Path="newZavuchScreen.pas"/>
+    <File Path="newZavuchScreen.dfm"/>
+    <File Path="ParentsScreen.pas"/>
+    <File Path="ParentsScreen.dfm"/>
+    <File Path="PupilsCore.pas"/>
+    <File Path="PupilsCore.dfm"/>
+    <File Path="pupilScreen.pas"/>
+    <File Path="pupilScreen.dfm"/>
+    <File Path="Statistics.pas"/>
+    <File Path="Statistics.dfm"/>
+    <File Path="teacherScreen.pas"/>
+    <File Path="teacherScreen.dfm"/>
+    <File Path="userInfoScreen.pas"/>
+    <File Path="userInfoScreen.dfm"/>
+    <File Path="UsersCore.pas"/>
+    <File Path="UsersCore.dfm"/>
+    <File Path="UsersListsCore.pas"/>
+    <File Path="UsersListsCore.dfm"/>
+    <File Path="UsersManage.pas"/>
+    <File Path="UsersManage.dfm"/>
+    <File Path="ZavuchClassesManage.pas"/>
+    <File Path="ZavuchClassesManage.dfm"/>
+    <File Path="ZavuchScreen.pas"/>
+    <File Path="ZavuchScreen.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>
