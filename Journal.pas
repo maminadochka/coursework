@@ -6,7 +6,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, System.StrUtils, JournalCore, PupilsCore, UsersCore,
-  ClassesCore, UsersListsCore;
+  ClassesCore, UsersListsCore, ClassesListsCore;
 
 type
   TForm4 = class(TForm)
@@ -48,7 +48,7 @@ type
       managerId: string; // classruc info
       // userId: string;
       usersList: UsersListsCore.TList;
-      classesList: ClassesCore.TClassesList;
+      classesList: ClassesListsCore.TList;
     { Public declarations }
   end;
 

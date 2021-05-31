@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, UsersCore, ZavuchClassesManage, ClassesCore, UsersListsCore;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, UsersCore, ZavuchClassesManage, ClassesCore, UsersListsCore, ClassesListsCore;
 
 type
   TForm2 = class(TForm)
@@ -23,7 +23,7 @@ type
     userLogin: string;
     userId: string;
     usersList: UsersListsCore.TList;
-    classesList: ClassesCore.TClassesList;
+    classesList: ClassesListsCore.TList;
     { Public declarations }
   end;
 
@@ -37,7 +37,6 @@ uses UsersManage, Journal;
 
 procedure TForm2.Button1Click(Sender: TObject);
 begin
-  Form15.classesList := classesList;
   Form15.ShowModal;
 end;
 

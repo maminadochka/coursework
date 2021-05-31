@@ -90,6 +90,7 @@ var
   dirSource: string;
   cnt: integer;
 begin
+  ShowMessage('save list called!');
   dirSource := 'ClassesList.txt';
   AssignFile(f, dirSource);
   Rewrite(f);

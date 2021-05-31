@@ -6,18 +6,9 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Libs;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Libs, ClassesListsCore;
 
 type
-  TPupilsIdsList = array of string;
-  T_Class = record
-    classId: string;
-    pupils: TPupilsIdsList; // array of class pupils ids
-    name: string;
-    managerId: string; // klass ruk id
-    // subjects: array of string;
-  end;
-  TClassesList = array of T_Class;
   TForm11 = class(TForm)
   private
     { Private declarations }
@@ -28,44 +19,48 @@ type
 var
   Form11: TForm11;
 
-function getClass(const ClassesList: TClassesList; classId: string): T_Class;
-function createClass(var ClassesList: TClassesList; name: string; managerId: string): boolean;
+function getClass(classId: string): ClassesListsCore.T_Class;
+function createClass(name: string; managerId: string): boolean;
 
 implementation
 
 {$R *.dfm}
 
-function createClass(var ClassesList: TClassesList; name: string; managerId: string): boolean;
+function createClass(name: string; managerId: string): boolean;
 var
-  _class: T_Class;
+  curr: ClassesListsCore.PTListElement;
+  classesList: ClassesListsCore.TList;
 begin
-  _class.name := name;
-  _class.managerId := managerId;
-  _class.classId := GenerateUUID();
-  SetLength(ClassesList, Length(ClassesList)+1);
-  ClassesList[High(ClassesList)] := _class;
+  ShowMessage('create class called');
+  New(curr);
+  ClassesListsCore.LoadList(classesList);
+  curr^.data.name := name;
+  curr^.data.managerId := managerId;
+//  curr^.data.classId := GenerateUUID();
+  ClassesListsCore.AddToEnd(classesList, curr);
+  ClassesListsCore.SaveList(classesList);
+  Dispose(curr);
   Result := true;
+  exit;
 end;
 
-function getClass(const ClassesList: TClassesList; classId: string): T_Class;
+function getClass(classId: string): ClassesListsCore.T_Class;
 var
   i: integer;
+  classesList: ClassesListsCore.TList;
+  curr: ClassesListsCore.PTListElement;
 begin
-  ShowMessage(inttostr(Length(classesList)));
-  for i := 0 to Length(ClassesList)-1 do
+  ClassesListsCore.LoadList(classesList);
+  New(curr);
+  curr := classesList.head;
+  while curr <> nil do
+  begin
+    if curr^.data.classId = classId then
     begin
-      if ClassesList[i].classId = classId then
-      begin
-        Result := ClassesList[i];
-        exit;
-      end;
+      Result := curr^.data;
+      exit;
     end;
+    curr := curr^.next;
   end;
-
-function getClassesList(ClasesList: TClassesList): TClassesList;
-// it is promezhutocny variant. do not use
-begin
-//  Result := copy(ClassesList);
 end;
-
 end.
