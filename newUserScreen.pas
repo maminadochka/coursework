@@ -19,10 +19,10 @@ type
     UserTypeComboBox: TComboBox;
     Label5: TLabel;
     procedure Button1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
-    usersList: UsersListsCore.TList;
     { Public declarations }
   end;
 
@@ -36,8 +36,15 @@ implementation
 
 procedure TForm20.Button1Click(Sender: TObject);
 begin
-//  UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, UserTypeComboBox.Text, '','','');
-//  ShowMessage(inttostr(Length(usersList)));
+  UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, UserTypeComboBox.Text, '11A','8A','7A');
+  Form20.Close;
 end;
 
+//drawTable
+
+procedure TForm20.FormShow(Sender: TObject);
+
+begin
+  // pass
+end;
 end.

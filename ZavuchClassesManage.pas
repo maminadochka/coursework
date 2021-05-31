@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, ClassesCore, ClassViewScreen;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, ClassesCore, ClassViewScreen, UsersListsCore;
 
 type
   TForm15 = class(TForm)
@@ -21,6 +21,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ClassesListTableSelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,6 +57,20 @@ begin
   ClassesListTable.Cells[2,0] := 'Pupils count';
 end;
 
+
+procedure TForm15.FormShow(Sender: TObject);
+var
+  usersList: usersListsCore.TList;
+  curr: usersListsCore.PTListElement;
+begin
+  usersListsCore.LoadList(usersList);
+  curr := usersList.head;
+  while curr <> nil do
+  begin
+    ComboBox1.Items.Add(curr^.data.firstname+' '+curr^.data.lastname);
+    curr := curr^.next;
+  end;
+end;
 
 procedure TForm15.ClassesListTableSelectCell(Sender: TObject; ACol,
   ARow: Integer; var CanSelect: Boolean);

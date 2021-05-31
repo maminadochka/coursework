@@ -100,14 +100,10 @@ begin
   curr := List.head;
   while curr <> nil do
   begin
-//    inc(List.elemsCount);
     Write(f, curr^.data);
-//    ShowMessage('save list. list item'+curr^.data.login);
     curr := curr^.next;
   end;
   Dispose(curr);
-//  ShowMessage('List saved!');
-//  ShowMessage('list items'+inttostr(List.elemsCount));
   CloseFile(f);
 end;
 
@@ -128,7 +124,6 @@ begin
   NewElementPointer^.prev := List.tail;
   List.tail^.next := NewElementPointer;
   List.tail := NewElementPointer;
-//  ShowMessage(inttostr(List.elemsCount));
 end;
 
 end.

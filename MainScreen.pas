@@ -40,7 +40,7 @@ begin
   AuthCore.AddUser(AuthUsersList, 'ksu', '123');
   AuthCore.AddUser(AuthUsersList, 'bt', '4');
  UsersCore.createUser('ksu', 'Ksenia', 'Tsutsalevich', 'zavuch', '7A', '11A', '8A');
- UsersCore.createUser('bt', 'Boltak', 'Sveta', 'zavuch', '7A', '11A', '8A');
+// UsersCore.createUser('bt', 'Boltak', 'Sveta', 'zavuch', '7A', '11A', '8A');
 //  UsersCore.createUser('bt', 'Sveta', 'Boltak', 'teacher', '10A', '', '');
 end;
 

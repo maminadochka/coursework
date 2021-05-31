@@ -42,9 +42,8 @@ begin
    curr^.data.ownClass := ownClass;
    curr^.data.classes := classes;
    curr^.data.studyClass := studyClass;
-//   ShowMessage(curr^.data.login+curr^.data.firstname+curr^.data.lastname+curr^.data.userType+curr^.data.ownClass+curr^.data.classes+curr^.data.studyClass);
    UsersListsCore.AddToEnd(UsersList, curr);
-  UsersListsCore.SaveList(UsersList);
+   UsersListsCore.SaveList(UsersList);
   Dispose(curr);
   Result := true;
   exit;
