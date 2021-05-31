@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, ClassesCore, ClassViewScreen;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, ClassesCore, ClassViewScreen, UsersListsCore, ClassesListsCore;
 
 type
   TForm15 = class(TForm)
@@ -21,10 +21,10 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ClassesListTableSelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
-    classesList: TClassesList;
     { Public declarations }
   end;
 
@@ -38,14 +38,20 @@ implementation
 procedure TForm15.drawClassesList();
 var
   i: integer;
-  _class: ClassesCore.T_Class;
+  classesList: ClassesListsCore.TList;
+  curr: ClassesListsCore.PTListElement;
+  cnt: integer;
 begin
-  for i := 0 to Length(classesList)-1 do
+  classesListsCore.LoadList(classesList);
+  cnt := 0;
+  curr := classesList.head;
+  classesListTable.RowCount := 100;
+  while curr <> nil do
   begin
-    _class := ClassesList[i];
-    classesListTable.Cells[0, i+1] := _class.classId;
-    classesListTable.Cells[1, i+1] := _class.name;
-    classesListTable.Cells[2, i+1] := inttostr(Length(_class.pupils));
+    classesListTable.Cells[0, cnt+1] := curr^.data.classId;
+    classesListTable.Cells[1, cnt+1] := curr^.data.name;
+    cnt := cnt+1;
+    curr := curr^.next;
   end;
 end;
 
@@ -57,15 +63,29 @@ begin
 end;
 
 
+procedure TForm15.FormShow(Sender: TObject);
+var
+  usersList: usersListsCore.TList;
+  curr: usersListsCore.PTListElement;
+begin
+  usersListsCore.LoadList(usersList);
+  curr := usersList.head;
+  while curr <> nil do
+  begin
+    ComboBox1.Items.Add(curr^.data.firstname+' '+curr^.data.lastname);
+    curr := curr^.next;
+  end;
+  cleanClassesList;
+  drawClassesList;
+end;
+
 procedure TForm15.ClassesListTableSelectCell(Sender: TObject; ACol,
   ARow: Integer; var CanSelect: Boolean);
   var
-    _class: ClassesCore.T_Class;
-    class_id: string;
+    classId: string;
 begin
-  class_id := ClassesListTable.Cells[0, ARow];
-  _class := ClassesCore.getClass(ClassesList, class_id);
-  Form16._class := _class;
+  classId := ClassesListTable.Cells[0, ARow];
+  Form16.classId := classId;
   Form16.ShowModal();
 end;
 
@@ -85,7 +105,7 @@ end;
 
 procedure TForm15.Button1Click(Sender: TObject);
 begin
-  ClassesCore.createClass(classesList, NewClassNameEdit.Text, '1');
+  ClassesCore.createClass(NewClassNameEdit.Text, '1');
 //  ShowMessage(classesList[0].name);
   cleanClassesList();
   drawClassesList();

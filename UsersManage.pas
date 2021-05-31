@@ -46,9 +46,9 @@ procedure TForm3.cleanUsersTable();
   i: integer;
   j: Integer;
 begin
-  for i := 1 to 15 do
+  for i := 1 to 100 do
     begin
-      for j := 0 to 15 do
+      for j := 0 to 100 do
         begin
           UsersTable.Cells[j, i] := '';
         end;
@@ -57,21 +57,23 @@ end;
 
 procedure TForm3.drawUsersTable(userType: string);
 var
-  i: integer;
-  user: UsersListsCore.TUser;
+  usersList: UsersListsCore.TList;
+  curr: UsersListsCore.PTListElement;
+  cnt: integer;
 begin
-//  for i := 0 to usersList.elemsCount do
-//  begin
-//    user := usersList[i];
-//    if (user.userType = userType) Or (userType = 'all') then
-//    begin
-//      UsersTable.Cells[0, i+1] := user.userId;
-//      UsersTable.Cells[1, i+1] := user.login;
-//      UsersTable.Cells[2, i+1] := user.lastname;
-//      UsersTable.Cells[3, i+1] := user.firstname;
-//      UsersTable.Cells[4, i+1] := user.userType;
-//    end;
-//  end;
+  UsersListsCore.LoadList(usersList);
+  curr := usersList.head;
+  cnt := 0;
+  UsersTable.RowCount := 100;
+  while curr <> nil do
+  begin
+     UsersTable.Cells[1, cnt+1] := curr^.data.login;
+     UsersTable.Cells[2, cnt+1] := curr^.data.lastname;
+     UsersTable.Cells[3, cnt+1] := curr^.data.firstname;
+     UsersTable.Cells[4, cnt+1] := curr^.data.userType;
+     cnt := cnt+1;
+    curr := curr^.next;
+  end;
 end;
 
 
@@ -93,7 +95,6 @@ end;
 
 procedure TForm3.NewUserBtnClick(Sender: TObject);
 begin
-  Form20.usersList := usersList; // it is not correct. list will be not updated
   Form20.ShowModal();
   cleanUsersTable();
   drawUsersTable('all');

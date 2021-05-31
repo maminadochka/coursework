@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, ClassesCore;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, ClassesCore, ClassesListsCore;
 
 type
   TForm16 = class(TForm)
@@ -20,7 +20,7 @@ type
   private
     { Private declarations }
   public
-    _class: ClassesCore.T_Class;
+    classId: string[50];
     { Public declarations }
   end;
 
@@ -40,7 +40,10 @@ begin
 end;
 
 procedure TForm16.FormShow(Sender: TObject);
+var
+  _class: ClassesListsCore.T_Class;
 begin
+  _class := ClassesCore.getClass(classId);
   classNameLabel2.Caption := _class.name;
   // TODO get manager name
   ManagerNameLabel2.Caption := _class.managerId;
