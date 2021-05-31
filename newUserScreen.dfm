@@ -45,9 +45,16 @@ object Form20: TForm20
   object Label5: TLabel
     Left = 104
     Top = 200
-    Width = 49
+    Width = 50
     Height = 13
-    Caption = 'User Type'
+    Caption = 'Own Class'
+  end
+  object Label6: TLabel
+    Left = 104
+    Top = 256
+    Width = 36
+    Height = 13
+    Caption = 'Subject'
   end
   object LastNameEdit: TEdit
     Left = 104
@@ -65,7 +72,7 @@ object Form20: TForm20
   end
   object Button1: TButton
     Left = 104
-    Top = 256
+    Top = 314
     Width = 121
     Height = 25
     Caption = 'create'
@@ -79,11 +86,18 @@ object Form20: TForm20
     Height = 21
     TabOrder = 3
   end
-  object UserTypeComboBox: TComboBox
+  object OwnClassComboBox: TComboBox
     Left = 104
     Top = 221
     Width = 121
     Height = 21
     TabOrder = 4
+  end
+  object SubjectComboBox: TComboBox
+    Left = 104
+    Top = 275
+    Width = 121
+    Height = 21
+    TabOrder = 5
   end
 end

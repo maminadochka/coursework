@@ -16,6 +16,7 @@ type
     ownClass: string[50]; // will be integer
     classes: string[50];
     studyClass: string[50];
+    subject: string[20];
   end;
   PTListElement = ^TListElement;
   TListElement = record
