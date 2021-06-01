@@ -16,8 +16,10 @@ type
     LoginBtn: TButton;
     Button2: TButton;
     Button1: TButton;
+    Button3: TButton;
     procedure LoginBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,6 +44,11 @@ begin
  UsersCore.createUser('ksu', 'Ksenia', 'Tsutsalevich', 'zavuch', '7A', '11A', '8A','');
 // UsersCore.createUser('bt', 'Boltak', 'Sveta', 'zavuch', '7A', '11A', '8A');
 //  UsersCore.createUser('bt', 'Sveta', 'Boltak', 'teacher', '10A', '', '');
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+if Form1.CloseQuery then Form1.Close;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
