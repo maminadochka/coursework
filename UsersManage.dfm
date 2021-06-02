@@ -35,7 +35,7 @@ object Form3: TForm3
     Top = 17
     Width = 80
     Height = 25
-    Caption = 'New User'
+    Caption = 'New Teacher'
     TabOrder = 1
     OnClick = NewUserBtnClick
   end

@@ -206,6 +206,7 @@ var
   classesCurr: ClassesListsCore.PTListElement;
 begin
   ClassesJournalCombobox.Items.Clear;
+  SubjectsComboBox.Items.Clear;
   classesListsCore.LoadList(classesList);
   classesCurr := classesList.head;
   SubjectsCombobox.Items.Add('Math');
@@ -241,19 +242,11 @@ begin
 
    StringGrid1.Options:=StringGrid1.Options+[goEditing];
    StringGrid2.Options:=StringGrid2.Options+[goEditing];
-  //  for i := 1 to 15 do
-  //  begin
-  //     StringGrid1.Cells[0, i]:=inttostr(i);
-  //     StringGrid1.Cells[1, i] := journal._class.pupils[i].lastname+' '+journal._class.pupils[i].firstname;
-  //  end;
    StringGrid1.Cells[0, 0]:='number';
    StringGrid1.Cells[1, 0]:='FIO';
    StringGrid2.Cells[0, 0]:='date';
    StringGrid2.Cells[1, 0]:='lesson theme';
    StringGrid2.Cells[2, 0]:='home task';
-  // ShowMessage(managerId);
-  // drawDates();
-  // drawMarks();
 end;
 
 function TForm4.LoadPupil(firstname, lastname: string): TPupil;

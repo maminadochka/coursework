@@ -42,14 +42,19 @@ var
   curr: ClassesListsCore.PTListElement;
   cnt: integer;
 begin
+  // TODO make creating of more than 1 class
   classesListsCore.LoadList(classesList);
   cnt := 0;
   curr := classesList.head;
   classesListTable.RowCount := 100;
+//   ShowMessage('from draw: '+curr^.data.name);
+  classesListTable.Cells[0, cnt+1] := curr^.data.classId;
+  classesListTable.Cells[1, cnt+1] := curr^.data.name;
   while curr <> nil do
   begin
-    classesListTable.Cells[0, cnt+1] := curr^.data.classId;
-    classesListTable.Cells[1, cnt+1] := curr^.data.name;
+//    ShowMessage('from draw: '+curr^.data.name);
+//    classesListTable.Cells[0, cnt+1] := curr^.data.name;
+//    classesListTable.Cells[1, cnt+1] := curr^.data.name;
     cnt := cnt+1;
     curr := curr^.next;
   end;
@@ -66,17 +71,17 @@ end;
 procedure TForm15.FormShow(Sender: TObject);
 var
   usersList: usersListsCore.TList;
-  curr: usersListsCore.PTListElement;
+  usersCurr: usersListsCore.PTListElement;
 begin
   usersListsCore.LoadList(usersList);
-  curr := usersList.head;
-  while curr <> nil do
+  usersCurr := usersList.head;
+  while usersCurr <> nil do
   begin
-    ComboBox1.Items.Add(curr^.data.firstname+' '+curr^.data.lastname);
-    curr := curr^.next;
+    ComboBox1.Items.Add(usersCurr^.data.firstname+' '+usersCurr^.data.lastname);
+    usersCurr := usersCurr^.next;
   end;
-  cleanClassesList;
-  drawClassesList;
+//  cleanClassesList;
+//  drawClassesList;
 end;
 
 procedure TForm15.ClassesListTableSelectCell(Sender: TObject; ACol,
@@ -94,9 +99,9 @@ procedure TForm15.cleanClassesList();
   i: integer;
   j: Integer;
 begin
-  for i := 1 to 15 do
+  for i := 1 to 100 do
     begin
-      for j := 0 to 15 do
+      for j := 0 to 100 do
         begin
           classesListTable.Cells[j, i] := '';
         end;
@@ -105,10 +110,10 @@ end;
 
 procedure TForm15.Button1Click(Sender: TObject);
 begin
-  ClassesCore.createClass(NewClassNameEdit.Text, '1');
+  // TODO get manager ID
+  ClassesCore.createClass(NewClassNameEdit.Text, 'aboba');
 //  ShowMessage(classesList[0].name);
-  cleanClassesList();
+//  cleanClassesList();
   drawClassesList();
 end;
-
 end.

@@ -39,13 +39,21 @@ begin
 //  end;
   New(curr);
   UsersListsCore.LoadList(UsersList);
-   curr^.data.login := login;
+  curr^.data.userId := Libs.generateUUID();
+  if Length(login) = 0 then
+  begin
+    curr^.data.login := curr^.data.userId;
+  end
+  else
+  begin
+    curr^.data.login := login;
+  end;
    curr^.data.firstname := firstname;
    curr^.data.lastname := lastname;
    curr^.data.userType := userType;
-   curr^.data.ownClass := ownClass;
+   curr^.data.ownClassID := ownClass;
    curr^.data.classes := classes;
-   curr^.data.studyClass := studyClass;
+   curr^.data.studyClassID := studyClass;
    curr^.data.subject := subject;
    UsersListsCore.AddToEnd(UsersList, curr);
    UsersListsCore.SaveList(UsersList);
