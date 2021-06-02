@@ -44,7 +44,7 @@ end;
 
 procedure TForm2.Button2Click(Sender: TObject);
 begin
-  Form6.ShowModal;
+  Form15.ShowModal;
 end;
 
 procedure TForm2.FormShow(Sender: TObject);

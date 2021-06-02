@@ -194,75 +194,69 @@ end;
 
 procedure TForm4.drawMarks();
 var
-  i, j, k, q, u: integer;
+  i, j, dtc: integer;
   dateCnt: integer;
-  pupil: TPupil;
+  pupilID: string[50];
   pupil_fullname: string;
   pupil_row: integer;
   date_column: integer;
   MarksList: MarksCore.TMarksList;
-  datesList: array [1..20] of string;
+  datesList: array of string;
   dateExistFlag: boolean;
+  dt: string;
 begin
- // pupil_row := -1;
- // date_column := -1;
  dateExistFlag := false;
  dateCnt := 1;
- // idem po pupilam
-// for i := 1 to 3 do
-// begin
-//  MarksList:=MarksCore.getpupilmarks(stringgrid1.Cells[0,i], SubjectsComboBox.Text);
-//  ShowMessage(inttostr(Length(MarksList)));
-//  dateExistFlag := false;
-//  for j := 1 to Length(MarksList) do
-//    begin
-//    if i = 1 then
-//    begin
-//      datesList[1] := MarksList[1].date;
-//      dateCnt := dateCnt+1;
-//      continue;
-//    end;
-//    ShowMessage('date: '+MarksList[j].date);
-//      for u := 1 to dateCnt do
-//        begin
-//          ShowMessage('datesList date: '+datesList[u]);
-//          if MarksList[j].date = datesList[u] then
-//          begin
-//            ShowMessage('eq');
-//            dateExistFlag := true;
-//            break;
-//          end;
-//        end;
-//        if dateExistFlag = false then
-//        begin
-//          ShowMessage('date: '+MarksList[j].date+' is unique');
-//          dateCnt := dateCnt+1;
-//        end;
-//    end;
-  //  if i = 1 then
-//  begin
-//    // idem po marksam
-//    datesList[dateCnt] := MarksList[]
-//  end;
-   //idem po marks dates
-//  for j := 1 to Length(MarksList) do
-//    begin
-//      dateExistFlag := false;
-//      for u := 1 to dateCnt do
-//        begin
-//          if MarksList[j].date = datesList[u]  then
-//          begin
-//            dateExistFlag := true;
-//          end;
-//          if dateExistFlag = false then
-//          begin
-//            ShowMessage(inttostr(dateCnt));
-//////            datesList[dateCnt] := MarksList[j].date;
-//            dateCnt:= dateCnt+1;
-//          end;
-//        end;
-//    end;
-// end;
+ // getting unique dates
+ for i := 1 to 3 do
+ begin
+  pupilID := StringGrid1.Cells[0, i];
+  if Length(pupilID) = 38 then
+  begin
+//    ShowMessage('pupilID: '+pupilID);
+    MarksList := MarksCore.getPupilMarks(pupilID, SubjectsComboBox.Text);
+//    ShowMessage(inttostr(Length(MarksList)));
+    for j := 0 to Length(MarksList)-1 do
+      begin
+//        ShowMessage('mark date: '+MarksList[j].date+' value: '+MarksList[j].value);
+        dateExistFlag := false;
+        for dtc := 0 to Length(datesList)-1 do
+          begin
+            if datesList[dtc] = MarksList[j].date then
+            begin
+              dateExistFlag := true;
+              break;
+            end;
+          end;
+          if dateExistFlag = false then
+          begin
+             SetLength(datesList, Length(datesList)+1);
+             datesList[High(datesList)] := MarksList[j].date;
+             stringgrid1.Cells[3+Length(datesList)-1, 0] := MarksList[j].date;
+          end;
+      end;
+  end;
+ end;
+//  ShowMessage('dates: '+inttostr(Length(DatesList)));
+  for i := 1 to 3 do
+    begin
+      pupilID := StringGrid1.Cells[0, i];
+      if Length(pupilID) = 38 then
+      begin
+        MarksList := MarksCore.getPupilMarks(pupilID, SubjectsComboBox.Text);
+        for j := 0 to Length(MarksList)-1 do
+          begin
+            for dtc := 3 to Length(datesList)+2 do
+              begin
+                if stringgrid1.Cells[dtc, 0] = MarksList[j].date then
+                begin
+                  StringGrid1.Cells[dtc, i] := MarksList[j].value;
+                end;
+              end;
+          end;
+
+      end;
+    end;
 end;
 
 procedure TForm4.FormShow(Sender: TObject);

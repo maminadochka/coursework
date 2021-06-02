@@ -14,7 +14,7 @@ type
     value: string[50];
     comment: string[50];     //???????????????????????
   end;
-  TMarksList = array of TMark;
+  //TMarksList = array of TMark;
   PTListElement = ^TListElement;
   TListElement = record
     data: TMark;

@@ -33,10 +33,10 @@ var
   curr: UsersListsCore.PTListElement;
 begin 
   //TODO remove userType param
-//  if getUser(login).login <> '' then
-//  begin
-//    exit;
-//  end;
+  if getUser(login).login <> 'emptyuser' then
+  begin
+    exit;
+  end;
   New(curr);
   UsersListsCore.LoadList(UsersList);
   curr^.data.userId := Libs.generateUUID();
@@ -70,6 +70,7 @@ var
 begin
   UsersListsCore.LoadList(usersList);
   New(curr);
+  curr.data.login := 'emptyuser';
   curr := usersList.head;
   while curr <> nil do
   begin

@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, MarksListCore;
 
 type
-  TMarksList = array [1..2] of MarksListCore.TMark;
+  TMarksList = array of MarksListCore.TMark;
   TForm22 = class(TForm)
   private
     { Private declarations }
@@ -24,34 +24,44 @@ var
 implementation
 
 {$R *.dfm}
-function getpupilmarks(PupilID, SubjectName: string): TMarksList;
+function getPupilMarks(PupilID, SubjectName: string): TMarksList;
 var MarksList: MarksListCore.TList;
-    Results: TMarksList;
+    ResultsList: TMarksList;
     curr: MarksListCore.PTListElement;
     mark: MarksListCore.TMark;
     cnt: integer;
  begin
-//    SetLength(results, 0);
-    cnt := 1;
+    cnt := 0;
     New(curr);
     MarksListCore.loadlist(MarksList);
     curr:= MarksList.head;
     while curr <> nil do
     begin
-//      ShowMessage('getpupilmarks: '+curr.data.pupilId+' '+curr.data.subject+'value: '+curr.data.value+' date: '+curr.data.date);
       if (curr.data.PupilID = PupilID) and (curr.data.Subject = SubjectName) then
       begin
-        Results[cnt] := curr.data;
         cnt := cnt+1;
-        //ShowMessage('qq');
-        //Setlength(Results,length(Results)+1);
-        //ShowMessage('high: '+inttostr(High(Results)));
-        //ShowMessage('length: '+inttostr(Length(Results)));
-//        Results[High(Results)]:= mark;
       end;
       curr:= curr.next;
     end;
-    Result := Results;
+    dispose(curr);
+    New(curr);
+    curr:= MarksList.head;
+    SetLength(ResultsList, cnt);
+    cnt := 0;
+    while curr <> nil do
+    begin
+      if (curr.data.PupilID = PupilID) and (curr.data.Subject = SubjectName) then
+      begin
+        //Setlength(ResultsList,Length(ResultsList)+1);
+        ResultsList[cnt]:= curr.data;
+//        ShowMessage('adding date: '+curr.data.date+' value '+curr.data.value);
+        cnt := cnt+1;
+      end;
+      curr:= curr.next;
+    end;
+    dispose(curr);
+    Result := ResultsList;
+    exit;
  end;
 
 procedure addmark(PupilID,Date,Value,SubjectName: String);
@@ -59,7 +69,7 @@ var MarksList: MarksListCore.TList;
     curr: MarksListCore.PTListElement;
     curr2: MarksListCore.PTListElement;
     begin
-      ShowMessage('addmark: '+pupilID+' '+date+' '+value+' '+subjectName);
+//      ShowMessage('addmark: '+pupilID+' '+date+' '+value+' '+subjectName);
       new(curr);
       New(curr2);
       MarksListCore.LoadList(MarksList);
