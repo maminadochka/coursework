@@ -8,16 +8,17 @@ uses
 
 type
   TUser = record
-//    userId: string[50];
+    userId: string[50];
     login: string[50];
     firstname: string[50];
     lastname: string[50];
     userType: string[50];
-    ownClass: string[50]; // will be integer
+    ownClassID: string[50];
     classes: string[50];
-    studyClass: string[50];
+    studyClassID: string[50];
     subject: string[20];
   end;
+  TUsersList = array of TUser;
   PTListElement = ^TListElement;
   TListElement = record
     data: TUser;

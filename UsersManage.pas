@@ -80,6 +80,7 @@ end;
 procedure TForm3.FormShow(Sender: TObject);
 begin
   usersTable.Cells[0,0] := 'userId';
+  usersTable.ColWidths[0] := 0;
   usersTable.Cells[1,0] := 'login';
   usersTable.Cells[2,0] := 'LastName';
   usersTable.Cells[3,0] := 'FirstName';

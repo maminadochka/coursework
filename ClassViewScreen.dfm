@@ -51,15 +51,15 @@ object Form16: TForm16
   object MATH: TLabel
     Left = 605
     Top = 192
-    Width = 100
-    Height = 25
+    Width = 28
+    Height = 13
     Caption = 'MATH'
   end
   object RUSSKIY: TLabel
     Left = 605
     Top = 240
-    Width = 109
-    Height = 25
+    Width = 20
+    Height = 13
     Caption = 'RUS'
   end
   object PupilsListTable: TStringGrid
@@ -76,6 +76,7 @@ object Form16: TForm16
     Height = 25
     Caption = 'add pupil'
     TabOrder = 1
+    OnClick = addPupilBtnClick
   end
   object LastNameEdit: TEdit
     Left = 605
@@ -99,7 +100,6 @@ object Form16: TForm16
     Width = 217
     Height = 21
     TabOrder = 4
-    Text = 'MATHteacherComboBox'
   end
   object RUSteacherComboBox: TComboBox
     Left = 728
@@ -107,7 +107,6 @@ object Form16: TForm16
     Width = 217
     Height = 21
     TabOrder = 5
-    Text = 'ComboBox1'
   end
   object SaveBut: TButton
     Left = 694
@@ -116,5 +115,6 @@ object Form16: TForm16
     Height = 33
     Caption = 'SaveBut'
     TabOrder = 6
+    OnClick = SaveButClick
   end
 end

@@ -135,9 +135,9 @@ begin
       end;
       mark.value := Value;
       mark.date := StringGrid1.Cells[ACol, 0];
-      pupil_fullname := StringGrid1.Cells[1, ARow];
-    //  pupil_lastname := SplitString(pupil_fullname, ' ')[0];
-    // pupil_firstname := SplitString(pupil_fullname, ' ')[1];
+//      pupil_fullname := StringGrid1.Cells[1, ARow];
+//      pupil_lastname := SplitString(pupil_fullname, ' ')[0];
+//      pupil_firstname := SplitString(pupil_fullname, ' ')[1];
 //      ShowMessage(pupil_lastname+' '+pupil_firstname);
 //      pupil_id := LoadPupil(pupil_firstname, pupil_lastname).pupil_id;
 //      mark.pupil_id := pupil_id;
@@ -153,7 +153,7 @@ begin
         begin
           if not TryStrToDate(Value, dateOut) then
           begin
-           ShowMessage('Date error');
+            ShowMessage('date error');
             dateErrFlag := true;
           end
           else
@@ -166,7 +166,7 @@ begin
         end;
         if Length(Value) > 5 then
         begin
-          ShowMessage('Date error');
+          ShowMessage('date error');
           dateErrFlag := true;
         end;
      end;
@@ -202,7 +202,22 @@ procedure TForm4.FormShow(Sender: TObject);
 var
   i: integer;
   user: UsersListsCore.TUser;
+  classesList: classesListsCore.TList;
+  classesCurr: ClassesListsCore.PTListElement;
 begin
+  ClassesJournalCombobox.Items.Clear;
+  SubjectsComboBox.Items.Clear;
+  classesListsCore.LoadList(classesList);
+  classesCurr := classesList.head;
+  SubjectsCombobox.Items.Add('Math');
+  SubjectsCombobox.Items.Add('Rus');
+  while classesCurr <> nil do
+  begin
+    ClassesJournalCombobox.Items.Add(classesCurr.data.name);
+    classesCurr := classesCurr.next;
+  end;
+
+  // ClassesJournalComboBox.Items.Add();
 //  ShowMessage(inttostr(Length(classesList)));
   // user := UsersCore.getUserById(usersList, managerId);
   // journal._class := getClass();
@@ -227,19 +242,11 @@ begin
 
    StringGrid1.Options:=StringGrid1.Options+[goEditing];
    StringGrid2.Options:=StringGrid2.Options+[goEditing];
-  //  for i := 1 to 15 do
-  //  begin
-  //     StringGrid1.Cells[0, i]:=inttostr(i);
-  //     StringGrid1.Cells[1, i] := journal._class.pupils[i].lastname+' '+journal._class.pupils[i].firstname;
-  //  end;
    StringGrid1.Cells[0, 0]:='number';
    StringGrid1.Cells[1, 0]:='FIO';
    StringGrid2.Cells[0, 0]:='date';
    StringGrid2.Cells[1, 0]:='lesson theme';
    StringGrid2.Cells[2, 0]:='home task';
-  // ShowMessage(managerId);
-  // drawDates();
-  // drawMarks();
 end;
 
 function TForm4.LoadPupil(firstname, lastname: string): TPupil;

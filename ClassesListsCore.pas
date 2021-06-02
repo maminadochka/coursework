@@ -11,6 +11,8 @@ type
     classId: string[50];  // class UUID
     name: string[50];
     managerId: string[50]; // klass ruk id
+    MathTeacherName: string[50];
+    RusTeacherName: string[50];
     // subjects: array of string;
     // pupils -> SELECT * FROM pupils WHERE class_id = classId
   end;
@@ -51,6 +53,7 @@ var
   curr: PTListElement;
   dirSource: string;
 begin
+//  ShowMessage('load list called!');
   dirSource := 'ClassesList.txt';
   AssignFile(f, dirSource);
   cnt := 0;
@@ -65,13 +68,15 @@ begin
   New(curr);
   if FileSize(f) <> 0 then
   begin
-    Read(f, curr^.data);
-    AddToEnd(List, curr);
+//    Read(f, curr^.data);
+//    ShowMessage('load list element name: '+curr^.data.name);
+//    AddToEnd(List, curr);
     while not EOF(f) do
     begin
       tmp := curr;
       New(curr);
       Read(f, curr^.data);
+//      ShowMessage('load list element name: '+curr^.data.name);
       AddToEnd(List, curr);
       tmp.next := curr;
       curr.prev := tmp;
@@ -90,7 +95,7 @@ var
   dirSource: string;
   cnt: integer;
 begin
-  ShowMessage('save list called!');
+//  ShowMessage('save list called!');
   dirSource := 'ClassesList.txt';
   AssignFile(f, dirSource);
   Rewrite(f);
@@ -109,6 +114,7 @@ procedure AddToEnd(var List: TList; var NewElementPointer: PTListElement);
 var
   curr: PTListElement;
 begin
+//  ShowMessage('add to end item name'+NewElementPointer^.data.name);
   inc(List.elemsCount);
   if List.head = nil then
   begin
