@@ -22,6 +22,7 @@ var
 function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass, subject: string): boolean;
 function getUser(const login: string): TUser;
 function getUsersBySubject(const subject: string): UsersListsCore.TUsersList;
+function checkExists(login: string): boolean;
 
 implementation
 
@@ -33,44 +34,45 @@ var
   curr: UsersListsCore.PTListElement;
 begin 
   //TODO remove userType param
-  if getUser(login).login <> 'emptyuser' then
-  begin
+    if checkExists(login) then
+      begin
+        ShowMessage('login: '+login+' exists');
+        exit;
+      end;
+    New(curr);
+    UsersListsCore.LoadList(UsersList);
+    curr^.data.userId := Libs.generateUUID();
+    if Length(login) = 0 then
+    begin
+      curr^.data.login := curr^.data.userId;
+    end
+    else
+    begin
+      curr^.data.login := login;
+    end;
+     curr^.data.firstname := firstname;
+     curr^.data.lastname := lastname;
+     curr^.data.userType := userType;
+     curr^.data.ownClassID := ownClass;
+     curr^.data.classes := classes;
+     curr^.data.studyClassID := studyClass;
+     curr^.data.subject := subject;
+     UsersListsCore.AddToEnd(UsersList, curr);
+     UsersListsCore.SaveList(UsersList);
+    Dispose(curr);
+    Result := true;
     exit;
   end;
-  New(curr);
-  UsersListsCore.LoadList(UsersList);
-  curr^.data.userId := Libs.generateUUID();
-  if Length(login) = 0 then
-  begin
-    curr^.data.login := curr^.data.userId;
-  end
-  else
-  begin
-    curr^.data.login := login;
-  end;
-   curr^.data.firstname := firstname;
-   curr^.data.lastname := lastname;
-   curr^.data.userType := userType;
-   curr^.data.ownClassID := ownClass;
-   curr^.data.classes := classes;
-   curr^.data.studyClassID := studyClass;
-   curr^.data.subject := subject;
-   UsersListsCore.AddToEnd(UsersList, curr);
-   UsersListsCore.SaveList(UsersList);
-  Dispose(curr);
-  Result := true;
-  exit;
-end;
 
 function getUser(const login: string): TUser;
 var
   i: integer;
+  emptyUser: TUser;
   usersList: UsersListsCore.TList;
   curr: UsersListsCore.PTListElement;
 begin
   UsersListsCore.LoadList(usersList);
   New(curr);
-  curr.data.login := 'emptyuser';
   curr := usersList.head;
   while curr <> nil do
   begin
@@ -102,5 +104,27 @@ begin
  end;
 end;
 
-// function checkExists()
+ function checkExists(login: string): boolean;
+ var
+  i: integer;
+  exFlag: boolean;
+  usersList: UsersListsCore.TList;
+  curr: UsersListsCore.PTListElement;
+begin
+  exFlag := false;
+  UsersListsCore.LoadList(usersList);
+  New(curr);
+  curr := usersList.head;
+  while curr <> nil do
+  begin
+    if curr^.data.login = login then
+    begin
+      exFlag := true;
+      break;
+    end;
+    curr := curr^.next;
+  end;
+  Result := exFlag;
+  exit;
+ end;
 end.

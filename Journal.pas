@@ -272,6 +272,7 @@ begin
   classesCurr := classesList.head;
   SubjectsCombobox.Items.Add('Math');
   SubjectsCombobox.Items.Add('Rus');
+//  SubjectsCombobox.Items.Add('Biologia');
   while classesCurr <> nil do
   begin
     ClassesJournalCombobox.Items.Add(classesCurr.data.name);
