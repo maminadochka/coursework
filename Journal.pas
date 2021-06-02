@@ -125,7 +125,7 @@ begin
         val(Value,date,code);
         if code = 1  then
         begin
-        if value<>'�' then
+        if value<>'n' then
         begin
           showmessage('error!');
         end;
@@ -135,13 +135,13 @@ begin
       end;
       mark.value := Value;
       mark.date := StringGrid1.Cells[ACol, 0];
-      pupil_fullname := StringGrid1.Cells[1, ARow];
-      pupil_lastname := SplitString(pupil_fullname, ' ')[0];
-      pupil_firstname := SplitString(pupil_fullname, ' ')[1];
+//      pupil_fullname := StringGrid1.Cells[1, ARow];
+//      pupil_lastname := SplitString(pupil_fullname, ' ')[0];
+//      pupil_firstname := SplitString(pupil_fullname, ' ')[1];
 //      ShowMessage(pupil_lastname+' '+pupil_firstname);
-      pupil_id := LoadPupil(pupil_firstname, pupil_lastname).pupil_id;
-      mark.pupil_id := pupil_id;
-      current_subject := addPupilMarkToSubject(current_subject, mark);
+//      pupil_id := LoadPupil(pupil_firstname, pupil_lastname).pupil_id;
+//      mark.pupil_id := pupil_id;
+//      current_subject := addPupilMarkToSubject(current_subject, mark);
 //      mark.pupil_id := ;
      end;
    end;
@@ -153,7 +153,7 @@ begin
         begin
           if not TryStrToDate(Value, dateOut) then
           begin
-//            ShowMessage('������! ����� ���� �� ����������');
+            ShowMessage('date error');
             dateErrFlag := true;
           end
           else
@@ -166,7 +166,7 @@ begin
         end;
         if Length(Value) > 5 then
         begin
-//          ShowMessage('������ ����� ����');
+          ShowMessage('date error');
           dateErrFlag := true;
         end;
      end;
@@ -202,7 +202,21 @@ procedure TForm4.FormShow(Sender: TObject);
 var
   i: integer;
   user: UsersListsCore.TUser;
+  classesList: classesListsCore.TList;
+  classesCurr: ClassesListsCore.PTListElement;
 begin
+  ClassesJournalCombobox.Items.Clear;
+  classesListsCore.LoadList(classesList);
+  classesCurr := classesList.head;
+  SubjectsCombobox.Items.Add('Math');
+  SubjectsCombobox.Items.Add('Rus');
+  while classesCurr <> nil do
+  begin
+    ClassesJournalCombobox.Items.Add(classesCurr.data.name);
+    classesCurr := classesCurr.next;
+  end;
+
+  // ClassesJournalComboBox.Items.Add();
 //  ShowMessage(inttostr(Length(classesList)));
   // user := UsersCore.getUserById(usersList, managerId);
   // journal._class := getClass();
@@ -225,8 +239,8 @@ begin
   StringGrid2.ColWidths[1] := 100;
   StringGrid2.ColWidths[2] := 200;
 
-  // StringGrid1.Options:=StringGrid1.Options+[goEditing];
-  // StringGrid2.Options:=StringGrid2.Options+[goEditing];
+   StringGrid1.Options:=StringGrid1.Options+[goEditing];
+   StringGrid2.Options:=StringGrid2.Options+[goEditing];
   //  for i := 1 to 15 do
   //  begin
   //     StringGrid1.Cells[0, i]:=inttostr(i);

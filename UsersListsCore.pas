@@ -18,6 +18,7 @@ type
     studyClass: string[50];
     subject: string[20];
   end;
+  TUsersList = array of TUser;
   PTListElement = ^TListElement;
   TListElement = record
     data: TUser;

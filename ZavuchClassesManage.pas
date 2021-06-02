@@ -34,7 +34,7 @@ var
 implementation
 
 {$R *.dfm}
-
+// TODO load journal marks
 procedure TForm15.drawClassesList();
 var
   i: integer;

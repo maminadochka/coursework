@@ -9,7 +9,6 @@ uses
 type
   // classes should be in one file. i can get they and manage. so studyclass will be integer with class uuid
   // user types: pupil, parent, teacher, zavuch
-
   TForm10 = class(TForm)
   private
     { Private declarations }
@@ -22,7 +21,7 @@ var
 
 function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass, subject: string): boolean;
 function getUser(const login: string): TUser;
-function getUserById(const userId: string): TUser;
+function getUsersBySubject(const subject: string): UsersListsCore.TUsersList;
 
 implementation
 
@@ -32,7 +31,12 @@ function createUser(login, firstname, lastname, userType, ownClass, classes, stu
 var
   UsersList: UsersListsCore.TList;
   curr: UsersListsCore.PTListElement;
-begin   //remove usertype!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+begin 
+  //TODO remove userType param
+//  if getUser(login).login <> '' then
+//  begin
+//    exit;
+//  end;
   New(curr);
   UsersListsCore.LoadList(UsersList);
    curr^.data.login := login;
@@ -70,25 +74,23 @@ begin
   end;
 end;
 
-function getUserById(const userId: string): TUser;
-//var
-//  i: integer;
-//  curr: UsersListsCore.PTPElement;
-//  usersList: UsersListsCore.TList;
-//begin
-//  New(curr);
-//  curr := usersList.head;
-//  while curr <> nil do
-//  begin
-//    if curr^.data.login = userId then
-//    begin
-//      Result := curr^.data;
-//      exit;
-//    end;
-//  end;
-//end;
+function getUsersBySubject(const subject: string): TUsersList;
+var
+ i: integer;
+ curr: UsersListsCore.PTListElement;
+ usersList: UsersListsCore.TList;
+ results: UsersListsCore.TUsersList;
 begin
-
+ New(curr);
+ curr := usersList.head;
+ while curr <> nil do
+ begin
+   if curr^.data.subject = subject then
+   begin
+     SetLength(results, Length(results)+1);
+     results[High(result)] := curr^.data;
+   end;
+ end;
 end;
 
 // function checkExists()
