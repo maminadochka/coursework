@@ -13,10 +13,12 @@ type
     UsersManage: TButton;
     UserEdit: TButton;
     Button1: TButton;
+    Button2: TButton;
     procedure UsersManageClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure JournalClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,13 +33,18 @@ var
   Form2: TForm2;
 
 implementation
-uses UsersManage, Journal;
+uses UsersManage, Journal, ParentsScreen;
 {$R *.dfm}
 
 
 procedure TForm2.Button1Click(Sender: TObject);
 begin
   Form15.ShowModal;
+end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+begin
+  Form6.ShowModal;
 end;
 
 procedure TForm2.FormShow(Sender: TObject);

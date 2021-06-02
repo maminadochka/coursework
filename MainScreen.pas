@@ -14,8 +14,6 @@ type
     LoginInp: TEdit;
     PasswordInp: TEdit;
     LoginBtn: TButton;
-    Button2: TButton;
-    Button1: TButton;
     Button3: TButton;
     procedure LoginBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -31,7 +29,7 @@ var
   AuthUsersList: AuthCore.TUsersList;
 
 implementation
-uses ZavuchScreen, ParentsScreen, UsersManage, teacherScreen, pupilScreen,
+uses ZavuchScreen, UsersManage, teacherScreen, pupilScreen,
   UsersListsCore;
 {$R *.dfm}
 

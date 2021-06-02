@@ -13,7 +13,6 @@ type
     ParentName1: TLabel;
     ParentName2: TLabel;
     DnevnikStringGrid1: TStringGrid;
-    MonthCalendar1: TMonthCalendar;
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;

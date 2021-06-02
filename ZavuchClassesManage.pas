@@ -80,8 +80,8 @@ begin
     ComboBox1.Items.Add(usersCurr^.data.firstname+' '+usersCurr^.data.lastname);
     usersCurr := usersCurr^.next;
   end;
-//  cleanClassesList;
-//  drawClassesList;
+  cleanClassesList;
+  drawClassesList;
 end;
 
 procedure TForm15.ClassesListTableSelectCell(Sender: TObject; ACol,
@@ -113,7 +113,7 @@ begin
   // TODO get manager ID
   ClassesCore.createClass(NewClassNameEdit.Text, 'aboba');
 //  ShowMessage(classesList[0].name);
-//  cleanClassesList();
+  cleanClassesList();
   drawClassesList();
 end;
 end.

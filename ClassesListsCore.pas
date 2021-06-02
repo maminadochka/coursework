@@ -68,9 +68,9 @@ begin
   New(curr);
   if FileSize(f) <> 0 then
   begin
-//    Read(f, curr^.data);
+    Read(f, curr^.data);
 //    ShowMessage('load list element name: '+curr^.data.name);
-//    AddToEnd(List, curr);
+    AddToEnd(List, curr);
     while not EOF(f) do
     begin
       tmp := curr;

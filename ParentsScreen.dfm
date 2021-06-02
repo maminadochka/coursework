@@ -45,29 +45,21 @@ object Form6: TForm6
     RowCount = 8
     TabOrder = 0
   end
-  object MonthCalendar1: TMonthCalendar
-    Left = 871
-    Top = 136
-    Width = 170
-    Height = 169
-    Date = 44334.000000000000000000
-    TabOrder = 1
-  end
   object Panel1: TPanel
     Left = 24
     Top = 384
     Width = 1425
     Height = 249
     Caption = 'Panel1'
-    TabOrder = 2
+    TabOrder = 1
   end
   object Panel2: TPanel
-    Left = 1176
+    Left = 1128
     Top = 78
-    Width = 273
-    Height = 243
+    Width = 321
+    Height = 259
     Caption = 'poseshaemost'
-    TabOrder = 3
+    TabOrder = 2
   end
   object Panel3: TPanel
     Left = 528
@@ -75,6 +67,6 @@ object Form6: TForm6
     Width = 497
     Height = 137
     Caption = 'Panel3'
-    TabOrder = 4
+    TabOrder = 3
   end
 end

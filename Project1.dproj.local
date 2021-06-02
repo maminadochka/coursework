@@ -15,12 +15,8 @@
     <File Path="Libs.dfm"/>
     <File Path="MainScreen.pas"/>
     <File Path="MainScreen.dfm"/>
-    <File Path="newPupilScreen.pas"/>
-    <File Path="newPupilScreen.dfm"/>
     <File Path="newUserScreen.pas"/>
     <File Path="newUserScreen.dfm"/>
-    <File Path="newZavuchScreen.pas"/>
-    <File Path="newZavuchScreen.dfm"/>
     <File Path="ParentsScreen.pas"/>
     <File Path="ParentsScreen.dfm"/>
     <File Path="PupilsCore.pas"/>
@@ -29,8 +25,6 @@
     <File Path="pupilScreen.dfm"/>
     <File Path="Statistics.pas"/>
     <File Path="Statistics.dfm"/>
-    <File Path="teacherScreen.pas"/>
-    <File Path="teacherScreen.dfm"/>
     <File Path="userInfoScreen.pas"/>
     <File Path="userInfoScreen.dfm"/>
     <File Path="UsersCore.pas"/>
@@ -43,5 +37,19 @@
     <File Path="ZavuchClassesManage.dfm"/>
     <File Path="ZavuchScreen.pas"/>
     <File Path="ZavuchScreen.dfm"/>
-  </ProjectSortOrder>
+    <File Path="MarksCore.pas"/>
+    <File Path="MarksCore.dfm"/>
+    <File Path="MarksListCore.pas"/>
+    <File Path="MarksListCore.dfm"/>
+  </ProjectSortOrder>  <Transactions>
+    <Transaction>2021.06.02 14:10:37.820,=K:\Универ\прога\курсовая2сем\code\Unit22.pas</Transaction>
+    <Transaction>2021.06.02 14:10:59.996,K:\Универ\прога\курсовая2сем\code\MarksCore.dfm=K:\Универ\прога\курсовая2сем\code\Unit22.dfm</Transaction>
+    <Transaction>2021.06.02 14:10:59.996,K:\Универ\прога\курсовая2сем\code\MarksCore.pas=K:\Универ\прога\курсовая2сем\code\Unit22.pas</Transaction>
+    <Transaction>2021.06.02 14:11:11.226,=K:\Универ\прога\курсовая2сем\code\Unit23.pas</Transaction>
+    <Transaction>2021.06.02 14:12:27.060,K:\Универ\прога\курсовая2сем\code\MarksListCore.pas=K:\Универ\прога\курсовая2сем\code\Unit23.pas</Transaction>
+    <Transaction>2021.06.02 14:12:27.060,K:\Универ\прога\курсовая2сем\code\MarksListCore.dfm=K:\Универ\прога\курсовая2сем\code\Unit23.dfm</Transaction>
+    <Transaction>2021.06.02 20:26:42.125,K:\Универ\прога\курсовая2сем\code\newZavuchScreen.pas=</Transaction>
+    <Transaction>2021.06.02 20:26:56.201,K:\Универ\прога\курсовая2сем\code\teacherScreen.pas=</Transaction>
+    <Transaction>2021.06.02 20:27:24.687,K:\Универ\прога\курсовая2сем\code\newPupilScreen.pas=</Transaction>
+  </Transactions>
 </BorlandProject>

@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, UsersCore, UsersListsCore;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, UsersCore, UsersListsCore, AuthCore;
 
 type
   TForm20 = class(TForm)
@@ -37,8 +37,11 @@ implementation
 
 
 procedure TForm20.Button1Click(Sender: TObject);
+var AuthUsersList: AuthCore.TUsersList;
 begin
-  UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, OwnClassComboBox.Text, '11A','8A','7A',SubjectComboBox.Text);
+//AuthUsersList:= AuthCore.loadlist;
+  UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, 'teacher', OwnClassComboBox.Text,'8A','7A',SubjectComboBox.Text);
+//  AuthCore.AddUser()
   Form20.Close;
 end;
 

@@ -68,16 +68,19 @@ begin
   PupilsListTable.RowCount := 100;
   while curr <> nil do
   begin
-     PupilsListTable.Cells[2, cnt+1] := curr^.data.lastname;
-     PupilsListTable.Cells[3, cnt+1] := curr^.data.firstname;
-     cnt := cnt+1;
+     if curr^.data.studyClassID = classID then
+     begin
+      PupilsListTable.Cells[2, cnt+1] := curr^.data.lastname;
+      PupilsListTable.Cells[3, cnt+1] := curr^.data.firstname;
+      cnt := cnt+1;
+     end;
     curr := curr^.next;
   end;
 end;
 
 procedure TForm16.addPupilBtnClick(Sender: TObject);
 begin
-  UsersCore.createUser('',FirstNameEdit.Text, LastNameEdit.Text, 'pupil', '','','','');
+  UsersCore.createUser('',FirstNameEdit.Text, LastNameEdit.Text, 'pupil', '','',classID,'');
   cleanUsersTable;
   drawUsersTable;
 end;

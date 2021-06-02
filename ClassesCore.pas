@@ -22,7 +22,7 @@ var
 function getClass(classId: string): ClassesListsCore.T_Class;
 function createClass(name: string; managerId: string): boolean;
 function updateClass(classId, MathTeacherName, RusTeacherName: string): ClassesListsCore.T_Class;
-
+function getclassbyname(classname: string): ClassesListsCore.T_Class;
 
 implementation
 
@@ -76,6 +76,26 @@ begin
   while curr <> nil do
   begin
     if curr^.data.classId = classId then
+    begin
+      Result := curr^.data;
+      exit;
+    end;
+    curr := curr^.next;
+  end;
+end;
+
+function getclassbyname(classname: string): ClassesListsCore.T_Class;
+var
+  i: integer;
+  classesList: ClassesListsCore.TList;
+  curr: ClassesListsCore.PTListElement;
+begin
+  ClassesListsCore.LoadList(classesList);
+  New(curr);
+  curr := classesList.head;
+  while curr <> nil do
+  begin
+    if curr^.data.Name = classname then
     begin
       Result := curr^.data;
       exit;
