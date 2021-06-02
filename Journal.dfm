@@ -62,6 +62,7 @@ object Form4: TForm4
     Height = 21
     TabOrder = 0
     Text = 'ClassesJournalComboBox'
+    OnChange = ClassesJournalComboBoxChange
   end
   object SubjectsComboBox: TComboBox
     Left = 96
