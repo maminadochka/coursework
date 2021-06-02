@@ -17,7 +17,7 @@ object Form1: TForm1
   TextHeight = 13
   object Label1: TLabel
     Left = 574
-    Top = 192
+    Top = 240
     Width = 371
     Height = 25
     Caption = '                   '#1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103'                   '
