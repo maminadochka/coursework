@@ -136,10 +136,6 @@
             <Form>Form12</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="teacherScreen.pas">
-            <Form>Form13</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="pupilScreen.pas">
             <Form>Form14</Form>
             <FormType>dfm</FormType>
@@ -156,20 +152,20 @@
             <Form>Form17</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="newZavuchScreen.pas">
-            <Form>Form18</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="newPupilScreen.pas">
-            <Form>Form19</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="newUserScreen.pas">
             <Form>Form20</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UsersListsCore.pas">
             <Form>Form21</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="MarksCore.pas">
+            <Form>Form22</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="MarksListCore.pas">
+            <Form>Form23</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

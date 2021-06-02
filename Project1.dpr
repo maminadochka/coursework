@@ -14,15 +14,14 @@ uses
   UsersCore in 'UsersCore.pas' {Form10},
   ClassesCore in 'ClassesCore.pas' {Form11},
   Libs in 'Libs.pas' {Form12},
-  teacherScreen in 'teacherScreen.pas' {Form13},
   pupilScreen in 'pupilScreen.pas' {Form14},
   ZavuchClassesManage in 'ZavuchClassesManage.pas' {Form15},
   ClassViewScreen in 'ClassViewScreen.pas' {Form16},
   userInfoScreen in 'userInfoScreen.pas' {Form17},
-  newZavuchScreen in 'newZavuchScreen.pas' {Form18},
-  newPupilScreen in 'newPupilScreen.pas' {Form19},
   newUserScreen in 'newUserScreen.pas' {Form20},
-  UsersListsCore in 'UsersListsCore.pas' {Form21};
+  UsersListsCore in 'UsersListsCore.pas' {Form21},
+  MarksCore in 'MarksCore.pas' {Form22},
+  MarksListCore in 'MarksListCore.pas' {Form23};
 
 {$R *.res}
 
@@ -41,14 +40,13 @@ begin
   Application.CreateForm(TForm10, Form10);
   Application.CreateForm(TForm11, Form11);
   Application.CreateForm(TForm12, Form12);
-  Application.CreateForm(TForm13, Form13);
   Application.CreateForm(TForm14, Form14);
   Application.CreateForm(TForm15, Form15);
   Application.CreateForm(TForm16, Form16);
   Application.CreateForm(TForm17, Form17);
-  Application.CreateForm(TForm18, Form18);
-  Application.CreateForm(TForm19, Form19);
   Application.CreateForm(TForm20, Form20);
   Application.CreateForm(TForm21, Form21);
+  Application.CreateForm(TForm22, Form22);
+  Application.CreateForm(TForm23, Form23);
   Application.Run;
 end.
