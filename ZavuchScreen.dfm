@@ -29,7 +29,7 @@ object Form2: TForm2
   end
   object Journal: TButton
     Left = 624
-    Top = 384
+    Top = 264
     Width = 273
     Height = 41
     Caption = #1046#1091#1088#1085#1072#1083
@@ -38,37 +38,29 @@ object Form2: TForm2
   end
   object UsersManage: TButton
     Left = 624
-    Top = 440
+    Top = 320
     Width = 273
     Height = 41
     Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1103#1084#1080
     TabOrder = 1
     OnClick = UsersManageClick
   end
-  object UserEdit: TButton
-    Left = 624
-    Top = 328
-    Width = 273
-    Height = 41
-    Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1087#1088#1086#1092#1080#1083#1100
-    TabOrder = 2
-  end
   object Button1: TButton
     Left = 624
-    Top = 495
+    Top = 375
     Width = 273
     Height = 42
     Caption = #1050#1083#1072#1089#1089#1099
-    TabOrder = 3
+    TabOrder = 2
     OnClick = Button2Click
   end
   object Button2: TButton
     Left = 624
-    Top = 551
+    Top = 431
     Width = 273
     Height = 42
     Caption = #1054#1090#1095#1077#1090' '#1087#1086' '#1091#1089#1087#1077#1074#1072#1077#1084#1086#1089#1090#1080
-    TabOrder = 4
+    TabOrder = 3
     OnClick = Button2Click
   end
 end

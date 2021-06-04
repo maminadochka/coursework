@@ -33,7 +33,9 @@ type
     procedure FormShow(Sender: TObject);
     procedure drawPupils();
     procedure ClassesJournalComboBoxChange(Sender: TObject);
-    procedure CleanTable();
+    procedure CleanMarks();
+    procedure cleanPupils();
+    procedure cleanDates();
   private
     { Private declarations }
   public
@@ -128,6 +130,7 @@ begin
       end;
       MarksCore.addmark(Stringgrid1.Cells[0,Arow],Stringgrid1.Cells[Acol,0],Value, SubjectsComboBox.text);
      end;
+                  //////SDELAT' 10!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    end;
 
      // date validator and adder
@@ -163,6 +166,7 @@ var i,j,cnt: integer;
     _class:  ClassesListsCore.T_Class;
 begin
   UsersListsCore.LoadList(UsersList);
+  New(curr);
   curr:=UsersList.head;
   cnt:=0;
   _class:= ClassesCore.getclassbyname(classesjournalcombobox.text);
@@ -171,10 +175,12 @@ begin
       if curr.data.userType = 'pupil' then
         begin
           if curr.data.studyClassID = _class.classId then
+          begin
             Stringgrid1.Cells[2,cnt+1] := curr.data.lastname + ' ' +curr.data.firstname;
             Stringgrid1.Cells[1,cnt+1] := inttostr(cnt+1);
             Stringgrid1.Cells[0,cnt+1] := curr.data.userId;
             cnt:= cnt + 1;
+          end;
         end;
       curr:= curr.next;
     end;
@@ -315,26 +321,48 @@ end;
 
 procedure TForm4.ClassesJournalComboBoxChange(Sender: TObject);
 begin
-  cleanTable();
+  cleanMarks();
+  cleanDates();
+  cleanPupils();
   drawpupils();
 end;
 
-procedure TForm4.cleanTable();
+procedure TForm4.cleanMarks();
 var
   i,j: integer;
 begin
-  for i := 0 to 100 do
+  for i := 3 to 100 do
     begin
       for j := 1 to 100 do
        StringGrid1.Cells[i,j] := '';
     end;
 end;
 
+procedure TForm4.cleanPupils();
+var
+  i,j: integer;
+begin
+  for i := 0 to 3 do
+    begin
+      for j := 1 to 100 do
+       StringGrid1.Cells[i,j] := '';
+    end;
+end;
+
+procedure TForm4.cleanDates();
+var
+  i,j: integer;
+begin
+      for i := 3 to 100 do
+       StringGrid1.Cells[i,0] := '';
+end;
+
 procedure TForm4.SubjectsComboBoxChange(Sender: TObject);
 var
   subject_name: string;
 begin
-//  cleanTable();
+  cleanMarks();
+  cleanDates();
   subject_name := SubjectsCombobox.Items[SubjectsCombobox.ItemIndex];
   drawDates();
   drawMarks();

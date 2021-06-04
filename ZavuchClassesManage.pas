@@ -45,16 +45,19 @@ begin
   // TODO make creating of more than 1 class
   classesListsCore.LoadList(classesList);
   cnt := 0;
+  New(curr);
   curr := classesList.head;
+  if curr = nil then  exit;
+
   classesListTable.RowCount := 100;
 //   ShowMessage('from draw: '+curr^.data.name);
-  classesListTable.Cells[0, cnt+1] := curr^.data.classId;
-  classesListTable.Cells[1, cnt+1] := curr^.data.name;
+//  classesListTable.Cells[0, cnt+1] := curr^.data.classId;
+//  classesListTable.Cells[1, cnt+1] := curr^.data.name;
   while curr <> nil do
   begin
 //    ShowMessage('from draw: '+curr^.data.name);
-//    classesListTable.Cells[0, cnt+1] := curr^.data.name;
-//    classesListTable.Cells[1, cnt+1] := curr^.data.name;
+    classesListTable.Cells[0, cnt+1] := curr^.data.classId;
+    classesListTable.Cells[1, cnt+1] := curr^.data.name;
     cnt := cnt+1;
     curr := curr^.next;
   end;
@@ -77,7 +80,10 @@ begin
   usersCurr := usersList.head;
   while usersCurr <> nil do
   begin
-    ComboBox1.Items.Add(usersCurr^.data.firstname+' '+usersCurr^.data.lastname);
+    if usersCurr.data.userType <> 'pupil' then
+    begin
+      ComboBox1.Items.Add(usersCurr^.data.firstname+' '+usersCurr^.data.lastname);
+    end;
     usersCurr := usersCurr^.next;
   end;
   cleanClassesList;

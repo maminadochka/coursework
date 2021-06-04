@@ -11,7 +11,6 @@ type
     UserName: TLabel;
     Journal: TButton;
     UsersManage: TButton;
-    UserEdit: TButton;
     Button1: TButton;
     Button2: TButton;
     procedure UsersManageClick(Sender: TObject);
@@ -33,7 +32,7 @@ var
   Form2: TForm2;
 
 implementation
-uses UsersManage, Journal, ParentsScreen;
+uses UsersManage, Journal, ParentsScreen, Statistics;
 {$R *.dfm}
 
 

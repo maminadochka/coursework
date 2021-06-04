@@ -36,7 +36,7 @@ begin
   //TODO remove userType param
     if checkExists(login) then
       begin
-        ShowMessage('login: '+login+' exists');
+       // ShowMessage('login: '+login+' exists');
         exit;
       end;
     New(curr);

@@ -65,16 +65,20 @@ object Form1: TForm1
     Width = 180
     Height = 33
     Caption = #1042#1086#1081#1090#1080
+    Default = True
     TabOrder = 2
     OnClick = LoginBtnClick
+    OnEnter = LoginBtnClick
   end
   object Button3: TButton
     Left = 678
     Top = 438
     Width = 180
     Height = 33
-    Caption = #1042#1099#1093#1086#1076
+    Cancel = True
+    Caption = #1047#1072#1074#1077#1088#1096#1077#1085#1080#1077' '#1088#1072#1073#1086#1090#1099
     TabOrder = 3
     OnClick = Button3Click
+    OnExit = Button3Click
   end
 end

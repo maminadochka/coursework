@@ -69,7 +69,7 @@ var MarksList: MarksListCore.TList;
     curr: MarksListCore.PTListElement;
     curr2: MarksListCore.PTListElement;
     begin
-//      ShowMessage('addmark: '+pupilID+' '+date+' '+value+' '+subjectName);
+      ShowMessage('addmark: '+pupilID+' '+date+' '+value+' '+subjectName);
       new(curr);
       New(curr2);
       MarksListCore.LoadList(MarksList);
