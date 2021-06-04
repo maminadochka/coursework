@@ -15,12 +15,8 @@
     <File Path="Libs.dfm"/>
     <File Path="MainScreen.pas"/>
     <File Path="MainScreen.dfm"/>
-    <File Path="newPupilScreen.pas"/>
-    <File Path="newPupilScreen.dfm"/>
     <File Path="newUserScreen.pas"/>
     <File Path="newUserScreen.dfm"/>
-    <File Path="newZavuchScreen.pas"/>
-    <File Path="newZavuchScreen.dfm"/>
     <File Path="ParentsScreen.pas"/>
     <File Path="ParentsScreen.dfm"/>
     <File Path="PupilsCore.pas"/>
@@ -29,8 +25,6 @@
     <File Path="pupilScreen.dfm"/>
     <File Path="Statistics.pas"/>
     <File Path="Statistics.dfm"/>
-    <File Path="teacherScreen.pas"/>
-    <File Path="teacherScreen.dfm"/>
     <File Path="userInfoScreen.pas"/>
     <File Path="userInfoScreen.dfm"/>
     <File Path="UsersCore.pas"/>
@@ -43,5 +37,9 @@
     <File Path="ZavuchClassesManage.dfm"/>
     <File Path="ZavuchScreen.pas"/>
     <File Path="ZavuchScreen.dfm"/>
+    <File Path="MarksCore.pas"/>
+    <File Path="MarksCore.dfm"/>
+    <File Path="MarksListCore.pas"/>
+    <File Path="MarksListCore.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>
