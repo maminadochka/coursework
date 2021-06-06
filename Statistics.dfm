@@ -35,7 +35,7 @@ object Form5: TForm5
     Top = 78
     Width = 1508
     Height = 715
-    ColCount = 8
+    ColCount = 13
     FixedCols = 2
     RowCount = 30
     TabOrder = 0
@@ -90,7 +90,7 @@ object Form5: TForm5
     OnChange = SubjectsComboBoxChange
   end
   object ThirdButtonStatistics: TButton
-    Left = 491
+    Left = 903
     Top = 47
     Width = 75
     Height = 25
@@ -99,7 +99,7 @@ object Form5: TForm5
     OnClick = ThirdButtonStatisticsClick
   end
   object ForthButtonStatistics: TButton
-    Left = 572
+    Left = 1135
     Top = 47
     Width = 75
     Height = 25
@@ -108,7 +108,7 @@ object Form5: TForm5
     OnClick = ForthButtonStatisticsClick
   end
   object SecondButtonStatistics: TButton
-    Left = 410
+    Left = 650
     Top = 47
     Width = 75
     Height = 25
@@ -117,7 +117,7 @@ object Form5: TForm5
     OnClick = SecondButtonStatisticsClick
   end
   object FirstButtonStatistics: TButton
-    Left = 329
+    Left = 418
     Top = 47
     Width = 75
     Height = 25
@@ -126,7 +126,7 @@ object Form5: TForm5
     OnClick = FirstButtonStatisticsClick
   end
   object Button1: TButton
-    Left = 653
+    Left = 1357
     Top = 47
     Width = 75
     Height = 25
