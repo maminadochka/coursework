@@ -76,6 +76,7 @@ var
   usersList: usersListsCore.TList;
   usersCurr: usersListsCore.PTListElement;
 begin
+  ComboBox1.Items.Clear;
   usersListsCore.LoadList(usersList);
   usersCurr := usersList.head;
   while usersCurr <> nil do
@@ -117,7 +118,7 @@ end;
 procedure TForm15.Button1Click(Sender: TObject);
 begin
   // TODO get manager ID
-  ClassesCore.createClass(NewClassNameEdit.Text, 'aboba');
+  ClassesCore.createClass(NewClassNameEdit.Text, Combobox1.Text);
 //  ShowMessage(classesList[0].name);
   cleanClassesList();
   drawClassesList();

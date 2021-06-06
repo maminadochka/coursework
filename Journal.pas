@@ -6,7 +6,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, System.StrUtils, JournalCore, PupilsCore, UsersCore,
-  ClassesCore, UsersListsCore, ClassesListsCore, MarksCore, MarksListCore;
+  ClassesCore, UsersListsCore, ClassesListsCore, MarksCore, MarksListCore, EventsCore, EventsListCore;
 
 type
   TForm4 = class(TForm)
@@ -18,7 +18,6 @@ type
     StringGrid2: TStringGrid;
     ClassRucLabel: TLabel;
     StatisticButton: TButton;
-    MonthComboBox: TComboBox;
     ClassNameLabel: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure StringGrid1SetEditText(Sender: TObject; ACol, ARow: Integer;
@@ -26,16 +25,21 @@ type
     procedure StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
     procedure StatisticButtonClick(Sender: TObject);
-    procedure drawDates();
+    procedure drawEvents();
     procedure StringGrid1Click(Sender: TObject);
     procedure SubjectsComboBoxChange(Sender: TObject);
     procedure drawMarks();
     procedure FormShow(Sender: TObject);
     procedure drawPupils();
+    procedure cleanRightTable();
     procedure ClassesJournalComboBoxChange(Sender: TObject);
     procedure CleanMarks();
     procedure cleanPupils();
     procedure cleanDates();
+    procedure StringGrid2DrawCell(Sender: TObject; ACol, ARow: Integer;
+      Rect: TRect; State: TGridDrawState);
+    procedure StringGrid2SetEditText(Sender: TObject; ACol, ARow: Integer;
+      const Value: string);
   private
     { Private declarations }
   public
@@ -109,6 +113,7 @@ var code,date: integer;
    dateErrFlag: boolean;
    mark: MarksListCore.TMark;
    pupil_firstname, pupil_lastname, pupil_fullname, pupil_id: string;
+   EventsList: EventsListCore.TList;
 
 begin
   dateErrFlag := false;
@@ -128,6 +133,8 @@ begin
         else
         if ((1>date) or (date>10)) then  showmessage('error!');
       end;
+//      check exists and call edit
+
       MarksCore.addmark(Stringgrid1.Cells[0,Arow],Stringgrid1.Cells[Acol,0],Value, SubjectsComboBox.text);
      end;
                   //////SDELAT' 10!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -145,11 +152,11 @@ begin
           end
           else
           begin
-            // tut bag, kogda tykaesh na enter, ono eshe raz addit. i solved it
-            // with non-repeated items rule in dates list
-            //current_subject := addDateToSubject(current_subject, Value);
+            EventsListCore.LoadList(EventsList);
+            EventsCore.createEvent(EventsList, ClassesCore.getclassbyname(ClassesJournalComboBox.Text).classId, SubjectsComboBox.Text, value, '', '');
+            cleanRightTable;
+            drawEvents;
           end;
-
         end;
         if Length(Value) > 5 then
         begin
@@ -157,6 +164,20 @@ begin
           dateErrFlag := true;
         end;
      end;
+end;
+
+procedure TForm4.StringGrid2DrawCell(Sender: TObject; ACol, ARow: Integer;
+  Rect: TRect; State: TGridDrawState);
+begin
+//    EventsCore.editEvent(ClassesCore.getClassByName(ClassesJournalCombobox.Text).classId, SubjectsCombobox.Text, StringGrid2.Cells[0, ARow], StringGrid2.Cells[1, ARow], StringGrid2.Cells[2, ARow]);
+//    ShowMessage('edited');
+    end;
+
+procedure TForm4.StringGrid2SetEditText(Sender: TObject; ACol, ARow: Integer;
+  const Value: string);
+begin
+  EventsCore.editEvent(ClassesCore.getClassByName(ClassesJournalCombobox.Text).classId, SubjectsCombobox.Text, StringGrid2.Cells[0, ARow], StringGrid2.Cells[1, ARow], StringGrid2.Cells[2, ARow]);
+//    ShowMessage('edited');
 end;
 
 procedure TForm4.drawPupils();
@@ -186,16 +207,18 @@ begin
     end;
 end;
 
-procedure TForm4.drawDates();
+procedure TForm4.drawEvents();
 var
-  i:integer;
+  EventsList: EventsCore.TEventsList;
+  i, j: integer;
 begin
-  // TODO sort by lowest to higher and draw
-//   ShowMessage('dates to render: '+inttostr(Length(current_subject.dates)));
-  //for i := 0 to Length(current_subject.dates)-1 do
-  //begin
-    //StringGrid1.Cells[i+2, 0] := current_subject.dates[i];
-  //end;
+  EventsList := EventsCore.getEvents(SubjectsCombobox.Text, ClassesCore.getclassbyname(ClassesJournalCombobox.Text).classId);
+  for i := 0 to Length(EventsList)-1 do
+    begin
+      StringGrid2.Cells[0, i+1] := EventsList[i].date;
+      StringGrid2.Cells[1, i+1] := EventsList[i].HomeTask;
+      StringGrid2.Cells[2, i+1] := EventsList[i].lessonTheme;
+    end;
 end;
 
 procedure TForm4.drawMarks();
@@ -214,7 +237,7 @@ begin
  dateExistFlag := false;
  dateCnt := 1;
  // getting unique dates
- for i := 1 to 3 do
+ for i := 1 to 100 do
  begin
   pupilID := StringGrid1.Cells[0, i];
   if Length(pupilID) = 38 then
@@ -278,26 +301,12 @@ begin
   classesCurr := classesList.head;
   SubjectsCombobox.Items.Add('Math');
   SubjectsCombobox.Items.Add('Rus');
-//  SubjectsCombobox.Items.Add('Biologia');
   while classesCurr <> nil do
   begin
     ClassesJournalCombobox.Items.Add(classesCurr.data.name);
     classesCurr := classesCurr.next;
   end;
 
-  // ClassesJournalComboBox.Items.Add();
-//  ShowMessage(inttostr(Length(classesList)));
-  // user := UsersCore.getUserById(usersList, managerId);
-  // journal._class := getClass();
-  // journal._class := createNewClass(20, '7A', user.firstname);
-  // journal.subjects := createSubjects();
-  // ClassRucLabel.Caption := 'classruc: '+ journal._class.classruc_name;
-  // ClassNameLabel.Caption := 'classname: : '+journal._class.name;
-  // for i := 0 to Length(journal.subjects) do
-  //   begin
-  //     SubjectsComboBox.Items.Add(journal.subjects[i].name);
-  //   end;
-  // WindowState := wsMaximized;
   errorCol := -1;
   errorRow := -1;
   selectedRow := -1;
@@ -321,6 +330,8 @@ end;
 
 procedure TForm4.ClassesJournalComboBoxChange(Sender: TObject);
 begin
+  cleanRightTable;
+  drawEvents();
   cleanMarks();
   cleanDates();
   cleanPupils();
@@ -335,6 +346,19 @@ begin
     begin
       for j := 1 to 100 do
        StringGrid1.Cells[i,j] := '';
+    end;
+end;
+
+procedure TForm4.cleanRightTable();
+var
+  i,j: integer;
+begin
+  for i := 0 to 2 do
+    begin
+      for j := 1 to 100 do
+        begin
+          StringGrid2.Cells[i, j] := '';
+        end;
     end;
 end;
 
@@ -364,7 +388,8 @@ begin
   cleanMarks();
   cleanDates();
   subject_name := SubjectsCombobox.Items[SubjectsCombobox.ItemIndex];
-  drawDates();
+  cleanRightTable;
+  drawEvents();
   drawMarks();
 end;
 

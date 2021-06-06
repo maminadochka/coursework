@@ -37,6 +37,8 @@ begin
   New(curr);
   ClassesListsCore.LoadList(classesList);
   curr^.data.name := name;
+  curr.data.MathTeacherName := '';
+  curr.data.RUSTeacherName := '';
   curr^.data.managerId := managerId;
   curr^.data.classId := Libs.GenerateUUID();
   ClassesListsCore.AddToEnd(classesList, curr);

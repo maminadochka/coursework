@@ -19,7 +19,7 @@ type
 var
   Form10: TForm10;
 
-function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass, subject: string): boolean;
+function createUser(login, firstname, lastname, userType, classes, studyClass, subject: string): boolean;
 function getUser(const login: string): TUser;
 function getUsersBySubject(const subject: string): UsersListsCore.TUsersList;
 function checkExists(login: string): boolean;
@@ -28,7 +28,7 @@ implementation
 
 {$R *.dfm}
 
-function createUser(login, firstname, lastname, userType, ownClass, classes, studyClass, subject: string): boolean;
+function createUser(login, firstname, lastname, userType, classes, studyClass, subject: string): boolean;
 var
   UsersList: UsersListsCore.TList;
   curr: UsersListsCore.PTListElement;
@@ -53,7 +53,6 @@ begin
      curr^.data.firstname := firstname;
      curr^.data.lastname := lastname;
      curr^.data.userType := userType;
-     curr^.data.ownClassID := ownClass;
      curr^.data.classes := classes;
      curr^.data.studyClassID := studyClass;
      curr^.data.subject := subject;

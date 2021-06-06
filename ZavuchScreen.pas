@@ -25,6 +25,7 @@ type
     userId: string;
     usersList: UsersListsCore.TList;
     classesList: ClassesListsCore.TList;
+    UserType:string;
     { Public declarations }
   end;
 
@@ -43,7 +44,7 @@ end;
 
 procedure TForm2.Button2Click(Sender: TObject);
 begin
-  Form15.ShowModal;
+  Form6.ShowModal;
 end;
 
 procedure TForm2.FormShow(Sender: TObject);
@@ -55,6 +56,22 @@ begin
   user := UsersCore.getUser(userLogin);
   fullName := user.firstName + ' ' + user.lastName;
   UserName.Caption := fullName;
+  if user.userType = 'teacher' then
+  begin
+    UsersManage.Visible := False;
+    Button1.Visible := False;
+    Button2.Visible := False;
+  end;
+  if user.userType = 'zavuch' then
+  begin
+    Button2.Visible := False;
+  end;
+  if user.userType = 'pupil' then
+  begin
+    UsersManage.Visible := False;
+    Button1.Visible := False;
+    Button2.Visible := True;
+  end;
 end;
 
 procedure TForm2.JournalClick(Sender: TObject);

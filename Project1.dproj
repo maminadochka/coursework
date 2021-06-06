@@ -136,20 +136,12 @@
             <Form>Form12</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="pupilScreen.pas">
-            <Form>Form14</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="ZavuchClassesManage.pas">
             <Form>Form15</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="ClassViewScreen.pas">
             <Form>Form16</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="userInfoScreen.pas">
-            <Form>Form17</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="newUserScreen.pas">
@@ -166,6 +158,14 @@
         </DCCReference>
         <DCCReference Include="MarksListCore.pas">
             <Form>Form23</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EventsListCore.pas">
+            <Form>Form13</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EventsCore.pas">
+            <Form>Form17</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

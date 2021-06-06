@@ -14,14 +14,14 @@ uses
   UsersCore in 'UsersCore.pas' {Form10},
   ClassesCore in 'ClassesCore.pas' {Form11},
   Libs in 'Libs.pas' {Form12},
-  pupilScreen in 'pupilScreen.pas' {Form14},
   ZavuchClassesManage in 'ZavuchClassesManage.pas' {Form15},
   ClassViewScreen in 'ClassViewScreen.pas' {Form16},
-  userInfoScreen in 'userInfoScreen.pas' {Form17},
   newUserScreen in 'newUserScreen.pas' {Form20},
   UsersListsCore in 'UsersListsCore.pas' {Form21},
   MarksCore in 'MarksCore.pas' {Form22},
-  MarksListCore in 'MarksListCore.pas' {Form23};
+  MarksListCore in 'MarksListCore.pas' {Form23},
+  EventsListCore in 'EventsListCore.pas' {Form13},
+  EventsCore in 'EventsCore.pas' {Form17};
 
 {$R *.res}
 
@@ -40,13 +40,13 @@ begin
   Application.CreateForm(TForm10, Form10);
   Application.CreateForm(TForm11, Form11);
   Application.CreateForm(TForm12, Form12);
-  Application.CreateForm(TForm14, Form14);
   Application.CreateForm(TForm15, Form15);
   Application.CreateForm(TForm16, Form16);
-  Application.CreateForm(TForm17, Form17);
   Application.CreateForm(TForm20, Form20);
   Application.CreateForm(TForm21, Form21);
   Application.CreateForm(TForm22, Form22);
   Application.CreateForm(TForm23, Form23);
+  Application.CreateForm(TForm13, Form13);
+  Application.CreateForm(TForm17, Form17);
   Application.Run;
 end.

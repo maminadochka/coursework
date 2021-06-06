@@ -21,12 +21,8 @@
     <File Path="ParentsScreen.dfm"/>
     <File Path="PupilsCore.pas"/>
     <File Path="PupilsCore.dfm"/>
-    <File Path="pupilScreen.pas"/>
-    <File Path="pupilScreen.dfm"/>
     <File Path="Statistics.pas"/>
     <File Path="Statistics.dfm"/>
-    <File Path="userInfoScreen.pas"/>
-    <File Path="userInfoScreen.dfm"/>
     <File Path="UsersCore.pas"/>
     <File Path="UsersCore.dfm"/>
     <File Path="UsersListsCore.pas"/>
@@ -41,5 +37,18 @@
     <File Path="MarksCore.dfm"/>
     <File Path="MarksListCore.pas"/>
     <File Path="MarksListCore.dfm"/>
-  </ProjectSortOrder>
+    <File Path="EventsListCore.pas"/>
+    <File Path="EventsListCore.dfm"/>
+    <File Path="EventsCore.pas"/>
+    <File Path="EventsCore.dfm"/>
+  </ProjectSortOrder>  <Transactions>
+    <Transaction>2021.06.06 14:09:29.835,K:\Универ\прога\курсовая2сем\code\userInfoScreen.pas=</Transaction>
+    <Transaction>2021.06.06 14:55:51.257,=K:\Универ\прога\курсовая2сем\code\Unit13.pas</Transaction>
+    <Transaction>2021.06.06 14:56:05.924,K:\Универ\прога\курсовая2сем\code\EventsListCore.dfm=K:\Универ\прога\курсовая2сем\code\Unit13.dfm</Transaction>
+    <Transaction>2021.06.06 14:56:05.924,K:\Универ\прога\курсовая2сем\code\EventsListCore.pas=K:\Универ\прога\курсовая2сем\code\Unit13.pas</Transaction>
+    <Transaction>2021.06.06 15:00:37.435,=K:\Универ\прога\курсовая2сем\code\Unit17.pas</Transaction>
+    <Transaction>2021.06.06 15:00:42.104,K:\Универ\прога\курсовая2сем\code\EventsCore.pas=K:\Универ\прога\курсовая2сем\code\Unit17.pas</Transaction>
+    <Transaction>2021.06.06 15:00:42.104,K:\Универ\прога\курсовая2сем\code\EventsCore.dfm=K:\Универ\прога\курсовая2сем\code\Unit17.dfm</Transaction>
+    <Transaction>2021.06.06 18:13:29.651,K:\Универ\прога\курсовая2сем\code\pupilScreen.pas=</Transaction>
+  </Transactions>
 </BorlandProject>

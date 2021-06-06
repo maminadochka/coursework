@@ -13,7 +13,6 @@ type
     firstname: string[50];
     lastname: string[50];
     userType: string[50];
-    ownClassID: string[50];
     classes: string[50];
     studyClassID: string[50];
     subject: string[20];

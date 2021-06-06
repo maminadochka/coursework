@@ -2,7 +2,7 @@ object Form20: TForm20
   Left = 0
   Top = 0
   Caption = 'Form20'
-  ClientHeight = 369
+  ClientHeight = 316
   ClientWidth = 331
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -43,16 +43,9 @@ object Form20: TForm20
     Height = 13
     Caption = 'New User'
   end
-  object Label5: TLabel
-    Left = 104
-    Top = 200
-    Width = 50
-    Height = 13
-    Caption = 'Own Class'
-  end
   object Label6: TLabel
     Left = 104
-    Top = 256
+    Top = 208
     Width = 36
     Height = 13
     Caption = 'Subject'
@@ -73,12 +66,16 @@ object Form20: TForm20
   end
   object Button1: TButton
     Left = 104
-    Top = 314
+    Top = 254
     Width = 121
     Height = 25
     Caption = 'create'
+    Default = True
+    DoubleBuffered = True
+    ParentDoubleBuffered = False
     TabOrder = 2
     OnClick = Button1Click
+    OnEnter = Button1Click
   end
   object UserLoginEdit: TEdit
     Left = 104
@@ -87,18 +84,11 @@ object Form20: TForm20
     Height = 21
     TabOrder = 3
   end
-  object OwnClassComboBox: TComboBox
+  object SubjectComboBox: TComboBox
     Left = 104
-    Top = 221
+    Top = 227
     Width = 121
     Height = 21
     TabOrder = 4
-  end
-  object SubjectComboBox: TComboBox
-    Left = 104
-    Top = 275
-    Width = 121
-    Height = 21
-    TabOrder = 5
   end
 end

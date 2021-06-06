@@ -69,7 +69,7 @@ var MarksList: MarksListCore.TList;
     curr: MarksListCore.PTListElement;
     curr2: MarksListCore.PTListElement;
     begin
-      ShowMessage('addmark: '+pupilID+' '+date+' '+value+' '+subjectName);
+//      ShowMessage('addmark: '+pupilID+' '+date+' '+value+' '+subjectName);
       new(curr);
       New(curr2);
       MarksListCore.LoadList(MarksList);
@@ -80,6 +80,9 @@ var MarksList: MarksListCore.TList;
       begin
         if (curr2.data.pupilId = pupilID) and (curr2.data.date = date) and (curr2.data.subject = subjectName) then
         begin
+//          ShowMessage('replacing '+curr2.data.value + 'na: '+value);
+          curr2.data.value := value;
+          MarksListCore.SaveList(MarksList);
           exit;
         end;
         curr2 := curr2^.next;

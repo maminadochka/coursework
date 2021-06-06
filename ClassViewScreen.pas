@@ -22,6 +22,8 @@ type
     MATHteacherComboBox: TComboBox;
     RUSteacherComboBox: TComboBox;
     SaveBut: TButton;
+    Label3: TLabel;
+    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure addPupilBtnClick(Sender: TObject);
@@ -80,7 +82,7 @@ end;
 
 procedure TForm16.addPupilBtnClick(Sender: TObject);
 begin
-  UsersCore.createUser('',FirstNameEdit.Text, LastNameEdit.Text, 'pupil', '','',classID,'');
+  UsersCore.createUser('',FirstNameEdit.Text, LastNameEdit.Text, 'pupil','',classID,'');
   cleanUsersTable;
   drawUsersTable;
 end;
@@ -101,9 +103,12 @@ var
 begin
   cleanUsersTable;
   drawUsersTable;
+  MATHteachercombobox.Items.Clear;
+  RUSteachercombobox.Items.Clear;
   _class := ClassesCore.getClass(classID);
   classNameLabel2.Caption := _class.name;
   // TODO get manager id by name
+  ShowMessage(_class.managerId);
   ManagerNameLabel2.Caption := _class.managerId;
 
   UsersListsCore.loadlist(Userslist);
