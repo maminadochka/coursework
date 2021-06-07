@@ -4,7 +4,7 @@ object Form6: TForm6
   Caption = 'Form6'
   ClientHeight = 845
   ClientWidth = 1540
-  Color = clSkyBlue
+  Color = clMoneyGreen
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

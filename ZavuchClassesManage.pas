@@ -34,7 +34,6 @@ var
 implementation
 
 {$R *.dfm}
-// TODO load journal marks
 procedure TForm15.drawClassesList();
 var
   i: integer;
@@ -42,7 +41,6 @@ var
   curr: ClassesListsCore.PTListElement;
   cnt: integer;
 begin
-  // TODO make creating of more than 1 class
   classesListsCore.LoadList(classesList);
   cnt := 0;
   New(curr);

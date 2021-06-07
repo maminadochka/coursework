@@ -108,19 +108,22 @@ begin
     end;
 end;
 
-procedure TForm5.yearstatistics();  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+procedure TForm5.yearstatistics();
 var i,j,yearn,yearmark: integer;
 begin
   for i := 3 to 10 do
   begin
-     for j := 1 to 100 do
+     for j := 1 to 30 do
        begin
-        yearn:= strtoint(stringgrid1.cells[3,j]) + strtoint(stringgrid1.cells[5,j])+
-            strtoint(stringgrid1.cells[7,j]) + strtoint(stringgrid1.cells[9,j]);
-        yearmark:= strtoint(stringgrid1.cells[4,j]) +  strtoint(stringgrid1.cells[6,j]) +
-            strtoint(stringgrid1.cells[8,j]) + strtoint(stringgrid1.cells[10,j]);
+       if stringgrid1.cells[i,j]<>'' then
+        begin
+        yearn:= (strtoint(stringgrid1.cells[3,j]) + strtoint(stringgrid1.cells[5,j])+
+            strtoint(stringgrid1.cells[7,j]) + strtoint(stringgrid1.cells[9,j]));
+        yearmark:= (strtoint(stringgrid1.cells[4,j]) +  strtoint(stringgrid1.cells[6,j]) +
+            strtoint(stringgrid1.cells[8,j]) + strtoint(stringgrid1.cells[10,j]));
         Stringgrid1.Cells[11,j]:=inttostr(yearn);
         Stringgrid1.Cells[12,j]:=inttostr(round(yearmark div 4));
+        end;
        end;
   end;
 end;

@@ -42,6 +42,7 @@ var
 procedure AddToEnd(var List: TList; var NewElementPointer: PTListElement);
 procedure SaveList(var List: TList);
 procedure LoadList(var List: TList);
+procedure DeleteEl(UserID: string);
 
 implementation
 
@@ -127,4 +128,51 @@ begin
   List.tail := NewElementPointer;
 end;
 
+procedure DeleteEl(UserID: string);
+var List :TList; curr :PTListElement;
+begin
+ LoadList(List);
+ New(curr);
+ curr:=List.head;
+ while curr<>nil do
+   begin
+    if curr.data.userId=UserID then
+     begin
+       if (curr=List.head) and (curr.next=nil) then  //удаление  единственной записи
+        begin
+         Dispose(curr);
+         List.head:=nil;
+        end
+       else
+        begin
+         if curr=List.head then   //удаление первой записи
+          begin
+            List.head := curr.next;
+            curr.next.prev := nil;
+            curr.next := nil;
+            Dispose(curr);
+          end
+         else
+          begin
+           if curr.next=nil then //удаление последней записи
+            begin
+             curr.prev.next:= nil;
+             curr.prev:=nil;
+             Dispose(curr);
+            end
+           else
+            begin             //удаление любой другой записи
+             curr.Prev^.Next := curr.Next;
+             curr.Next^.Prev := curr.Prev;
+             curr.Prev := nil;
+             curr.Next := nil;
+             Dispose(curr);
+            end;
+          end;
+        end;
+     end;
+    curr:=curr.next;
+   end;
+ SaveList(List);
+end;
 end.

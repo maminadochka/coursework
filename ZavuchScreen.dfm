@@ -4,7 +4,7 @@ object Form2: TForm2
   Caption = 'Form2'
   ClientHeight = 845
   ClientWidth = 1540
-  Color = clMoneyGreen
+  Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

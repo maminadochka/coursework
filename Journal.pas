@@ -1,5 +1,4 @@
-﻿// created with love by Roman&Ksenia
-unit Journal;
+﻿unit Journal;
 
 interface
 

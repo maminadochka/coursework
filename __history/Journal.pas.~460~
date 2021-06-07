@@ -133,6 +133,8 @@ begin
         else
         if ((1>date) or (date>10)) then  showmessage('error!');
       end;
+//      check exists and call edit
+
       MarksCore.addmark(Stringgrid1.Cells[0,Arow],Stringgrid1.Cells[Acol,0],Value, SubjectsComboBox.text);
      end;
                   //////SDELAT' 10!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -152,6 +154,8 @@ begin
           begin
             EventsListCore.LoadList(EventsList);
             EventsCore.createEvent(EventsList, ClassesCore.getclassbyname(ClassesJournalComboBox.Text).classId, SubjectsComboBox.Text, value, '', '');
+            cleanRightTable;
+            drawEvents;
           end;
         end;
         if Length(Value) > 5 then
@@ -173,7 +177,7 @@ procedure TForm4.StringGrid2SetEditText(Sender: TObject; ACol, ARow: Integer;
   const Value: string);
 begin
   EventsCore.editEvent(ClassesCore.getClassByName(ClassesJournalCombobox.Text).classId, SubjectsCombobox.Text, StringGrid2.Cells[0, ARow], StringGrid2.Cells[1, ARow], StringGrid2.Cells[2, ARow]);
-    ShowMessage('edited');
+//    ShowMessage('edited');
 end;
 
 procedure TForm4.drawPupils();
@@ -212,8 +216,8 @@ begin
   for i := 0 to Length(EventsList)-1 do
     begin
       StringGrid2.Cells[0, i+1] := EventsList[i].date;
-      StringGrid2.Cells[1, i+1] := EventsList[i].lessonTheme;
-      StringGrid2.Cells[2, i+1] := EventsList[i].HomeTask;
+      StringGrid2.Cells[1, i+1] := EventsList[i].HomeTask;
+      StringGrid2.Cells[2, i+1] := EventsList[i].lessonTheme;
     end;
 end;
 
@@ -233,7 +237,7 @@ begin
  dateExistFlag := false;
  dateCnt := 1;
  // getting unique dates
- for i := 1 to 3 do
+ for i := 1 to 100 do
  begin
   pupilID := StringGrid1.Cells[0, i];
   if Length(pupilID) = 38 then
@@ -297,26 +301,12 @@ begin
   classesCurr := classesList.head;
   SubjectsCombobox.Items.Add('Math');
   SubjectsCombobox.Items.Add('Rus');
-//  SubjectsCombobox.Items.Add('Biologia');
   while classesCurr <> nil do
   begin
     ClassesJournalCombobox.Items.Add(classesCurr.data.name);
     classesCurr := classesCurr.next;
   end;
 
-  // ClassesJournalComboBox.Items.Add();
-//  ShowMessage(inttostr(Length(classesList)));
-  // user := UsersCore.getUserById(usersList, managerId);
-  // journal._class := getClass();
-  // journal._class := createNewClass(20, '7A', user.firstname);
-  // journal.subjects := createSubjects();
-  // ClassRucLabel.Caption := 'classruc: '+ journal._class.classruc_name;
-  // ClassNameLabel.Caption := 'classname: : '+journal._class.name;
-  // for i := 0 to Length(journal.subjects) do
-  //   begin
-  //     SubjectsComboBox.Items.Add(journal.subjects[i].name);
-  //   end;
-  // WindowState := wsMaximized;
   errorCol := -1;
   errorRow := -1;
   selectedRow := -1;

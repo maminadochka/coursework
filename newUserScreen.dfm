@@ -4,7 +4,7 @@ object Form20: TForm20
   Caption = 'Form20'
   ClientHeight = 316
   ClientWidth = 331
-  Color = clBtnFace
+  Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

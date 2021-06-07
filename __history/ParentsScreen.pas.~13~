@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.ExtCtrls, EventsCore, EventsListCore, UsersCore, UsersListsCore, ClassesCore;
+  Vcl.ExtCtrls, EventsCore, EventsListCore, UsersCore, UsersListsCore;
 
 type
   TForm6 = class(TForm)
@@ -35,14 +35,14 @@ procedure TForm6.ComboBox1Change(Sender: TObject);
 var
   i: integer;
   EventsList: EventsCore.TEventsList;
-  classID: string;
 begin
-  EventsCore.getEvents(Combobox1.Text, ClassesCORE.getclassbyname(Combobox1.Text).classId);
+ // EventsCore.getEvents(Combobox1.Text,) ;
     for i := 0 to length(eventsList)-1 do
     begin
       DnevnikStringGrid1.Cells[0,0] := EventsList[i].classID;
       DnevnikStringGrid1.Cells[1,0] := EventsList[i].HomeTask;
       DnevnikStringGrid1.Cells[2,0] := EventsList[i].lessonTheme;
+
     end;
 
 end;

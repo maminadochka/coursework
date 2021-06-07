@@ -4,7 +4,7 @@ object Form3: TForm3
   Caption = 'Form3'
   ClientHeight = 845
   ClientWidth = 1540
-  Color = clMoneyGreen
+  Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -39,31 +39,14 @@ object Form3: TForm3
     TabOrder = 1
     OnClick = NewUserBtnClick
   end
-  object ShowTeachersBtn: TButton
-    Left = 255
-    Top = 17
-    Width = 138
-    Height = 25
-    Caption = 'ShowTeachersBtn'
-    TabOrder = 2
-    OnClick = ShowTeachersBtnClick
-  end
-  object ShowPupilsBtn: TButton
-    Left = 399
-    Top = 17
-    Width = 105
-    Height = 25
-    Caption = 'ShowPupilsBtn'
-    TabOrder = 3
-    OnClick = ShowPupilsBtnClick
-  end
   object DeleteBut: TButton
     Left = 991
     Top = 600
     Width = 186
     Height = 33
     Caption = 'DeleteBut'
-    TabOrder = 4
+    TabOrder = 2
+    OnClick = DeleteButClick
   end
   object SaveBut: TButton
     Left = 991
@@ -71,6 +54,15 @@ object Form3: TForm3
     Width = 186
     Height = 33
     Caption = 'Button1'
-    TabOrder = 5
+    TabOrder = 3
+  end
+  object Button1: TButton
+    Left = 1016
+    Top = 80
+    Width = 131
+    Height = 241
+    Caption = 'Button1'
+    TabOrder = 4
+    OnClick = sortbylastname
   end
 end

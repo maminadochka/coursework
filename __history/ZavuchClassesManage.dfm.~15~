@@ -11,6 +11,8 @@ object Form15: TForm15
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -40,6 +42,7 @@ object Form15: TForm15
     Width = 633
     Height = 489
     TabOrder = 0
+    OnSelectCell = ClassesListTableSelectCell
   end
   object NewClassNameEdit: TEdit
     Left = 680
@@ -51,10 +54,11 @@ object Form15: TForm15
   object Button1: TButton
     Left = 680
     Top = 254
-    Width = 145
+    Width = 161
     Height = 25
     Caption = 'Add'
     TabOrder = 2
+    OnClick = Button1Click
   end
   object ComboBox1: TComboBox
     Left = 680
@@ -62,6 +66,5 @@ object Form15: TForm15
     Width = 161
     Height = 21
     TabOrder = 3
-    Text = 'ComboBox1'
   end
 end
