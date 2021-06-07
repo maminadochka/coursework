@@ -4,7 +4,7 @@ object Form4: TForm4
   Caption = 'Form4'
   ClientHeight = 845
   ClientWidth = 1540
-  Color = clMoneyGreen
+  Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -128,6 +128,8 @@ object Form4: TForm4
     RowCount = 17
     FixedRows = 0
     TabOrder = 3
+    OnDrawCell = StringGrid2DrawCell
+    OnSetEditText = StringGrid2SetEditText
     RowHeights = (
       24
       24
@@ -155,13 +157,5 @@ object Form4: TForm4
     Caption = #1055#1086#1089#1084#1086#1090#1088#1077#1090#1100' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1091
     TabOrder = 4
     OnClick = StatisticButtonClick
-  end
-  object MonthComboBox: TComboBox
-    Left = 360
-    Top = 16
-    Width = 145
-    Height = 21
-    TabOrder = 5
-    Text = 'MonthComboBox'
   end
 end

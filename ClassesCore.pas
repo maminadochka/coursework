@@ -28,25 +28,6 @@ implementation
 
 {$R *.dfm}
 
-//function createClass(name: string; managerId: string): boolean;
-//var
-//  curr: ClassesListsCore.PTListElement;
-//  classesList: ClassesListsCore.TList;
-//begin
-//  New(curr);
-//  ClassesListsCore.LoadList(classesList);
-//  curr^.data.name := name;
-//  curr^.data.managerId := managerId;
-////  curr^.data.classId := Libs.GenerateUUID();
-//  curr^.data.MathTeacherName := 'q';
-//  curr^.data.RusTeacherName := 'w';
-//  ClassesListsCore.AddToEnd(classesList, curr);
-//  ClassesListsCore.SaveList(classesList);
-////  Dispose(curr);
-//  Result := true;
-//  exit;
-//end;
-
 function createClass(name: string; managerId: string): boolean;
 var
   curr: ClassesListsCore.PTListElement;
@@ -56,6 +37,8 @@ begin
   New(curr);
   ClassesListsCore.LoadList(classesList);
   curr^.data.name := name;
+  curr.data.MathTeacherName := '';
+  curr.data.RUSTeacherName := '';
   curr^.data.managerId := managerId;
   curr^.data.classId := Libs.GenerateUUID();
   ClassesListsCore.AddToEnd(classesList, curr);

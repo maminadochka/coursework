@@ -4,13 +4,14 @@ object Form16: TForm16
   Caption = 'Form16'
   ClientHeight = 640
   ClientWidth = 1103
-  Color = clBtnFace
+  Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
@@ -62,6 +63,20 @@ object Form16: TForm16
     Height = 13
     Caption = 'RUS'
   end
+  object Label3: TLabel
+    Left = 605
+    Top = 69
+    Width = 46
+    Height = 13
+    Caption = 'Lastname'
+  end
+  object Label4: TLabel
+    Left = 605
+    Top = 115
+    Width = 47
+    Height = 13
+    Caption = 'Firstname'
+  end
   object PupilsListTable: TStringGrid
     Left = 40
     Top = 48
@@ -71,28 +86,30 @@ object Form16: TForm16
   end
   object addPupilBtn: TButton
     Left = 605
-    Top = 128
+    Top = 161
     Width = 75
     Height = 25
     Caption = 'add pupil'
+    Default = True
     TabOrder = 1
     OnClick = addPupilBtnClick
+    OnEnter = addPupilBtnClick
   end
   object LastNameEdit: TEdit
     Left = 605
-    Top = 72
+    Top = 88
     Width = 252
     Height = 21
+    Ctl3D = True
+    ParentCtl3D = False
     TabOrder = 2
-    Text = 'LastNameEdit'
   end
   object FirstNameEdit: TEdit
     Left = 605
-    Top = 99
+    Top = 134
     Width = 252
     Height = 21
     TabOrder = 3
-    Text = 'Edit1'
   end
   object MATHteacherComboBox: TComboBox
     Left = 728

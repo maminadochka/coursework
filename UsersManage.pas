@@ -12,10 +12,9 @@ type
     UsersTable: TStringGrid;
     Label1: TLabel;
     NewUserBtn: TButton;
-    ShowTeachersBtn: TButton;
-    ShowPupilsBtn: TButton;
     DeleteBut: TButton;
     SaveBut: TButton;
+    Button1: TButton;
     procedure FormShow(Sender: TObject);
     procedure NewTeacherBtnClick(Sender: TObject);
     procedure NewUserBtnClick(Sender: TObject);
@@ -25,6 +24,9 @@ type
     procedure ShowZavuchesBtnClick(Sender: TObject);
     procedure ShowPupilsBtnClick(Sender: TObject);
     procedure showAllUsersClick(Sender: TObject);
+    procedure DeleteButClick(Sender: TObject);
+    procedure sortbylastname(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -54,6 +56,13 @@ begin
     end;
 end;
 
+procedure TForm3.DeleteButClick(Sender: TObject);
+begin
+Showmessage(UsersTable.Cells[0,UsersTable.row]);
+  UsersListsCore.deleteel(UsersTable.Cells[0,UsersTable.row]);
+  drawUsersTable('');
+end;
+
 procedure TForm3.drawUsersTable(userType: string);
 var
   usersList: UsersListsCore.TList;
@@ -66,6 +75,7 @@ begin
   UsersTable.RowCount := 100;
   while curr <> nil do
   begin
+     UsersTable.Cells[0, cnt+1] := curr^.data.UserID;
      UsersTable.Cells[1, cnt+1] := curr^.data.login;
      UsersTable.Cells[2, cnt+1] := curr^.data.lastname;
      UsersTable.Cells[3, cnt+1] := curr^.data.firstname;
@@ -76,11 +86,15 @@ begin
   end;
 end;
 
-
 procedure TForm3.FormShow(Sender: TObject);
 begin
-  usersTable.Cells[0,0] := 'userId';
   usersTable.ColWidths[0] := 0;
+  usersTable.ColWidths[1] := 800;
+  usersTable.ColWidths[2] := 400;
+  usersTable.ColWidths[3] := 400;
+  usersTable.ColWidths[4] := 300;
+  usersTable.ColWidths[5] := 300;
+  usersTable.Cells[0,0] := 'userId';
   usersTable.Cells[1,0] := 'login';
   usersTable.Cells[2,0] := 'LastName';
   usersTable.Cells[3,0] := 'FirstName';
@@ -126,4 +140,25 @@ begin
   drawUsersTable('zavuch');
 end;
 
+procedure TForm3.sortbylastname(Sender: TObject);      //dodelat'
+var  i, j, cnt :integer;
+begin
+   begin
+     Cnt := Userstable.RowCount;
+   for j := 1 to Cnt - 2 do
+    for i := j+1 to Cnt - 1 do
+    begin
+     if Userstable.Cells[2, i]='' then  exit;
+      if Userstable.Cells[2, i] < Userstable.Cells[2, j] then
+      with Userstable do
+      begin
+        Rows[Cnt] := Rows[i];
+        Rows[i] := Rows[j];
+        Rows[j] := Rows[Cnt];
+      end;
+    end;
+   end;
+end;
 end.
+
+

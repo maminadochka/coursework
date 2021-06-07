@@ -17,7 +17,7 @@ object Form1: TForm1
   TextHeight = 13
   object Label1: TLabel
     Left = 574
-    Top = 240
+    Top = 248
     Width = 371
     Height = 25
     Caption = '                   '#1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103'                   '
@@ -30,21 +30,21 @@ object Form1: TForm1
   end
   object Label2: TLabel
     Left = 678
-    Top = 294
+    Top = 302
     Width = 30
     Height = 13
     Caption = #1051#1086#1075#1080#1085
   end
   object Label3: TLabel
     Left = 678
-    Top = 340
+    Top = 348
     Width = 37
     Height = 13
     Caption = #1055#1072#1088#1086#1083#1100
   end
   object LoginInp: TEdit
     Left = 678
-    Top = 313
+    Top = 321
     Width = 180
     Height = 21
     TabOrder = 0
@@ -52,7 +52,7 @@ object Form1: TForm1
   end
   object PasswordInp: TEdit
     Left = 678
-    Top = 359
+    Top = 367
     Width = 180
     Height = 21
     PasswordChar = '*'
@@ -61,20 +61,24 @@ object Form1: TForm1
   end
   object LoginBtn: TButton
     Left = 678
-    Top = 392
+    Top = 407
     Width = 180
     Height = 33
     Caption = #1042#1086#1081#1090#1080
+    Default = True
     TabOrder = 2
     OnClick = LoginBtnClick
+    OnEnter = LoginBtnClick
   end
   object Button3: TButton
     Left = 678
-    Top = 438
+    Top = 446
     Width = 180
     Height = 33
-    Caption = #1042#1099#1093#1086#1076
+    Cancel = True
+    Caption = #1047#1072#1074#1077#1088#1096#1077#1085#1080#1077' '#1088#1072#1073#1086#1090#1099
     TabOrder = 3
     OnClick = Button3Click
+    OnExit = Button3Click
   end
 end

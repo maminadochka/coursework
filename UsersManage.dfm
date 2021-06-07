@@ -4,7 +4,7 @@ object Form3: TForm3
   Caption = 'Form3'
   ClientHeight = 845
   ClientWidth = 1540
-  Color = clMoneyGreen
+  Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -25,52 +25,44 @@ object Form3: TForm3
   object UsersTable: TStringGrid
     Left = 16
     Top = 48
-    Width = 401
-    Height = 465
+    Width = 969
+    Height = 585
     ColCount = 6
     TabOrder = 0
   end
   object NewUserBtn: TButton
-    Left = 73
+    Left = 120
     Top = 17
-    Width = 80
+    Width = 129
     Height = 25
     Caption = 'New Teacher'
     TabOrder = 1
     OnClick = NewUserBtnClick
   end
-  object ShowTeachersBtn: TButton
-    Left = 159
-    Top = 17
-    Width = 115
-    Height = 25
-    Caption = 'ShowTeachersBtn'
-    TabOrder = 2
-    OnClick = ShowTeachersBtnClick
-  end
-  object ShowPupilsBtn: TButton
-    Left = 280
-    Top = 17
-    Width = 75
-    Height = 25
-    Caption = 'ShowPupilsBtn'
-    TabOrder = 3
-    OnClick = ShowPupilsBtnClick
-  end
   object DeleteBut: TButton
-    Left = 423
-    Top = 480
-    Width = 137
+    Left = 991
+    Top = 600
+    Width = 186
     Height = 33
     Caption = 'DeleteBut'
-    TabOrder = 4
+    TabOrder = 2
+    OnClick = DeleteButClick
   end
   object SaveBut: TButton
-    Left = 423
-    Top = 441
-    Width = 137
+    Left = 991
+    Top = 561
+    Width = 186
     Height = 33
     Caption = 'Button1'
-    TabOrder = 5
+    TabOrder = 3
+  end
+  object Button1: TButton
+    Left = 1016
+    Top = 80
+    Width = 131
+    Height = 241
+    Caption = 'Button1'
+    TabOrder = 4
+    OnClick = sortbylastname
   end
 end

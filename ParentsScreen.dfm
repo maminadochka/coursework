@@ -4,7 +4,7 @@ object Form6: TForm6
   Caption = 'Form6'
   ClientHeight = 845
   ClientWidth = 1540
-  Color = clMoneyGreen
+  Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -13,6 +13,7 @@ object Form6: TForm6
   OldCreateOrder = False
   WindowState = wsMaximized
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object PupilName: TLabel
@@ -21,20 +22,6 @@ object Form6: TForm6
     Width = 49
     Height = 13
     Caption = 'PupilName'
-  end
-  object ParentName1: TLabel
-    Left = 64
-    Top = 43
-    Width = 65
-    Height = 13
-    Caption = 'ParentName1'
-  end
-  object ParentName2: TLabel
-    Left = 64
-    Top = 62
-    Width = 65
-    Height = 13
-    Caption = 'ParentName2'
   end
   object DnevnikStringGrid1: TStringGrid
     Left = 24
@@ -68,5 +55,14 @@ object Form6: TForm6
     Height = 137
     Caption = 'Panel3'
     TabOrder = 3
+  end
+  object ComboBox1: TComboBox
+    Left = 24
+    Top = 94
+    Width = 153
+    Height = 21
+    TabOrder = 4
+    Text = 'ComboBox1'
+    OnChange = ComboBox1Change
   end
 end

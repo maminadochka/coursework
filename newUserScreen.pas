@@ -16,8 +16,6 @@ type
     UserLoginEdit: TEdit;
     Label3: TLabel;
     Label4: TLabel;
-    OwnClassComboBox: TComboBox;
-    Label5: TLabel;
     Label6: TLabel;
     SubjectComboBox: TComboBox;
     procedure Button1Click(Sender: TObject);
@@ -38,10 +36,14 @@ implementation
 
 procedure TForm20.Button1Click(Sender: TObject);
 var AuthUsersList: AuthCore.TUsersList;
+    password: integer;
 begin
 //AuthUsersList:= AuthCore.loadlist;
-  UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, 'teacher', OwnClassComboBox.Text,'8A','7A',SubjectComboBox.Text);
+  UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, 'teacher' ,'', '',SubjectComboBox.Text);
 //  AuthCore.AddUser()
+  password:= random(100);
+  Showmessage('login: '+ UserLoginEdit.Text+ '  password: '+inttostr(password));
+  AuthCore.AddUser(AuthUsersList, UserLoginEdit.Text, password.ToString);
   Form20.Close;
 end;
 

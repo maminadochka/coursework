@@ -5,21 +5,22 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, EventsCore, EventsListCore, UsersCore, UsersListsCore, ClassesCore;
 
 type
   TForm6 = class(TForm)
     PupilName: TLabel;
-    ParentName1: TLabel;
-    ParentName2: TLabel;
     DnevnikStringGrid1: TStringGrid;
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
+    ComboBox1: TComboBox;
     procedure FormCreate(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-  public
+  public   userlogin: string;
     { Public declarations }
   end;
 
@@ -30,21 +31,41 @@ implementation
 
 {$R *.dfm}
 
+procedure TForm6.ComboBox1Change(Sender: TObject);
+var
+  i: integer;
+  EventsList: EventsCore.TEventsList;
+  classID: string;
+begin
+  EventsCore.getEvents(Combobox1.Text, ClassesCORE.getclassbyname(Combobox1.Text).classId);
+    for i := 0 to length(eventsList)-1 do
+    begin
+      DnevnikStringGrid1.Cells[0,0] := EventsList[i].classID;
+      DnevnikStringGrid1.Cells[1,0] := EventsList[i].HomeTask;
+      DnevnikStringGrid1.Cells[2,0] := EventsList[i].lessonTheme;
+    end;
+
+end;
+
 procedure TForm6.FormCreate(Sender: TObject);
 var
   i: integer;
 begin
+  DnevnikStringGrid1.Cells[0,0] := '';
   DnevnikStringGrid1.Cells[1,0] := 'Домашнее задание';
   DnevnikStringGrid1.Cells[2,0] := 'Тема урока';
   DnevnikStringGrid1.Cells[3,0] := 'Отметка';
-  DnevnikStringGrid1.ColWidths[0] := 100;
+
+  DnevnikStringGrid1.ColWidths[0] := 0;
   DnevnikStringGrid1.ColWidths[1] := 300;
   DnevnikStringGrid1.ColWidths[2] := 300;
   DnevnikStringGrid1.ColWidths[3] := 100;
 
-  DnevnikStringGrid1.Cells[0,1] := 'Понедельник';
-  DnevnikStringGrid1.Cells[0,9] := 'Вторник';
-  DnevnikStringGrid1.Cells[0,17] := 'Среда';
+end;
+procedure TForm6.FormShow(Sender: TObject);
+var Pupil: UsersListsCore.TUser;
+begin
+  Pupil:= UsersCore.getUser(userlogin);
 end;
 
 end.

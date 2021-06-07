@@ -34,7 +34,6 @@ var
 implementation
 
 {$R *.dfm}
-// TODO load journal marks
 procedure TForm15.drawClassesList();
 var
   i: integer;
@@ -42,19 +41,21 @@ var
   curr: ClassesListsCore.PTListElement;
   cnt: integer;
 begin
-  // TODO make creating of more than 1 class
   classesListsCore.LoadList(classesList);
   cnt := 0;
+  New(curr);
   curr := classesList.head;
+  if curr = nil then  exit;
+
   classesListTable.RowCount := 100;
 //   ShowMessage('from draw: '+curr^.data.name);
-  classesListTable.Cells[0, cnt+1] := curr^.data.classId;
-  classesListTable.Cells[1, cnt+1] := curr^.data.name;
+//  classesListTable.Cells[0, cnt+1] := curr^.data.classId;
+//  classesListTable.Cells[1, cnt+1] := curr^.data.name;
   while curr <> nil do
   begin
 //    ShowMessage('from draw: '+curr^.data.name);
-//    classesListTable.Cells[0, cnt+1] := curr^.data.name;
-//    classesListTable.Cells[1, cnt+1] := curr^.data.name;
+    classesListTable.Cells[0, cnt+1] := curr^.data.classId;
+    classesListTable.Cells[1, cnt+1] := curr^.data.name;
     cnt := cnt+1;
     curr := curr^.next;
   end;
@@ -73,11 +74,15 @@ var
   usersList: usersListsCore.TList;
   usersCurr: usersListsCore.PTListElement;
 begin
+  ComboBox1.Items.Clear;
   usersListsCore.LoadList(usersList);
   usersCurr := usersList.head;
   while usersCurr <> nil do
   begin
-    ComboBox1.Items.Add(usersCurr^.data.firstname+' '+usersCurr^.data.lastname);
+    if usersCurr.data.userType <> 'pupil' then
+    begin
+      ComboBox1.Items.Add(usersCurr^.data.firstname+' '+usersCurr^.data.lastname);
+    end;
     usersCurr := usersCurr^.next;
   end;
   cleanClassesList;
@@ -111,7 +116,7 @@ end;
 procedure TForm15.Button1Click(Sender: TObject);
 begin
   // TODO get manager ID
-  ClassesCore.createClass(NewClassNameEdit.Text, 'aboba');
+  ClassesCore.createClass(NewClassNameEdit.Text, Combobox1.Text);
 //  ShowMessage(classesList[0].name);
   cleanClassesList();
   drawClassesList();
