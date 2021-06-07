@@ -8,9 +8,11 @@ uses
 
 type
   TStatItem = record
+    pupil_id: string;
     ncnt: integer;
-    markscnt: integer;
+    srmark: integer;
   end;
+  TStatsList=array of TStatItem;
   TForm5 = class(TForm)
     StringGrid1: TStringGrid;
     ClassesStatisticsLabel: TLabel;
@@ -29,7 +31,8 @@ type
     procedure cleanPupils();
     procedure cleanStatistics();
     procedure drawPupils();
-    procedure statistics(start,finish: integer);
+  //  function statistics(start,finish: integer): TStatsList;
+    procedure statistics(start,finish,k,h: integer);
     procedure yearstatistics();
     procedure FirstButtonStatisticsClick(Sender: TObject);
     procedure SecondButtonStatisticsClick(Sender: TObject);
@@ -65,7 +68,7 @@ procedure TForm5.cleanStatistics();
 var
   i,j: integer;
 begin
-  for i := 3 to 5 do
+  for i := 3 to 13 do
     begin
       for j := 1 to 100 do
        StringGrid1.Cells[i,j] := '';
@@ -105,33 +108,28 @@ begin
     end;
 end;
 
-procedure TForm5.yearstatistics();
-var MarksList: MarksCore.TMarksList;
-    i,j,ncnt,marksum,markscnt: integer;
-    pupilID : string;
+procedure TForm5.yearstatistics();  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+var i,j,yearn,yearmark: integer;
 begin
-  for i := 1 to 100 do
+  for i := 3 to 10 do
   begin
-  marksum:=0;
-  ncnt:=0;
-  markscnt:=0;
-   pupilID := StringGrid1.Cells[0, i];
-   if Length(pupilID) = 38 then
-      begin
-        MarksList := MarksCore.getPupilMarks(pupilID, SubjectsComboBox.Text);
-//    ShowMessage(inttostr(Length(MarksList)));
-
-        {  Stringgrid1.Cells[3,i]:=inttostr(ncnt);
-          if markscnt=0 then Stringgrid1.Cells[4,i]:='-'
-          else
-          Stringgrid1.Cells[4,i]:=inttostr(marksum div markscnt); }
-      end;
+     for j := 1 to 100 do
+       begin
+        yearn:= strtoint(stringgrid1.cells[3,j]) + strtoint(stringgrid1.cells[5,j])+
+        strtoint(stringgrid1.cells[7,j]) + strtoint(stringgrid1.cells[9,j]);
+        yearmark:= strtoint(stringgrid1.cells[4,j]) +  strtoint(stringgrid1.cells[6,j]) +
+        strtoint(stringgrid1.cells[8,j]) + strtoint(stringgrid1.cells[10,j]);
+        Stringgrid1.Cells[11,j]:=inttostr(yearn);
+        Stringgrid1.Cells[12,j]:=inttostr(round(yearmark div 4));
+       end;
   end;
 end;
 
-function TForm5.statistics(start,finish: integer): TStatItem;
+procedure TForm5.statistics(start,finish,k,h: integer);
 var MarksList: MarksCore.TMarksList;
+    res: TStatItem;
     i,j,ncnt,marksum,markscnt: integer;
+    statsList: TStatsList;
     pupilID : string;
 begin
   for i := 1 to 100 do
@@ -159,42 +157,47 @@ begin
             end;
            end;
           end;
-          Stringgrid1.Cells[3,i]:=inttostr(ncnt);
-          if markscnt=0 then Stringgrid1.Cells[4,i]:='-'
+          Stringgrid1.Cells[k,i]:=inttostr(ncnt);
+          if markscnt=0 then Stringgrid1.Cells[h,i]:='0'
           else
-          Stringgrid1.Cells[4,i]:=inttostr(marksum div markscnt);
+          Stringgrid1.Cells[h,i]:=inttostr(marksum div markscnt);
 
+//          res.pupil_id := pupilID;
+//          res.ncnt := ncnt;
+//          res.srmark := marksum div markscnt;
+//          SetLength(StatsList, Length(StatsList)+1);
+//          StatsList[High(StatsList)] := res;
       end;
   end;
 end;
 
 procedure TForm5.FirstButtonStatisticsClick(Sender: TObject);
 begin
- cleanStatistics();
- statistics(09,10);
+ //cleanStatistics();
+ statistics(09,10,3,4);
 end;
 
 procedure TForm5.SecondButtonStatisticsClick(Sender: TObject);
 begin
-  cleanStatistics();
-  statistics(11,12);
+//  cleanStatistics();
+  statistics(11,12,5,6);
 end;
 
 procedure TForm5.ThirdButtonStatisticsClick(Sender: TObject);
 begin
-  cleanStatistics();
-  statistics(01,03);
+ // cleanStatistics();
+  statistics(01,03,7,8);
 end;
 
 procedure TForm5.ForthButtonStatisticsClick(Sender: TObject);
 begin
-  cleanStatistics();
-  statistics(04,05);
+ // cleanStatistics();
+  statistics(04,05,9,10);
 end;
 
 procedure TForm5.Button1Click(Sender: TObject);
 begin
-  cleanStatistics();
+//  cleanStatistics();
   yearstatistics();
 end;
 
@@ -202,15 +205,31 @@ procedure TForm5.FormCreate(Sender: TObject);
 begin
    StringGrid1.ColWidths[0] := 50;
    StringGrid1.ColWidths[1] := 50;
-   StringGrid1.ColWidths[2] := 600;
-   StringGrid1.ColWidths[3] := 300;
-   StringGrid1.ColWidths[4] := 300;
+   StringGrid1.ColWidths[2] := 700;
+   StringGrid1.ColWidths[3] := 290;
+   StringGrid1.ColWidths[4] := 290;
+   StringGrid1.ColWidths[5] := 290;
+   StringGrid1.ColWidths[6] := 290;
+   StringGrid1.ColWidths[7] := 290;
+   StringGrid1.ColWidths[8] := 290;
+   StringGrid1.ColWidths[9] := 290;
+   StringGrid1.ColWidths[10] := 290;
+   StringGrid1.ColWidths[11] := 290;
+   StringGrid1.ColWidths[12] := 290;
 
    StringGrid1.Cells[0, 0] := 'ID';
    StringGrid1.Cells[1, 0] := '№';
    StringGrid1.Cells[2, 0] := 'Ф.И.О.';
    StringGrid1.Cells[3, 0] := 'Пропуски';
    StringGrid1.Cells[4, 0] := 'Средний балл';
+   StringGrid1.Cells[5, 0] := 'Пропуски';
+   StringGrid1.Cells[6, 0] := 'Средний балл';
+   StringGrid1.Cells[7, 0] := 'Пропуски';
+   StringGrid1.Cells[8, 0] := 'Средний балл';
+   StringGrid1.Cells[9, 0] := 'Пропуски';
+   StringGrid1.Cells[10, 0] := 'Средний балл';
+   StringGrid1.Cells[11, 0] := 'Пропуски';
+   StringGrid1.Cells[12, 0] := 'Средний балл';
 end;
 
 procedure TForm5.FormShow(Sender: TObject);
@@ -235,6 +254,7 @@ end;
 
 procedure TForm5.SubjectsComboBoxChange(Sender: TObject);
 begin
+cleanStatistics();
   //MarksCore.getpupilmarks();
 end;
 
