@@ -21,12 +21,8 @@
     <File Path="ParentsScreen.dfm"/>
     <File Path="PupilsCore.pas"/>
     <File Path="PupilsCore.dfm"/>
-    <File Path="pupilScreen.pas"/>
-    <File Path="pupilScreen.dfm"/>
     <File Path="Statistics.pas"/>
     <File Path="Statistics.dfm"/>
-    <File Path="userInfoScreen.pas"/>
-    <File Path="userInfoScreen.dfm"/>
     <File Path="UsersCore.pas"/>
     <File Path="UsersCore.dfm"/>
     <File Path="UsersListsCore.pas"/>
@@ -41,5 +37,15 @@
     <File Path="MarksCore.dfm"/>
     <File Path="MarksListCore.pas"/>
     <File Path="MarksListCore.dfm"/>
-  </ProjectSortOrder>
+    <File Path="EventsCore.pas"/>
+    <File Path="EventsCore.dfm"/>
+    <File Path="EventsListCore.pas"/>
+    <File Path="EventsListCore.dfm"/>
+    <File Path="AuthListsCore.pas"/>
+    <File Path="AuthListsCore.dfm"/>
+  </ProjectSortOrder>  <Transactions>
+    <Transaction>2021.06.08 01:12:03.268,=C:\Users\Roman\Documents\GitHub\coursework\Unit14.pas</Transaction>
+    <Transaction>2021.06.08 01:13:02.425,C:\Users\Roman\Documents\GitHub\coursework\AuthListsCore.dfm=C:\Users\Roman\Documents\GitHub\coursework\Unit14.dfm</Transaction>
+    <Transaction>2021.06.08 01:13:02.425,C:\Users\Roman\Documents\GitHub\coursework\AuthListsCore.pas=C:\Users\Roman\Documents\GitHub\coursework\Unit14.pas</Transaction>
+  </Transactions>
 </BorlandProject>

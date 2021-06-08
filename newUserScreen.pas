@@ -35,15 +35,14 @@ implementation
 
 
 procedure TForm20.Button1Click(Sender: TObject);
-var AuthUsersList: AuthCore.TUsersList;
+var
     password: integer;
 begin
 //AuthUsersList:= AuthCore.loadlist;
   UsersCore.createUser(UserLoginEdit.Text, FirstNameEdit.Text, LastNameEdit.Text, 'teacher' ,'', '',SubjectComboBox.Text);
-//  AuthCore.AddUser()
-  password:= random(100);
+  password := random(100);
+  AuthCore.AddUser(UserLoginEdit.Text, password.ToString);
   Showmessage('login: '+ UserLoginEdit.Text+ '  password: '+inttostr(password));
-  AuthCore.AddUser(AuthUsersList, UserLoginEdit.Text, password.ToString);
   Form20.Close;
 end;
 
