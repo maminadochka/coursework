@@ -38,9 +38,9 @@ procedure startup();
 // creates new users for testing
 begin
   AuthCore.AddUser(AuthUsersList, 'ksu', '123');
-  AuthCore.AddUser(AuthUsersList, 'sveta', '123');
- UsersCore.createUser('ksu', 'Ksenia', 'Tsutsalevich', 'zavuch', '', '','');
- UsersCore.createUser('sveta', 'Boltak', 'Sveta', 'teacher', '', '','Math');
+  AuthCore.AddUser(AuthUsersList, 'bt', '4');
+  UsersCore.createUser('ksu', 'Ksenia', 'Tsutsalevich', 'zavuch', '7A', '11A', '8A','');
+// UsersCore.createUser('bt', 'Boltak', 'Sveta', 'zavuch', '7A', '11A', '8A');
 //  UsersCore.createUser('bt', 'Sveta', 'Boltak', 'teacher', '10A', '', '');
 end;
 
@@ -51,7 +51,7 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  Form1.color:=$f1b988;
+  Form1.color:=$ecb2ce;
   startup();
 end;
 
@@ -70,7 +70,6 @@ begin
     // begin
 //       Form2.usersList := usersList;
        Form2.userLogin := user.login;
-
 //       Form2.userId := user.userId;
       // Form2.ShowModal();
     // end;
