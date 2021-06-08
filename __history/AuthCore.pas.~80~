@@ -25,6 +25,7 @@ var
 function AddUser(const login: string; const password: string): boolean;
 function auth(const login: string; password: string): boolean;
 function checkExists(login: string): boolean;
+procedure DeleteUser(login: string);
 
 implementation
 
@@ -62,24 +63,22 @@ var
   AuthUsersList: AuthListsCore.TList;
   curr: AuthListsCore.PTListElement;
 begin
+  ShowMessage('new!'+login+' '+password);
     if (login <> '') And (checkExists(login)) then
       begin
-        ShowMessage(login + '  exists');
         exit;
       end;
     New(curr);
     AuthListsCore.LoadList(AuthUsersList);
     if Length(login) = 0 then
     begin
-      curr^.data.login := Libs.generateUUID();;
+      curr^.data.login := Libs.generateUUID();
     end
     else
     begin
       curr^.data.login := login;
     end;
-     curr^.data.login := login;
      curr^.data.password := password;
-     ShowMessage('login: '+login+' password: '+password);
      AuthListsCore.AddToEnd(AuthUsersList, curr);
      AuthListsCore.SaveList(AuthUsersList);
     Dispose(curr);
@@ -110,4 +109,11 @@ begin
   Result := exFlag;
   exit;
  end;
+
+ procedure DeleteUser(login: string);
+ begin
+    AuthListsCore.DeleteEl(login);
+ end;
+
+
 end.

@@ -89,7 +89,6 @@ begin
   randomize;
   upassw := inttostr(Random(100));
   AuthCore.AddUser(ulogin,upassw);
-//  ShowMessage('password: '+upassw);
   cleanUsersTable;
   drawUsersTable;
 end;

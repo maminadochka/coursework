@@ -80,6 +80,7 @@ begin
      curr^.data.password := password;
      AuthListsCore.AddToEnd(AuthUsersList, curr);
      AuthListsCore.SaveList(AuthUsersList);
+     ShowMessage('login: '+curr.data.login+' password: '+curr.data.password);
     Dispose(curr);
     Result := true;
     exit;

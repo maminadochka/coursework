@@ -93,6 +93,7 @@ object Form16: TForm16
     Default = True
     TabOrder = 1
     OnClick = addPupilBtnClick
+    OnEnter = addPupilBtnClick
   end
   object LastNameEdit: TEdit
     Left = 605
