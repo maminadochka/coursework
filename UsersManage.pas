@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Menus, UsersCore,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Menus, UsersCore, AuthCore,
   Vcl.Grids, newUserScreen, UsersListsCore;
 
 type
@@ -58,8 +58,9 @@ end;
 
 procedure TForm3.DeleteButClick(Sender: TObject);
 begin
-Showmessage(UsersTable.Cells[0,UsersTable.row]);
+  Showmessage(UsersTable.Cells[0,UsersTable.row]);
   UsersListsCore.deleteel(UsersTable.Cells[0,UsersTable.row]);
+  AuthCore.DeleteUser(UsersTable.Cells[1, UsersTable.Row]);
   drawUsersTable('');
 end;
 

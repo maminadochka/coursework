@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, ClassesCore, ClassesListsCore, UsersListsCore, UsersCore;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, ClassesCore, ClassesListsCore, UsersListsCore, UsersCore, AuthCore;
 
 type
   TForm16 = class(TForm)
@@ -81,8 +81,15 @@ begin
 end;
 
 procedure TForm16.addPupilBtnClick(Sender: TObject);
+var
+  upassw: string;
+  ulogin: string;
 begin
-  UsersCore.createUser('',FirstNameEdit.Text, LastNameEdit.Text, 'pupil','',classID,'');
+  ulogin:=UsersCore.createUser('',FirstNameEdit.Text, LastNameEdit.Text, 'pupil','',classID,'');
+  randomize;
+  upassw := inttostr(Random(100));
+  AuthCore.AddUser(ulogin,upassw);
+//  ShowMessage('password: '+upassw);
   cleanUsersTable;
   drawUsersTable;
 end;
@@ -108,7 +115,7 @@ begin
   _class := ClassesCore.getClass(classID);
   classNameLabel2.Caption := _class.name;
   // TODO get manager id by name
-  ShowMessage(_class.managerId);
+//  ShowMessage(_class.managerId);
   ManagerNameLabel2.Caption := _class.managerId;
 
   UsersListsCore.loadlist(Userslist);

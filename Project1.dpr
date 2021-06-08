@@ -21,7 +21,8 @@ uses
   MarksCore in 'MarksCore.pas' {Form22},
   MarksListCore in 'MarksListCore.pas' {Form23},
   EventsListCore in 'EventsListCore.pas' {Form13},
-  EventsCore in 'EventsCore.pas' {Form17};
+  EventsCore in 'EventsCore.pas' {Form17},
+  AuthListsCore in 'AuthListsCore.pas' {Form14};
 
 {$R *.res}
 
@@ -48,5 +49,6 @@ begin
   Application.CreateForm(TForm23, Form23);
   Application.CreateForm(TForm13, Form13);
   Application.CreateForm(TForm17, Form17);
+  Application.CreateForm(TForm14, Form14);
   Application.Run;
 end.

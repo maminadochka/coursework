@@ -4,14 +4,14 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AuthListsCore, Libs;
 
 type
-  TUser = record
+  TAuthUser = record
     login: string;
     password: string;
   end;
-  TUsersList = array of TUser;
+  TAuthUsersList = array of TAuthUser;
   TForm9 = class(TForm)
   private
     { Private declarations }
@@ -22,63 +22,97 @@ type
 var
   Form9: TForm9;
 
-function checkExists(const usersList: TUsersList; const login: string): boolean;
-function AddUser(var usersList: TUsersList; const login: string; const password: string): boolean;
-function getUser(var usersList: TUsersList; const login: string): TUser;
-function auth(var usersList: TUsersList; login: string; password: string): boolean;
+function AddUser(const login: string; const password: string): boolean;
+function auth(const login: string; password: string): boolean;
+function checkExists(login: string): boolean;
+procedure DeleteUser(login: string);
 
 implementation
 
 {$R *.dfm}
 
-function auth(var usersList: TUsersList; login: string; password: string): boolean;
+function auth(const login: string; password: string): boolean;
+var
+  curr: AuthListsCore.PTListElement;
+  AuthList: AuthListsCore.TList;
 begin
-  if not checkExists(usersList, login) then
+  AuthListsCore.LoadList(AuthList);
+  New(curr);
+  curr := AuthList.head;
+  while curr <> nil do
+  begin
+//    ShowMessage('login: '+curr.data.login+' passw'+curr.data.password);
+    if curr.data.login = login then
     begin
-      Result := false;
-      exit;
+      if curr.data.password = password then
+      begin
+        Result := true;
+        exit;
+      end;
     end;
+    curr := curr.next;
+  end;
+  Result := false;
+  exit;
+end;
+
+
+function AddUser(const login: string; const password: string): boolean;    // FIX IT
+// TODO encrypt password SHA1 or MD5
+var
+  AuthUsersList: AuthListsCore.TList;
+  curr: AuthListsCore.PTListElement;
+begin
+    if (login <> '') And (checkExists(login)) then
+      begin
+        exit;
+      end;
+    New(curr);
+    AuthListsCore.LoadList(AuthUsersList);
+    if Length(login) = 0 then
+    begin
+      curr^.data.login := Libs.generateUUID();
+    end
+    else
+    begin
+      curr^.data.login := login;
+    end;
+     curr^.data.password := password;
+     AuthListsCore.AddToEnd(AuthUsersList, curr);
+     AuthListsCore.SaveList(AuthUsersList);
+    Dispose(curr);
     Result := true;
     exit;
 end;
 
-function checkExists(const usersList: TUsersList; const login: string): boolean;
-var
+function checkExists(login: string): boolean;
+ var
   i: integer;
+  exFlag: boolean;
+  AuthUsersList: AuthListsCore.TList;
+  curr: AuthListsCore.PTListElement;
 begin
-  for i := 0 to Length(UsersList)-1 do
+  exFlag := false;
+  AuthListsCore.LoadList(AuthUsersList);
+  New(curr);
+  curr := AuthUsersList.head;
+  while curr <> nil do
   begin
-    if UsersList[i].login = login then
+    if curr^.data.login = login then
     begin
-      Result := true;
+      exFlag := true;
       break;
     end;
+    curr := curr^.next;
   end;
-end;
+  Result := exFlag;
+  exit;
+ end;
 
-function AddUser(var usersList: TUsersList; const login: string; const password: string): boolean;
-// TODO encrypt password
-var
-  user: TUser;
-begin
-  user.login := login;
-  user.password := password;
-  SetLength(UsersList, Length(UsersList)+1);
-  UsersList[High(UsersList)] := user;
-end;
+ procedure DeleteUser(login: string);
+ begin
+    AuthListsCore.DeleteEl(login);
+ end;
 
 
-function getUser(var usersList: TUsersList; const login: string): TUser;
-var
-  i: integer;
-begin
-  for i := 0 to Length(UsersList)-1 do
-    begin
-      if UsersList[i].login = login then
-      begin
-        Result := UsersList[i];
-        exit;
-      end;
-    end;
-end;
 end.
