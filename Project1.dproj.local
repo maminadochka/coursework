@@ -44,12 +44,12 @@
   </ProjectSortOrder>
 	<Transactions>
     <Transaction>1899.12.30 00:00:00.000.104,K:\Универ\прога\курсовая2сем\code\Unit17.dfm=K:\Универ\прога\курсовая2сем\code\EventsCore.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.435,=K:\Универ\прога\курсовая2сем\code\Unit17.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.104,K:\Универ\прога\курсовая2сем\code\Unit17.pas=K:\Универ\прога\курсовая2сем\code\EventsCore.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.435,=K:\Универ\прога\курсовая2сем\code\Unit17.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.651,K:\Универ\прога\курсовая2сем\code\pupilScreen.pas=</Transaction>
     <Transaction>1899.12.30 00:00:00.000.835,K:\Универ\прога\курсовая2сем\code\userInfoScreen.pas=</Transaction>
     <Transaction>1899.12.30 00:00:00.000.924,K:\Универ\прога\курсовая2сем\code\Unit13.dfm=K:\Универ\прога\курсовая2сем\code\EventsListCore.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.257,=K:\Универ\прога\курсовая2сем\code\Unit13.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.924,K:\Универ\прога\курсовая2сем\code\Unit13.pas=K:\Универ\прога\курсовая2сем\code\EventsListCore.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.257,=K:\Универ\прога\курсовая2сем\code\Unit13.pas</Transaction>
   </Transactions>
 </BorlandProject>
