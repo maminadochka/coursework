@@ -47,7 +47,7 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  Form1.color:=$ecb2ce;
+  Form1.color:=$f1b988;
   startup();
 end;
 

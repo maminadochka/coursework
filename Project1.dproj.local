@@ -9,8 +9,6 @@
     <File Path="ClassViewScreen.dfm"/>
     <File Path="Journal.pas"/>
     <File Path="Journal.dfm"/>
-    <File Path="JournalCore.pas"/>
-    <File Path="JournalCore.dfm"/>
     <File Path="Libs.pas"/>
     <File Path="Libs.dfm"/>
     <File Path="MainScreen.pas"/>
@@ -37,16 +35,23 @@
     <File Path="MarksCore.dfm"/>
     <File Path="MarksListCore.pas"/>
     <File Path="MarksListCore.dfm"/>
-    <File Path="EventsCore.pas"/>
-    <File Path="EventsCore.dfm"/>
     <File Path="EventsListCore.pas"/>
     <File Path="EventsListCore.dfm"/>
+    <File Path="EventsCore.pas"/>
+    <File Path="EventsCore.dfm"/>
     <File Path="AuthListsCore.pas"/>
     <File Path="AuthListsCore.dfm"/>
   </ProjectSortOrder>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.268,=C:\Users\Roman\Documents\GitHub\coursework\Unit14.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.425,C:\Users\Roman\Documents\GitHub\coursework\AuthListsCore.dfm=C:\Users\Roman\Documents\GitHub\coursework\Unit14.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.425,C:\Users\Roman\Documents\GitHub\coursework\AuthListsCore.pas=C:\Users\Roman\Documents\GitHub\coursework\Unit14.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.924,K:\Универ\прога\курсовая2сем\code\EventsListCore.pas=K:\Универ\прога\курсовая2сем\code\Unit13.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.651,K:\Универ\прога\курсовая2сем\code\pupilScreen.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.104,K:\Универ\прога\курсовая2сем\code\EventsCore.pas=K:\Универ\прога\курсовая2сем\code\Unit17.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.435,=K:\Универ\прога\курсовая2сем\code\Unit17.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.835,K:\Универ\прога\курсовая2сем\code\userInfoScreen.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.104,K:\Универ\прога\курсовая2сем\code\EventsCore.dfm=K:\Универ\прога\курсовая2сем\code\Unit17.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.257,=K:\Универ\прога\курсовая2сем\code\Unit13.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.924,K:\Универ\прога\курсовая2сем\code\EventsListCore.dfm=K:\Универ\прога\курсовая2сем\code\Unit13.dfm</Transaction>
+    <Transaction>2021.06.08 12:50:03.312,K:\Универ\прога\курсовая2сем\code\JournalCore.pas=</Transaction>
+    <Transaction>2021.06.08 13:27:14.462,K:\Универ\прога\курсовая2сем\code\JournalCore.pas=</Transaction>
   </Transactions>
 </BorlandProject>

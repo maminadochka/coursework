@@ -18,17 +18,22 @@ object Form6: TForm6
   TextHeight = 13
   object PupilName: TLabel
     Left = 64
-    Top = 24
-    Width = 49
-    Height = 13
+    Top = 32
+    Width = 100
+    Height = 25
     Caption = 'PupilName'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
   end
   object DnevnikStringGrid1: TStringGrid
     Left = 24
     Top = 136
     Width = 841
     Height = 201
-    ColCount = 4
     RowCount = 8
     TabOrder = 0
   end

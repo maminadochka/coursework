@@ -8,7 +8,6 @@ uses
   Journal in 'Journal.pas' {Form4},
   Statistics in 'Statistics.pas' {Form5},
   ParentsScreen in 'ParentsScreen.pas' {Form6},
-  JournalCore in 'JournalCore.pas' {Form7},
   PupilsCore in 'PupilsCore.pas' {Form8},
   AuthCore in 'AuthCore.pas' {Form9},
   UsersCore in 'UsersCore.pas' {Form10},
@@ -35,7 +34,6 @@ begin
   Application.CreateForm(TForm4, Form4);
   Application.CreateForm(TForm5, Form5);
   Application.CreateForm(TForm6, Form6);
-  Application.CreateForm(TForm7, Form7);
   Application.CreateForm(TForm8, Form8);
   Application.CreateForm(TForm9, Form9);
   Application.CreateForm(TForm10, Form10);

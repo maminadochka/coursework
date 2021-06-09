@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, Vcl.ComCtrls,
-  Vcl.ExtCtrls, EventsCore, EventsListCore, UsersCore, UsersListsCore, ClassesCore;
+  Vcl.ExtCtrls, EventsCore, EventsListCore, UsersCore, UsersListsCore, ClassesCore, MarksCore, MarksListCore;
 
 type
   TForm6 = class(TForm)
@@ -18,6 +18,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure cleantable();
   private
     { Private declarations }
   public   userlogin: string;
@@ -30,42 +31,69 @@ var
 implementation
 
 {$R *.dfm}
+procedure TForm6.cleantable();
+var
+  i,j: integer;
+begin
+  for i := 0 to 3 do
+    begin
+      for j := 1 to 100 do
+       DnevnikStringGrid1.Cells[i,j] := '';
+    end;
+end;
 
 procedure TForm6.ComboBox1Change(Sender: TObject);
 var
-  i: integer;
+  i,j: integer;
   EventsList: EventsCore.TEventsList;
   classID: string;
+  Pupil: UsersListsCore.TUser;
+  MarksList: MarksCore.TMarksList;
 begin
-  EventsCore.getEvents(Combobox1.Text, ClassesCORE.getclassbyname(Combobox1.Text).classId);
+  cleantable();
+  Pupil:= UsersCore.getUser(userlogin);
+  EventsList:= EventsCore.getEvents(Combobox1.Text, Pupil.StudyClassId);
+  MarksList:= getpupilmarks(Pupil.userId,Combobox1.Text);
     for i := 0 to length(eventsList)-1 do
     begin
-      DnevnikStringGrid1.Cells[0,0] := EventsList[i].classID;
-      DnevnikStringGrid1.Cells[1,0] := EventsList[i].HomeTask;
-      DnevnikStringGrid1.Cells[2,0] := EventsList[i].lessonTheme;
+      DnevnikStringGrid1.Cells[0,i+1] := EventsList[i].date;
+      DnevnikStringGrid1.Cells[1,i+1] := EventsList[i].HomeTask;
+      DnevnikStringGrid1.Cells[2,i+1] := EventsList[i].lessonTheme;
+      for j := 0 to length(MarksList)-1 do
+        begin
+          if MarksList[j].date = EventsList[i].date then
+             DnevnikStringGrid1.Cells[3,i+1] := MarksList[j].value;
+        end;
     end;
-
 end;
 
 procedure TForm6.FormCreate(Sender: TObject);
 var
   i: integer;
 begin
-  DnevnikStringGrid1.Cells[0,0] := '';
-  DnevnikStringGrid1.Cells[1,0] := 'Домашнее задание';
-  DnevnikStringGrid1.Cells[2,0] := 'Тема урока';
+  DnevnikStringGrid1.Cells[0,0] := 'Дата';
+  DnevnikStringGrid1.Cells[2,0] := 'Домашнее задание';
+  DnevnikStringGrid1.Cells[1,0] := 'Тема урока';
   DnevnikStringGrid1.Cells[3,0] := 'Отметка';
 
-  DnevnikStringGrid1.ColWidths[0] := 0;
+  DnevnikStringGrid1.ColWidths[0] := 150;
   DnevnikStringGrid1.ColWidths[1] := 300;
   DnevnikStringGrid1.ColWidths[2] := 300;
-  DnevnikStringGrid1.ColWidths[3] := 100;
-
+  DnevnikStringGrid1.ColWidths[3] := 200;
 end;
+
 procedure TForm6.FormShow(Sender: TObject);
 var Pupil: UsersListsCore.TUser;
 begin
+  cleantable();
+
   Pupil:= UsersCore.getUser(userlogin);
+  PupilName.Caption := Pupil.lastname+' '+pupil.firstname;
+
+  Combobox1.Items.Add('Math');
+  Combobox1.Items.clear;
+  Combobox1.Items.Add('Math');
+  Combobox1.Items.Add('Rus');
 end;
 
 end.

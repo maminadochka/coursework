@@ -44,6 +44,7 @@ end;
 
 procedure TForm2.Button2Click(Sender: TObject);
 begin
+  Form6.userlogin:=userlogin;
   Form6.ShowModal;
 end;
 
@@ -58,18 +59,21 @@ begin
   UserName.Caption := fullName;
   if user.userType = 'teacher' then
   begin
+    Journal.Visible := True;
     UsersManage.Visible := False;
     Button1.Visible := False;
     Button2.Visible := False;
   end;
   if user.userType = 'zavuch' then
   begin
+    Journal.Visible := True;
     UsersManage.Visible := True;
     Button1.Visible := True;
     Button2.Visible := False;
   end;
   if user.userType = 'pupil' then
   begin
+    Journal.Visible := false;
     UsersManage.Visible := False;
     Button1.Visible := False;
     Button2.Visible := True;

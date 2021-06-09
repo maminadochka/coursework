@@ -39,7 +39,7 @@ object Form15: TForm15
   end
   object ClassesListTable: TStringGrid
     Left = 24
-    Top = 104
+    Top = 72
     Width = 633
     Height = 489
     TabOrder = 0
